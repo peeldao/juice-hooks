@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default defineConfig({
-  out: "lib/generated.ts",
+  out: "generated/hooks.ts",
   plugins: [
     etherscan({
       apiKey: process.env.ETHERSCAN_API_KEY!,
