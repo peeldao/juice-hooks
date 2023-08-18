@@ -12,15 +12,15 @@ export default defineConfig({
     etherscan({
       apiKey: process.env.ETHERSCAN_API_KEY!,
       chainId: mainnet.id,
-      contracts: [
-        {
-          name: "JBProjects",
+      contracts: Object.keys(addresses).map((name) => {
+        return {
+          name,
           address: {
-            [mainnet.id]: addresses.JBProjects.mainnet as `0x${string}`,
-            [goerli.id]: addresses.JBProjects.goerli as `0x${string}`,
+            [goerli.id]: addresses[name].goerli as `0x${string}`,
+            [mainnet.id]: addresses[name].mainnet as `0x${string}`,
           },
-        },
-      ],
+        };
+      }),
     }),
     react(),
   ],
