@@ -7,6 +7,7 @@ enum JBContracts {
   JBETHPaymentTerminal = "JBETHPaymentTerminal",
   JBETHPaymentTerminal3_1 = "JBETHPaymentTerminal3_1",
   JBETHPaymentTerminal3_1_1 = "JBETHPaymentTerminal3_1_1",
+  JBETHPaymentTerminal3_1_2 = "JBETHPaymentTerminal3_1_2",
   JBFundingCycleStore = "JBFundingCycleStore",
   JBFundAccessConstraintsStore = "JBFundAccessConstraintsStore",
   JBOperatorStore = "JBOperatorStore",
