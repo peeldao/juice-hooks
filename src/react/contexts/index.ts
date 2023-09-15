@@ -1,1 +1,2 @@
-export * as JBProjectContext from "./JBProjectContext/JBProjectContext";
+export * from "./JBProjectContext/JBProjectContext";
+export * from "./JBFundingCycleContext/JBFundingCycleContext";

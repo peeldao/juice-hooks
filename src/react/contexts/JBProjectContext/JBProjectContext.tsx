@@ -7,13 +7,7 @@ import {
   useJbDirectoryPrimaryTerminalOf,
   useJbethPaymentTerminalStore,
 } from "../../generated/hooks";
-
-export type AsyncData<T> =
-  | {
-      isLoading: boolean;
-      data?: T;
-    }
-  | undefined;
+import { AsyncData } from "../types";
 
 type JBProjectContextData = {
   projectId: bigint;
@@ -51,7 +45,7 @@ export enum VariableContracts {
 
 type JBProjectProviderProps = PropsWithChildren<{
   projectId: bigint;
-  include: VariableContracts[];
+  include?: VariableContracts[];
 }>;
 
 /**
