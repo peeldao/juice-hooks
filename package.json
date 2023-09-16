@@ -1,6 +1,6 @@
 {
   "name": "juice-hooks",
-  "version": "5.0.3-beta",
+  "version": "5.0.4-beta",
   "description": "Wagmi hooks for Juicebox",
   "main": "./lib/index.js",
   "types": "./lib/hooks.d.ts",

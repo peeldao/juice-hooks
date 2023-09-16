@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useContext } from "react";
+import React, { PropsWithChildren, createContext, useContext } from "react";
 import { JBFundingCycleData, JBFundingCycleMetadata } from "src/types";
 import {
   DiscountRate,
