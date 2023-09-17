@@ -1,17 +1,17 @@
 import React, { PropsWithChildren, createContext, useContext } from "react";
-import { JBFundingCycleData, JBFundingCycleMetadata } from "src/types";
+import { JBFundingCycle, JBFundingCycleMetadata } from "../../../types";
 import {
   DiscountRate,
   FundingCycleWeight,
   RedemptionRate,
   ReservedRate,
-} from "src/utils";
+} from "../../../utils/data";
 import { useJbControllerCurrentFundingCycleOf } from "../../generated/hooks";
 import { useJBProjectContext } from "../JBProjectContext/JBProjectContext";
 import { AsyncData } from "../types";
 
 type JBFundingCycleContext = {
-  fundingCycleData: AsyncData<JBFundingCycleData>;
+  fundingCycleData: AsyncData<JBFundingCycle>;
   fundingCycleMetadata: AsyncData<JBFundingCycleMetadata>;
 };
 
