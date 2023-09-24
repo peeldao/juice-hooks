@@ -24,6 +24,18 @@ export function useJBFundingCycleContext() {
   return useContext(JBFundingCycleContext);
 }
 
+export function useJBFundingCycleData() {
+  const { fundingCycleData } = useJBFundingCycleContext();
+
+  return fundingCycleData;
+}
+
+export function useJBFundingCycleMetadata() {
+  const { fundingCycleMetadata } = useJBFundingCycleContext();
+
+  return fundingCycleMetadata;
+}
+
 type JBFundingCycleProviderProps = PropsWithChildren<{
   projectId: bigint;
 }>;
