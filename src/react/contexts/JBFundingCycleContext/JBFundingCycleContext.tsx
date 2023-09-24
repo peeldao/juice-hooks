@@ -7,7 +7,7 @@ import {
   ReservedRate,
 } from "../../../utils/data";
 import { useJbControllerCurrentFundingCycleOf } from "../../generated/hooks";
-import { useJBProjectContext } from "../JBProjectContext/JBProjectContext";
+import { useJBContractContext } from "../JBContractContext/JBContractContext";
 import { AsyncData } from "../types";
 
 type JBFundingCycleContext = {
@@ -29,14 +29,13 @@ type JBFundingCycleProviderProps = PropsWithChildren<{
 }>;
 
 /**
- *
- * If `include` no specified, all contracts are loaded
+ * @note depends on JBContractContext
  */
 export const JBFundingCycleProvider = ({
   projectId,
   children,
 }: JBFundingCycleProviderProps) => {
-  const { contracts } = useJBProjectContext();
+  const { contracts } = useJBContractContext();
 
   const { data: fundingCycleRes, isLoading: fundingCycleLoading } =
     useJbControllerCurrentFundingCycleOf({

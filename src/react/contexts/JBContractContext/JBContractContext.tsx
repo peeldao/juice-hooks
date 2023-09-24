@@ -9,7 +9,7 @@ import {
 } from "../../generated/hooks";
 import { AsyncData } from "../types";
 
-type JBProjectContextData = {
+type JBContractContextData = {
   projectId: bigint;
 
   contracts: {
@@ -20,7 +20,7 @@ type JBProjectContextData = {
   };
 };
 
-const JBProjectContext = createContext<JBProjectContextData>({
+const JBContractContext = createContext<JBContractContextData>({
   projectId: 0n,
 
   contracts: {
@@ -31,33 +31,34 @@ const JBProjectContext = createContext<JBProjectContextData>({
   },
 });
 
-export function useJBProjectContext() {
-  return useContext(JBProjectContext);
+export function useJBContractContext() {
+  return useContext(JBContractContext);
 }
 
 // contracts that are different across JB projects.
-export enum VariableContracts {
+export enum DynamicContract {
   "Controller",
   "PrimaryEthPaymentTerminal",
   "PrimaryEthPaymentTerminalStore",
   "FundAccessConstraintsStore",
 }
 
-type JBProjectProviderProps = PropsWithChildren<{
+export type JBContractProviderProps = PropsWithChildren<{
   projectId: bigint;
-  include?: VariableContracts[];
+  include?: DynamicContract[];
 }>;
 
 /**
+ * Load project-sepcific contract addresses for a given JB project.
  *
- * If `include` no specified, all contracts are loaded
+ * If `include` arg not specified, all contracts are loaded
  */
-export const JBProjectProvider = ({
+export const JBContractProvider = ({
   projectId,
   include,
   children,
-}: JBProjectProviderProps) => {
-  const enabled = (selector: VariableContracts[]) => {
+}: JBContractProviderProps) => {
+  const enabled = (selector: DynamicContract[]) => {
     return (
       typeof include === "undefined" ||
       include.some((c) => selector.includes(c))
@@ -65,32 +66,33 @@ export const JBProjectProvider = ({
   };
 
   const primaryTerminalEth = useJbDirectoryPrimaryTerminalOf({
-    args: enabled([VariableContracts.PrimaryEthPaymentTerminal])
+    args: enabled([DynamicContract.PrimaryEthPaymentTerminal])
       ? [projectId, ETHER_ADDRESS]
       : undefined,
   });
   const primaryTerminalEthStore = useJbethPaymentTerminalStore({
     address: primaryTerminalEth.data,
     enabled: enabled([
-      VariableContracts.PrimaryEthPaymentTerminal,
-      VariableContracts.PrimaryEthPaymentTerminalStore,
+      DynamicContract.PrimaryEthPaymentTerminal,
+      DynamicContract.PrimaryEthPaymentTerminalStore,
     ]),
   });
   const controller = useJbDirectoryControllerOf({
     args: [projectId],
+    enabled: enabled([DynamicContract.Controller]),
   });
 
   const fundAccessConstraintsStore =
     useJbController3_1FundAccessConstraintsStore({
       address: controller.data,
       enabled: enabled([
-        VariableContracts.Controller,
-        VariableContracts.FundAccessConstraintsStore,
+        DynamicContract.Controller,
+        DynamicContract.FundAccessConstraintsStore,
       ]),
     });
 
   return (
-    <JBProjectContext.Provider
+    <JBContractContext.Provider
       value={{
         projectId,
 
@@ -103,6 +105,6 @@ export const JBProjectProvider = ({
       }}
     >
       {children}
-    </JBProjectContext.Provider>
+    </JBContractContext.Provider>
   );
 };
