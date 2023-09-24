@@ -2,10 +2,11 @@ import { FixedInt } from "fpnum";
 import { ReservedRate } from "./data";
 import { parseEther, parseUnits } from "viem";
 import { getTokenAToBQuote, getTokenBPrice } from "./token";
+import { describe, expect, test } from "vitest";
 
 describe("token", () => {
   describe("getTokenAToBQuote", () => {
-    it.each`
+    test.each`
       tokenAAmount       | tokenADecimals | expectedPayerTokens
       ${1000000n}        | ${6}           | ${parseUnits("1", 18)}
       ${parseEther("1")} | ${18}          | ${parseUnits("1", 18)}
@@ -25,7 +26,7 @@ describe("token", () => {
       }
     );
 
-    it.each`
+    test.each`
       tokenADecimals | weight                       | expectedTokenBPrice
       ${18}          | ${FixedInt.parse("1", 18)}   | ${parseUnits("1", 18)}
       ${6}           | ${FixedInt.parse("1", 18)}   | ${parseUnits("1", 6)}
@@ -40,7 +41,8 @@ describe("token", () => {
           weight,
           reservedRate,
         });
-        expect(tokenBPrice.toString()).toBe(expectedTokenBPrice.toString());
+        console.log(expectedTokenBPrice.toString());
+        expect(tokenBPrice.val).toBe(expectedTokenBPrice);
       }
     );
   });

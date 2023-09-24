@@ -1,7 +1,8 @@
 import { DiscountRate, ReservedRate } from "./data";
+import { describe, expect, test } from 'vitest'
 
 describe("jb", () => {
-  it("reserved rate", () => {
+  test("reserved rate", () => {
     const reservedRateRaw = 2_345n; // 23.45%
     const reservedRate: ReservedRate = new ReservedRate(reservedRateRaw);
     expect(reservedRate.format()).toEqual("0.2345");
@@ -13,7 +14,7 @@ describe("jb", () => {
     expect(reservedRate.val).toEqual(5_000n);
   });
 
-  it("discount rate", () => {
+  test("discount rate", () => {
     const discountRateRaw = 200_000_000n; // 20%
     const discountRate = new DiscountRate(discountRateRaw);
     expect(discountRate.format()).toEqual("0.2");
