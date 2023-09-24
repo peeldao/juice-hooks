@@ -1,6 +1,6 @@
 {
   "name": "juice-hooks",
-  "version": "5.0.8-beta",
+  "version": "5.0.9-beta",
   "description": "Wagmi hooks for Juicebox",
   "main": "./dist/index.js",
   "types": "./dist/hooks.d.ts",
@@ -31,5 +31,19 @@
   "dependencies": {
     "fpnum": "^0.0.13",
     "react": "^18.2.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    }
   }
 }
