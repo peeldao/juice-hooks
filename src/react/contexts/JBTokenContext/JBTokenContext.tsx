@@ -6,7 +6,7 @@ import {
 } from "../../generated/hooks";
 import { useJBContractContext } from "../JBContractContext/JBContractContext";
 import { AsyncData } from "../types";
-import { JBToken } from "src/utils";
+import { JBToken } from "../../../utils/data";
 
 type Token = {
   symbol: string;
