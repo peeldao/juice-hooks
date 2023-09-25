@@ -7,13 +7,10 @@ import {
 import { useJBContractContext } from "../JBContractContext/JBContractContext";
 import { AsyncData } from "../types";
 import { JBToken } from "../../../utils/data";
-
-type Token = {
-  symbol: string;
-};
+import { FetchTokenResult } from "wagmi/dist/actions";
 
 type JBTokenContextData = {
-  token: AsyncData<Token>;
+  token: AsyncData<FetchTokenResult>;
   totalOutstanding: AsyncData<JBToken>;
 };
 
