@@ -9,7 +9,7 @@
     "generate-addresses": "ts-node --project tsconfig.cjs.json ./scripts/generateAddresses.ts",
     "pregenerate": "npm run generate-addresses",
     "generate": "wagmi generate",
-    "build": "tsup"
+    "build": "tsup && tsc --emitDeclarationOnly"
   },
   "author": "tomquirk",
   "license": "ISC",
