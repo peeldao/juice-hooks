@@ -7,4 +7,5 @@ export default defineConfig({
   bundle: true,
   clean: true,
   target: "es2021",
+  format: "esm",
 });
