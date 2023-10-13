@@ -1,7 +1,7 @@
 import { jbProjectsABI, jbProjectsAddress } from "src/react";
 import { PublicClient, getContract } from "viem";
 
-const PUBLIC_IPFS_GATEWAY = "https://ipfs.io";
+const PUBLIC_IPFS_GATEWAY_HOSTNAME = "ipfs.io";
 
 type JBChainId = 1 | 5;
 
@@ -9,7 +9,9 @@ const ipfsGatewayUrl = (
   cid: string | undefined,
   gatewayHostname?: string
 ): string => {
-  return `https://${gatewayHostname ?? PUBLIC_IPFS_GATEWAY}/ipfs/${cid}`;
+  return `https://${
+    gatewayHostname ?? PUBLIC_IPFS_GATEWAY_HOSTNAME
+  }/ipfs/${cid}`;
 };
 
 const getMetadataCid = async (
@@ -41,13 +43,15 @@ export const getProjectMetadata = async (
     domain: bigint;
   },
   opts?: {
-    ipfsGatewayHostname: string;
+    ipfsGatewayHostname?: string;
   }
 ) => {
   const metadataCid = await getMetadataCid(publicClient, args);
-  const res = await fetch(
-    ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname)
-  ).then((res) => res.json());
+  console.log("metadata", metadataCid);
+  const ipfsUrl = ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname);
+  console.log("ipfsUrl", ipfsUrl);
+  const res = await fetch(ipfsUrl).then((res) => res.json());
+  console.log("res");
 
   return res;
 };
