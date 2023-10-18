@@ -70,7 +70,7 @@ export function useTiersOf(
 
   useEffect(() => {
     async function loadTiers() {
-      // fetch and inject tier metadata
+      // fetch and inject metadata for each tier
       const tiers = await Promise.all(
         tiersRaw?.map(async (tier) => {
           const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
