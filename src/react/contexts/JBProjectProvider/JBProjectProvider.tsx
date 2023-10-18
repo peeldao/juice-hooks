@@ -1,10 +1,15 @@
 import React, { PropsWithChildren } from "react";
 import {
+  JBContractContext,
   JBContractProvider,
   JBContractProviderProps,
 } from "../JBContractContext/JBContractContext";
-import { JBFundingCycleProvider } from "../JBFundingCycleContext/JBFundingCycleContext";
 import {
+  JBFundingCycleContext,
+  JBFundingCycleProvider,
+} from "../JBFundingCycleContext/JBFundingCycleContext";
+import {
+  JBTokenContext,
   JBTokenProvider,
   JBTokenProviderProps,
 } from "../JBTokenContext/JBTokenContext";
@@ -17,6 +22,14 @@ type JBProjectProviderProps = PropsWithChildren<{
   };
 }>;
 
+/**
+ * Juicebox project context provider. Loads all the data for a project.
+ *
+ * Allows for children to access:
+ *  - {@link JBContractContext}
+ *  - {@link JBFundingCycleContext}
+ *  - {@link JBTokenContext}
+ */
 export const JBProjectProvider = ({
   projectId,
   children,
