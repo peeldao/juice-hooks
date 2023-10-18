@@ -9,13 +9,35 @@ import { AsyncData } from "../types";
 import { JBToken } from "../../../utils/data";
 import { FetchTokenResult } from "wagmi/dist/actions";
 
-type JBTokenContextData = {
+/**
+ * Context for the token of a project.
+ */
+export type JBTokenContextData = {
+  /**
+   * The token of the project.
+   */
   token: AsyncData<FetchTokenResult>;
+  /**
+   * The total outstanding tokens of the project.
+   */
   totalOutstanding: AsyncData<JBToken>;
 };
 
-const JBTokenContext = createContext<JBTokenContextData>({
+/**
+ * Context for the token of a project.
+ */
+export const JBTokenContext = createContext<JBTokenContextData>({
+  /**
+   * The token of the project.
+   *
+   * @default undefined
+   */
   token: undefined,
+  /**
+   * The total outstanding tokens of the project.
+   *
+   * @default undefined
+   */
   totalOutstanding: undefined,
 });
 
@@ -29,6 +51,8 @@ export type JBTokenProviderProps = PropsWithChildren<{
 }>;
 
 /**
+ * Provides the token for a project.
+ *
  * @note depends on JBContractContext
  */
 export const JBTokenProvider = ({

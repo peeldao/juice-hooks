@@ -10,12 +10,24 @@ import { useJbControllerCurrentFundingCycleOf } from "../../generated/hooks";
 import { useJBContractContext } from "../JBContractContext/JBContractContext";
 import { AsyncData } from "../types";
 
-type JBFundingCycleContext = {
+/**
+ * Context for the current funding cycle of a project.
+ */
+export type JBFundingCycleContext = {
+  /**
+   * The current funding cycle of the project.
+   */
   fundingCycleData: AsyncData<JBFundingCycle>;
+  /**
+   * The metadata for the current funding cycle of the project.
+   */
   fundingCycleMetadata: AsyncData<JBFundingCycleMetadata>;
 };
 
-const JBFundingCycleContext = createContext<JBFundingCycleContext>({
+/**
+ * Context for the current funding cycle of a project.
+ */
+export const JBFundingCycleContext = createContext<JBFundingCycleContext>({
   fundingCycleData: undefined,
   fundingCycleMetadata: undefined,
 });
@@ -41,6 +53,8 @@ type JBFundingCycleProviderProps = PropsWithChildren<{
 }>;
 
 /**
+ * Provides the current funding cycle for a project.
+ *
  * @note depends on JBContractContext
  */
 export const JBFundingCycleProvider = ({

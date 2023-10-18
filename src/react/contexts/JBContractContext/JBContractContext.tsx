@@ -9,24 +9,76 @@ import {
 } from "../../generated/hooks";
 import { AsyncData } from "../types";
 
-type JBContractContextData = {
+/**
+ * Context for project-specific contracts.
+ */
+export type JBContractContextData = {
+  /**
+   * The project id of the Juicebox project.
+   */
   projectId: bigint;
 
+  /**
+   * The addresses of the contracts for the project.
+   */
   contracts: {
+    /**
+     * The address of the primary payment terminal for the project.
+     */
     primaryTerminalEth: AsyncData<Address>;
+    /**
+     * The address of the primary payment terminal store for the project.
+     */
     primaryTerminalEthStore: AsyncData<Address>;
+    /**
+     * The address of the controller for the project.
+     */
     controller: AsyncData<Address>;
+    /**
+     * The address of the fund access constraints store for the project.
+     */
     fundAccessConstraintsStore: AsyncData<Address>;
   };
 };
 
-const JBContractContext = createContext<JBContractContextData>({
+/**
+ * Context for project-specific contracts.
+ */
+export const JBContractContext = createContext<JBContractContextData>({
+  /**
+   * The project id of the Juicebox project.
+   *
+   * @default 0n
+   */
   projectId: 0n,
 
+  /**
+   * The addresses of the contracts for the project.
+   */
   contracts: {
+    /**
+     * The address of the primary payment terminal for the project.
+     *
+     * @default undefined
+     */
     primaryTerminalEth: undefined,
+    /**
+     * The address of the primary payment terminal store for the project.
+     *
+     * @default undefined
+     */
     primaryTerminalEthStore: undefined,
+    /**
+     * The address of the controller for the project.
+     *
+     * @default undefined
+     */
     controller: undefined,
+    /**
+     * The address of the fund access constraints store for the project.
+     *
+     * @default undefined
+     */
     fundAccessConstraintsStore: undefined,
   },
 });
