@@ -15,7 +15,7 @@ type OpenSeaAttribute = {
 };
 
 /**
- * How the reward tiers are stored on IPFS
+ * Data structure for 721 Delegate Tier Metadata, as stored on IPFS.
  * The following are guidelines on NFT keys and tier JSON, derivates from EIP-721:
  * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
@@ -39,6 +39,10 @@ type Tier = { metadata: JB721DelegateTierMetadata } & ReadContractResult<
   "tierOf"
 >;
 
+/**
+ * Return the 721 Delegate tiers for a given [datasource].
+ * Includes resolved metadata.
+ */
 export function useTiersOf(
   dataSourceAddress: Address,
   {
