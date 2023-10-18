@@ -1,18 +1,8 @@
 import { jbProjectsABI, jbProjectsAddress } from "src/react";
+import { ipfsGatewayUrl } from "src/utils/ipfs";
 import { PublicClient, getContract } from "viem";
 
-const PUBLIC_IPFS_GATEWAY_HOSTNAME = "ipfs.io";
-
 type JBChainId = 1 | 5;
-
-const ipfsGatewayUrl = (
-  cid: string | undefined,
-  gatewayHostname?: string
-): string => {
-  return `https://${
-    gatewayHostname ?? PUBLIC_IPFS_GATEWAY_HOSTNAME
-  }/ipfs/${cid}`;
-};
 
 const getMetadataCid = async (
   publicClient: PublicClient,

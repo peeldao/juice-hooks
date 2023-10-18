@@ -1,5 +1,16 @@
 import bs58 from "bs58";
 
+const PUBLIC_IPFS_GATEWAY_HOSTNAME = "ipfs.io";
+
+export function ipfsGatewayUrl(
+  cid: string | undefined,
+  gatewayHostname?: string
+): string {
+  return `https://${
+    gatewayHostname ?? PUBLIC_IPFS_GATEWAY_HOSTNAME
+  }/ipfs/${cid}`;
+}
+
 /**
  * Return a hex-encoded CID to store on-chain.
  *

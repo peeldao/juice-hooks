@@ -1,35 +1,56 @@
 import { useEffect, useState } from "react";
 import { useJbTiered721DelegateStoreTiersOf } from "src/react/generated/hooks";
-import { decodeEncodedIpfsUri } from "src/utils/ipfs";
+import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
+import { Address } from "viem";
 
-export function useTiersOf() {
-  const [tiers, setTiers] = useState();
+export const MAX_NFT_REWARD_TIERS = 69;
 
-  // 2. CIDsOfNftRewardTiersResponse to get cid
-  // 1. call jb721DeelgateTiersOf hook
-  const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({ args: [] });
+export function useTiersOf(
+  dataSourceAddress: Address,
+  {
+    includeResolvedUri,
+    limit,
+    startingId,
+    categories,
+  }: {
+    includeResolvedUri?: boolean;
+    limit?: number;
+    startingId?: bigint;
+    categories?: bigint[];
+  },
+  opts: {
+    ipfsGatewayHostname: string;
+  }
+) {
+  const [tiers, setTiers] = useState<any>();
+
+  const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
+    args: [
+      dataSourceAddress,
+      categories ?? [], // _categories
+      includeResolvedUri ?? false, // _includeResolvedUri, return in each tier a result from a tokenUriResolver if one is included in the delegate
+      startingId ?? 0n, // _startingId
+      BigInt(limit ?? MAX_NFT_REWARD_TIERS),
+    ],
+  });
 
   useEffect(() => {
-    // 3. fetch metadata for each tier
-
     async function loadTiers() {
-      const tierMetadata = await Promise.all(
-        tiersRaw?.map((tier) => {
+      // fetch and inject tier metadata
+      const tiers = await Promise.all(
+        tiersRaw?.map(async (tier) => {
           const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
+          const ipfsUrl = ipfsGatewayUrl(
+            metadataCid,
+            opts?.ipfsGatewayHostname
+          );
 
-          return {};
+          const metadata = await fetch(ipfsUrl).then((res) => res.json());
+          return { ...tier, metadata };
         }) ?? []
       );
 
-      // 4. combine and return
-      const tiersMerged = tiersRaw?.map((tier, i) => {
-        return {
-          ...tier,
-          metadata: tierMetadata[i],
-        };
-      });
-
-      setTiers(tiersMerged);
+      setTiers(tiers);
     }
 
     loadTiers();
