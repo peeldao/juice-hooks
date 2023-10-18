@@ -47,11 +47,8 @@ export const getProjectMetadata = async (
   }
 ) => {
   const metadataCid = await getMetadataCid(publicClient, args);
-  console.log("metadata", metadataCid);
   const ipfsUrl = ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname);
-  console.log("ipfsUrl", ipfsUrl);
   const res = await fetch(ipfsUrl).then((res) => res.json());
-  console.log("res");
 
   return res;
 };

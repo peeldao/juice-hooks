@@ -1,13 +1,13 @@
 {
   "name": "juice-hooks",
-  "version": "5.0.19-beta",
+  "version": "5.1.0-beta",
   "description": "Wagmi hooks for Juicebox",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "generate-addresses": "ts-node --project tsconfig.cjs.json ./scripts/generateAddresses.ts",
+    "generate-addresses": "ts-node --esm ./scripts/generateAddresses.ts",
     "pregenerate": "npm run generate-addresses",
     "generate": "wagmi generate",
     "build": "tsup && tsc --emitDeclarationOnly"
@@ -15,10 +15,13 @@
   "author": "tomquirk",
   "license": "ISC",
   "devDependencies": {
+    "@jbx-protocol/juice-721-delegate": "^8.0.0",
     "@jbx-protocol/juice-contracts-v3": "^5.0.0",
     "@types/react": "^18.2.21",
     "@wagmi/cli": "^1.5.1",
     "dotenv": "^16.3.1",
+    "forge-run-parser": "^1.0.3",
+    "ts-node": "^10.9.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.5"

@@ -10559,6 +10559,526 @@ export const jbSplitsStoreConfig = {
 } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// JBTiered721DelegateStore
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export const jbTiered721DelegateStoreABI = [
+  { type: 'error', inputs: [], name: 'CANT_MINT_MANUALLY' },
+  { type: 'error', inputs: [], name: 'INSUFFICIENT_AMOUNT' },
+  { type: 'error', inputs: [], name: 'INSUFFICIENT_RESERVES' },
+  { type: 'error', inputs: [], name: 'INVALID_CATEGORY_SORT_ORDER' },
+  { type: 'error', inputs: [], name: 'INVALID_QUANTITY' },
+  { type: 'error', inputs: [], name: 'INVALID_TIER' },
+  { type: 'error', inputs: [], name: 'MANUAL_MINTING_NOT_ALLOWED' },
+  { type: 'error', inputs: [], name: 'MAX_TIERS_EXCEEDED' },
+  { type: 'error', inputs: [], name: 'NO_QUANTITY' },
+  { type: 'error', inputs: [], name: 'OUT' },
+  { type: 'error', inputs: [], name: 'RESERVED_RATE_NOT_ALLOWED' },
+  { type: 'error', inputs: [], name: 'TIER_REMOVED' },
+  { type: 'error', inputs: [], name: 'VOTING_UNITS_NOT_ALLOWED' },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'nft', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'caller',
+        internalType: 'address',
+        type: 'address',
+        indexed: false,
+      },
+    ],
+    name: 'CleanTiers',
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_owner', internalType: 'address', type: 'address' },
+    ],
+    name: 'balanceOf',
+    outputs: [{ name: 'balance', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [{ name: '_nft', internalType: 'address', type: 'address' }],
+    name: 'cleanTiers',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'defaultReservedTokenBeneficiaryOf',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '', internalType: 'address', type: 'address' },
+      { name: '', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'encodedIPFSUriOf',
+    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'encodedTierIPFSUriOf',
+    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '_nft', internalType: 'address', type: 'address' }],
+    name: 'flagsOf',
+    outputs: [
+      {
+        name: '',
+        internalType: 'struct JBTiered721Flags',
+        type: 'tuple',
+        components: [
+          {
+            name: 'lockReservedTokenChanges',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'lockVotingUnitChanges', internalType: 'bool', type: 'bool' },
+          {
+            name: 'lockManualMintingChanges',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'preventOverspending', internalType: 'bool', type: 'bool' },
+        ],
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'isTierRemoved',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'maxTierIdOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '', internalType: 'address', type: 'address' },
+      { name: '', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'numberOfBurnedFor',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'numberOfReservedTokensOutstandingFor',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '', internalType: 'address', type: 'address' },
+      { name: '', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'numberOfReservesMintedFor',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      {
+        name: '_tiersToAdd',
+        internalType: 'struct JB721TierParams[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'price', internalType: 'uint104', type: 'uint104' },
+          { name: 'initialQuantity', internalType: 'uint32', type: 'uint32' },
+          { name: 'votingUnits', internalType: 'uint32', type: 'uint32' },
+          { name: 'reservedRate', internalType: 'uint16', type: 'uint16' },
+          {
+            name: 'reservedTokenBeneficiary',
+            internalType: 'address',
+            type: 'address',
+          },
+          { name: 'encodedIPFSUri', internalType: 'bytes32', type: 'bytes32' },
+          { name: 'category', internalType: 'uint24', type: 'uint24' },
+          { name: 'allowManualMint', internalType: 'bool', type: 'bool' },
+          {
+            name: 'shouldUseReservedTokenBeneficiaryAsDefault',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'transfersPausable', internalType: 'bool', type: 'bool' },
+          { name: 'useVotingUnits', internalType: 'bool', type: 'bool' },
+        ],
+      },
+    ],
+    name: 'recordAddTiers',
+    outputs: [
+      { name: 'tierIds', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_tokenIds', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+    name: 'recordBurn',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      {
+        name: '_flags',
+        internalType: 'struct JBTiered721Flags',
+        type: 'tuple',
+        components: [
+          {
+            name: 'lockReservedTokenChanges',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'lockVotingUnitChanges', internalType: 'bool', type: 'bool' },
+          {
+            name: 'lockManualMintingChanges',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'preventOverspending', internalType: 'bool', type: 'bool' },
+        ],
+      },
+    ],
+    name: 'recordFlags',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_amount', internalType: 'uint256', type: 'uint256' },
+      { name: '_tierIds', internalType: 'uint16[]', type: 'uint16[]' },
+      { name: '_isManualMint', internalType: 'bool', type: 'bool' },
+    ],
+    name: 'recordMint',
+    outputs: [
+      { name: 'tokenIds', internalType: 'uint256[]', type: 'uint256[]' },
+      { name: 'leftoverAmount', internalType: 'uint256', type: 'uint256' },
+    ],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+      { name: '_count', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'recordMintReservesFor',
+    outputs: [
+      { name: 'tokenIds', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_tierIds', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+    name: 'recordRemoveTierIds',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+      { name: '_encodedIPFSUri', internalType: 'bytes32', type: 'bytes32' },
+    ],
+    name: 'recordSetEncodedIPFSUriOf',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      {
+        name: '_resolver',
+        internalType: 'contract IJB721TokenUriResolver',
+        type: 'address',
+      },
+    ],
+    name: 'recordSetTokenUriResolver',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+      { name: '_from', internalType: 'address', type: 'address' },
+      { name: '_to', internalType: 'address', type: 'address' },
+    ],
+    name: 'recordTransferForTier',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tokenIds', internalType: 'uint256[]', type: 'uint256[]' },
+    ],
+    name: 'redemptionWeightOf',
+    outputs: [{ name: 'weight', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'reservedTokenBeneficiaryOf',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '', internalType: 'address', type: 'address' },
+      { name: '', internalType: 'address', type: 'address' },
+      { name: '', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'tierBalanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'pure',
+    type: 'function',
+    inputs: [{ name: '_tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'tierIdOfToken',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_id', internalType: 'uint256', type: 'uint256' },
+      { name: '_includeResolvedUri', internalType: 'bool', type: 'bool' },
+    ],
+    name: 'tierOf',
+    outputs: [
+      {
+        name: '',
+        internalType: 'struct JB721Tier',
+        type: 'tuple',
+        components: [
+          { name: 'id', internalType: 'uint256', type: 'uint256' },
+          { name: 'price', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'remainingQuantity',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          { name: 'initialQuantity', internalType: 'uint256', type: 'uint256' },
+          { name: 'votingUnits', internalType: 'uint256', type: 'uint256' },
+          { name: 'reservedRate', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'reservedTokenBeneficiary',
+            internalType: 'address',
+            type: 'address',
+          },
+          { name: 'encodedIPFSUri', internalType: 'bytes32', type: 'bytes32' },
+          { name: 'category', internalType: 'uint256', type: 'uint256' },
+          { name: 'allowManualMint', internalType: 'bool', type: 'bool' },
+          { name: 'transfersPausable', internalType: 'bool', type: 'bool' },
+          { name: 'resolvedUri', internalType: 'string', type: 'string' },
+        ],
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_tokenId', internalType: 'uint256', type: 'uint256' },
+      { name: '_includeResolvedUri', internalType: 'bool', type: 'bool' },
+    ],
+    name: 'tierOfTokenId',
+    outputs: [
+      {
+        name: '',
+        internalType: 'struct JB721Tier',
+        type: 'tuple',
+        components: [
+          { name: 'id', internalType: 'uint256', type: 'uint256' },
+          { name: 'price', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'remainingQuantity',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          { name: 'initialQuantity', internalType: 'uint256', type: 'uint256' },
+          { name: 'votingUnits', internalType: 'uint256', type: 'uint256' },
+          { name: 'reservedRate', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'reservedTokenBeneficiary',
+            internalType: 'address',
+            type: 'address',
+          },
+          { name: 'encodedIPFSUri', internalType: 'bytes32', type: 'bytes32' },
+          { name: 'category', internalType: 'uint256', type: 'uint256' },
+          { name: 'allowManualMint', internalType: 'bool', type: 'bool' },
+          { name: 'transfersPausable', internalType: 'bool', type: 'bool' },
+          { name: 'resolvedUri', internalType: 'string', type: 'string' },
+        ],
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_account', internalType: 'address', type: 'address' },
+      { name: '_tierId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'tierVotingUnitsOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_categories', internalType: 'uint256[]', type: 'uint256[]' },
+      { name: '_includeResolvedUri', internalType: 'bool', type: 'bool' },
+      { name: '_startingId', internalType: 'uint256', type: 'uint256' },
+      { name: '_size', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'tiersOf',
+    outputs: [
+      {
+        name: '_tiers',
+        internalType: 'struct JB721Tier[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'id', internalType: 'uint256', type: 'uint256' },
+          { name: 'price', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'remainingQuantity',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          { name: 'initialQuantity', internalType: 'uint256', type: 'uint256' },
+          { name: 'votingUnits', internalType: 'uint256', type: 'uint256' },
+          { name: 'reservedRate', internalType: 'uint256', type: 'uint256' },
+          {
+            name: 'reservedTokenBeneficiary',
+            internalType: 'address',
+            type: 'address',
+          },
+          { name: 'encodedIPFSUri', internalType: 'bytes32', type: 'bytes32' },
+          { name: 'category', internalType: 'uint256', type: 'uint256' },
+          { name: 'allowManualMint', internalType: 'bool', type: 'bool' },
+          { name: 'transfersPausable', internalType: 'bool', type: 'bool' },
+          { name: 'resolvedUri', internalType: 'string', type: 'string' },
+        ],
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'tokenUriResolverOf',
+    outputs: [
+      {
+        name: '',
+        internalType: 'contract IJB721TokenUriResolver',
+        type: 'address',
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '_nft', internalType: 'address', type: 'address' }],
+    name: 'totalRedemptionWeight',
+    outputs: [{ name: 'weight', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: '_nft', internalType: 'address', type: 'address' }],
+    name: 'totalSupplyOf',
+    outputs: [{ name: 'supply', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: '_nft', internalType: 'address', type: 'address' },
+      { name: '_account', internalType: 'address', type: 'address' },
+    ],
+    name: 'votingUnitsOf',
+    outputs: [{ name: 'units', internalType: 'uint256', type: 'uint256' }],
+  },
+] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export const jbTiered721DelegateStoreAddress = {
+  1: '0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd',
+  5: '0x155B49f303443a3334bB2EF42E10C628438a0656',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export const jbTiered721DelegateStoreConfig = {
+  address: jbTiered721DelegateStoreAddress,
+  abi: jbTiered721DelegateStoreABI,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBTokenStore
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29373,6 +29893,1884 @@ export function useJbSplitsStoreSetSplitEvent(
     eventName: 'SetSplit',
     ...config,
   } as UseContractEventConfig<typeof jbSplitsStoreABI, 'SetSplit'>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRead<
+  TFunctionName extends string,
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"balanceOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreBalanceOf<
+  TFunctionName extends 'balanceOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'balanceOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"defaultReservedTokenBeneficiaryOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreDefaultReservedTokenBeneficiaryOf<
+  TFunctionName extends 'defaultReservedTokenBeneficiaryOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'defaultReservedTokenBeneficiaryOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"encodedIPFSUriOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreEncodedIpfsUriOf<
+  TFunctionName extends 'encodedIPFSUriOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'encodedIPFSUriOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"encodedTierIPFSUriOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreEncodedTierIpfsUriOf<
+  TFunctionName extends 'encodedTierIPFSUriOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'encodedTierIPFSUriOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"flagsOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreFlagsOf<
+  TFunctionName extends 'flagsOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'flagsOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"isTierRemoved"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreIsTierRemoved<
+  TFunctionName extends 'isTierRemoved',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'isTierRemoved',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"maxTierIdOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreMaxTierIdOf<
+  TFunctionName extends 'maxTierIdOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'maxTierIdOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"numberOfBurnedFor"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreNumberOfBurnedFor<
+  TFunctionName extends 'numberOfBurnedFor',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'numberOfBurnedFor',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"numberOfReservedTokensOutstandingFor"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreNumberOfReservedTokensOutstandingFor<
+  TFunctionName extends 'numberOfReservedTokensOutstandingFor',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'numberOfReservedTokensOutstandingFor',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"numberOfReservesMintedFor"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreNumberOfReservesMintedFor<
+  TFunctionName extends 'numberOfReservesMintedFor',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'numberOfReservesMintedFor',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"redemptionWeightOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRedemptionWeightOf<
+  TFunctionName extends 'redemptionWeightOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'redemptionWeightOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"reservedTokenBeneficiaryOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreReservedTokenBeneficiaryOf<
+  TFunctionName extends 'reservedTokenBeneficiaryOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'reservedTokenBeneficiaryOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tierBalanceOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTierBalanceOf<
+  TFunctionName extends 'tierBalanceOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tierBalanceOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tierIdOfToken"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTierIdOfToken<
+  TFunctionName extends 'tierIdOfToken',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tierIdOfToken',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tierOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTierOf<
+  TFunctionName extends 'tierOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tierOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tierOfTokenId"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTierOfTokenId<
+  TFunctionName extends 'tierOfTokenId',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tierOfTokenId',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tierVotingUnitsOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTierVotingUnitsOf<
+  TFunctionName extends 'tierVotingUnitsOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tierVotingUnitsOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tiersOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTiersOf<
+  TFunctionName extends 'tiersOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tiersOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"tokenUriResolverOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTokenUriResolverOf<
+  TFunctionName extends 'tokenUriResolverOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'tokenUriResolverOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"totalRedemptionWeight"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTotalRedemptionWeight<
+  TFunctionName extends 'totalRedemptionWeight',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'totalRedemptionWeight',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"totalSupplyOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreTotalSupplyOf<
+  TFunctionName extends 'totalSupplyOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'totalSupplyOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"votingUnitsOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreVotingUnitsOf<
+  TFunctionName extends 'votingUnitsOf',
+  TSelectData = ReadContractResult<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >,
+>(
+  config: Omit<
+    UseContractReadConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName,
+      TSelectData
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'votingUnitsOf',
+    ...config,
+  } as UseContractReadConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TSelectData
+  >)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreWrite<
+  TFunctionName extends string,
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          string
+        >['request']['abi'],
+        TFunctionName,
+        TMode
+      > & { address?: Address; chainId?: TChainId }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        TFunctionName,
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName,
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"cleanTiers"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreCleanTiers<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'cleanTiers'
+        >['request']['abi'],
+        'cleanTiers',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'cleanTiers' }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'cleanTiers',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'cleanTiers'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'cleanTiers',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'cleanTiers',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordAddTiers"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordAddTiers<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordAddTiers'
+        >['request']['abi'],
+        'recordAddTiers',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordAddTiers'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordAddTiers',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordAddTiers'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordAddTiers',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordAddTiers',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordBurn"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordBurn<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordBurn'
+        >['request']['abi'],
+        'recordBurn',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'recordBurn' }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordBurn',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordBurn'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordBurn',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordBurn',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordFlags"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordFlags<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordFlags'
+        >['request']['abi'],
+        'recordFlags',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordFlags'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordFlags',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordFlags'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordFlags',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordFlags',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordMint"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordMint<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordMint'
+        >['request']['abi'],
+        'recordMint',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'recordMint' }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordMint',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordMint'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordMint',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordMint',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordMintReservesFor"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordMintReservesFor<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordMintReservesFor'
+        >['request']['abi'],
+        'recordMintReservesFor',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordMintReservesFor'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordMintReservesFor',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordMintReservesFor'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordMintReservesFor',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordMintReservesFor',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordRemoveTierIds"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordRemoveTierIds<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordRemoveTierIds'
+        >['request']['abi'],
+        'recordRemoveTierIds',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordRemoveTierIds'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordRemoveTierIds',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordRemoveTierIds'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordRemoveTierIds',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordRemoveTierIds',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordSetEncodedIPFSUriOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordSetEncodedIpfsUriOf<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordSetEncodedIPFSUriOf'
+        >['request']['abi'],
+        'recordSetEncodedIPFSUriOf',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordSetEncodedIPFSUriOf'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordSetEncodedIPFSUriOf',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordSetEncodedIPFSUriOf'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordSetEncodedIPFSUriOf',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordSetEncodedIPFSUriOf',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordSetTokenUriResolver"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordSetTokenUriResolver<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordSetTokenUriResolver'
+        >['request']['abi'],
+        'recordSetTokenUriResolver',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordSetTokenUriResolver'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordSetTokenUriResolver',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordSetTokenUriResolver'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordSetTokenUriResolver',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordSetTokenUriResolver',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordTransferForTier"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreRecordTransferForTier<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof jbTiered721DelegateStoreAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof jbTiered721DelegateStoreABI,
+          'recordTransferForTier'
+        >['request']['abi'],
+        'recordTransferForTier',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'recordTransferForTier'
+      }
+    : UseContractWriteConfig<
+        typeof jbTiered721DelegateStoreABI,
+        'recordTransferForTier',
+        TMode
+      > & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'recordTransferForTier'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<
+    typeof jbTiered721DelegateStoreABI,
+    'recordTransferForTier',
+    TMode
+  >({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordTransferForTier',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreWrite<
+  TFunctionName extends string,
+>(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      TFunctionName
+    >,
+    'abi'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    TFunctionName
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"cleanTiers"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreCleanTiers(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'cleanTiers'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'cleanTiers',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'cleanTiers'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordAddTiers"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordAddTiers(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordAddTiers'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordAddTiers',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordAddTiers'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordBurn"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordBurn(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordBurn'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordBurn',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordBurn'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordFlags"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordFlags(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordFlags'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordFlags',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordFlags'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordMint"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordMint(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordMint'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordMint',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordMint'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordMintReservesFor"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordMintReservesFor(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordMintReservesFor'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordMintReservesFor',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordMintReservesFor'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordRemoveTierIds"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordRemoveTierIds(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordRemoveTierIds'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordRemoveTierIds',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordRemoveTierIds'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordSetEncodedIPFSUriOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordSetEncodedIpfsUriOf(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordSetEncodedIPFSUriOf'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordSetEncodedIPFSUriOf',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordSetEncodedIPFSUriOf'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordSetTokenUriResolver"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordSetTokenUriResolver(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordSetTokenUriResolver'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordSetTokenUriResolver',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordSetTokenUriResolver'
+  >)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `functionName` set to `"recordTransferForTier"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function usePrepareJbTiered721DelegateStoreRecordTransferForTier(
+  config: Omit<
+    UsePrepareContractWriteConfig<
+      typeof jbTiered721DelegateStoreABI,
+      'recordTransferForTier'
+    >,
+    'abi' | 'functionName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    functionName: 'recordTransferForTier',
+    ...config,
+  } as UsePrepareContractWriteConfig<
+    typeof jbTiered721DelegateStoreABI,
+    'recordTransferForTier'
+  >)
+}
+
+/**
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreEvent<TEventName extends string>(
+  config: Omit<
+    UseContractEventConfig<typeof jbTiered721DelegateStoreABI, TEventName>,
+    'abi'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractEvent({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  } as UseContractEventConfig<typeof jbTiered721DelegateStoreABI, TEventName>)
+}
+
+/**
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__ and `eventName` set to `"CleanTiers"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function useJbTiered721DelegateStoreCleanTiersEvent(
+  config: Omit<
+    UseContractEventConfig<typeof jbTiered721DelegateStoreABI, 'CleanTiers'>,
+    'abi' | 'eventName'
+  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractEvent({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    eventName: 'CleanTiers',
+    ...config,
+  } as UseContractEventConfig<typeof jbTiered721DelegateStoreABI, 'CleanTiers'>)
 }
 
 /**

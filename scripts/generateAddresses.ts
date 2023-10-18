@@ -1,4 +1,7 @@
 import fs from "fs";
+// import { addressFor, ForgeDeploy } from "forge-run-parser";
+// import JB721DelegateDeploymentMainnet from "@jbx-protocol/juice-721-delegate/broadcast/Deploy.s.sol/1/run-latest.json" assert { type: "json" };
+// import JB721DelegateDeploymentGoerli from "@jbx-protocol/juice-721-delegate/broadcast/Deploy.s.sol/5/run-latest.json" assert { type: "json" };
 
 enum JBContracts {
   JBController = "JBController",
@@ -19,32 +22,68 @@ enum JBContracts {
   JBETHERC20SplitsPayerDeployer = "JBETHERC20SplitsPayerDeployer",
 }
 
-async function main() {
-  const contracts = await Promise.all(
+enum JB721DelegateContracts {
+  JBTiered721DelegateStore = "JBTiered721DelegateStore",
+}
+
+async function getJuiceboxContractAddresses() {
+  const juiceboxContracts = await Promise.all(
     Object.values(JBContracts).map(async (contractName) => {
       const goerli = await import(
-        `@jbx-protocol/juice-contracts-v3/deployments/goerli/${contractName}.json`
+        `@jbx-protocol/juice-contracts-v3/deployments/goerli/${contractName}.json`,
+        {
+          assert: {
+            type: "json",
+          },
+        }
       );
       const mainnet = await import(
-        `@jbx-protocol/juice-contracts-v3/deployments/mainnet/${contractName}.json`
+        `@jbx-protocol/juice-contracts-v3/deployments/mainnet/${contractName}.json`,
+        {
+          assert: {
+            type: "json",
+          },
+        }
       );
 
       return {
-        goerli: goerli.address,
-        mainnet: mainnet.address,
+        goerli: goerli.default.address,
+        mainnet: mainnet.default.address,
       };
     })
   );
 
-  const addresses = Object.values(JBContracts).reduce(
+  const juiceboxContractAddresses = Object.values(JBContracts).reduce(
     (acc, contractName, i) => {
       return {
         ...acc,
-        [contractName]: contracts[i],
+        [contractName]: juiceboxContracts[i],
       };
     },
     {}
   );
+
+  return juiceboxContractAddresses;
+}
+
+async function getJb721DelegateAddresses() {
+  const addresses = {
+    [JB721DelegateContracts.JBTiered721DelegateStore]: {
+      goerli: "0x155B49f303443a3334bB2EF42E10C628438a0656",
+      mainnet: "0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd",
+    },
+  };
+
+  return addresses;
+}
+
+async function main() {
+  const juiceboxContractAddresses = await getJuiceboxContractAddresses();
+  const jb721DelegateAddresses = await getJb721DelegateAddresses();
+  const addresses = {
+    ...juiceboxContractAddresses,
+    ...jb721DelegateAddresses,
+  };
 
   fs.writeFileSync("addresses.json", JSON.stringify(addresses));
 }

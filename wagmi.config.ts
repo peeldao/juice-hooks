@@ -6,21 +6,25 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const juiceboxContracts = Object.keys(addresses).map((name) => {
+  return {
+    name,
+    address: {
+      [goerli.id]: addresses[name].goerli as `0x${string}`,
+      [mainnet.id]: addresses[name].mainnet as `0x${string}`,
+    },
+  };
+});
+
+console.log(juiceboxContracts);
+
 export default defineConfig({
   out: "src/react/generated/hooks.ts",
   plugins: [
     etherscan({
       apiKey: process.env.ETHERSCAN_API_KEY!,
       chainId: mainnet.id,
-      contracts: Object.keys(addresses).map((name) => {
-        return {
-          name,
-          address: {
-            [goerli.id]: addresses[name].goerli as `0x${string}`,
-            [mainnet.id]: addresses[name].mainnet as `0x${string}`,
-          },
-        };
-      }),
+      contracts: [...juiceboxContracts],
     }),
     react(),
   ],
