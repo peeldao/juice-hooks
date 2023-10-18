@@ -1,5 +1,3 @@
-// JB-specific below
-// ^ 1) what
 import { FixedInt, FixedPortion } from "fpnum";
 import {
   JB_TOKEN_DECIMALS,
