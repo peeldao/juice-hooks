@@ -46,33 +46,28 @@ type JB721DelegateTierTier = {
  *       - 1 to fetch the tiers
  *       - n to fetch metadata for each tier
  */
-export function useTiersOf(
-  dataSourceAddress: Address,
-  {
-    includeResolvedUri,
-    limit,
-    startingId,
-    categories,
-  }: {
+export function useJb721DelegateTiers(
+  dataSourceAddress: Address | undefined,
+  args?: {
     includeResolvedUri?: boolean;
     limit?: number;
     startingId?: bigint;
     categories?: bigint[];
-  },
-  opts: {
-    ipfsGatewayHostname: string;
+    ipfsGatewayHostname?: string;
   }
 ) {
   const [tiers, setTiers] = useState<JB721DelegateTierTier[]>();
 
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
-    args: [
-      dataSourceAddress,
-      categories ?? [], // _categories
-      includeResolvedUri ?? false, // _includeResolvedUri, return in each tier a result from a tokenUriResolver if one is included in the delegate
-      startingId ?? 0n, // _startingId
-      BigInt(limit ?? MAX_NFT_REWARD_TIERS),
-    ],
+    args: dataSourceAddress
+      ? [
+          dataSourceAddress,
+          args?.categories ?? [], // _categories
+          args?.includeResolvedUri ?? false, // _includeResolvedUri, return in each tier a result from a tokenUriResolver if one is included in the delegate
+          args?.startingId ?? 0n, // _startingId
+          BigInt(args?.limit ?? MAX_NFT_REWARD_TIERS),
+        ]
+      : undefined,
   });
 
   useEffect(() => {
@@ -83,7 +78,7 @@ export function useTiersOf(
           const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
           const ipfsUrl = ipfsGatewayUrl(
             metadataCid,
-            opts?.ipfsGatewayHostname
+            args?.ipfsGatewayHostname
           );
 
           const metadata = (await fetch(ipfsUrl).then((res) =>
