@@ -34,10 +34,9 @@ type JB721DelegateTierMetadata = {
   backgroundColor: string | undefined; // background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
 };
 
-type Tier = { metadata: JB721DelegateTierMetadata } & ReadContractResult<
-  typeof jbTiered721DelegateStoreABI,
-  "tierOf"
->;
+type JB721DelegateTierTier = {
+  metadata: JB721DelegateTierMetadata;
+} & ReadContractResult<typeof jbTiered721DelegateStoreABI, "tierOf">;
 
 /**
  * Return the 721 Delegate tiers for a given [datasource].
@@ -64,7 +63,7 @@ export function useTiersOf(
     ipfsGatewayHostname: string;
   }
 ) {
-  const [tiers, setTiers] = useState<Tier[]>();
+  const [tiers, setTiers] = useState<JB721DelegateTierTier[]>();
 
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
     args: [
