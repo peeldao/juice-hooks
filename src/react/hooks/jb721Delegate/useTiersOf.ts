@@ -42,6 +42,10 @@ type Tier = { metadata: JB721DelegateTierMetadata } & ReadContractResult<
 /**
  * Return the 721 Delegate tiers for a given [datasource].
  * Includes resolved metadata.
+ *
+ * @note There will be `n_tiers + 1` HTTP requests performed in this hook:
+ *       - 1 to fetch the tiers
+ *       - n to fetch metadata for each tier
  */
 export function useTiersOf(
   dataSourceAddress: Address,
