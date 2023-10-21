@@ -6,29 +6,75 @@ import {
   ReservedRate,
 } from "./utils/data";
 
+export const projectTagOptions = [
+  "art",
+  "business",
+  "charity",
+  "dao",
+  "defi",
+  "education",
+  "events",
+  "fundraising",
+  "games",
+  "music",
+  "nfts",
+  "social",
+  "software",
+] as const;
+
+export type ProjectTagName = typeof projectTagOptions extends Readonly<
+  Array<infer T>
+>
+  ? T
+  : never;
+
 /**
  * The metadata associated with a juicebox project.
  *
  * @interface
  */
-export interface JBProjectMetadata {
+export type JBProjectMetadata = {
   /**
    * The name of the project.
    */
   name: string;
+} & Partial<{
   /**
-   * The description of the project.
+   * The description of the project. May be raw text or HTML.
    */
   description: string;
   /**
-   * The URI of the project's logo.
+   * The URI of the project's logo. Typically ipfs://
    */
   logoUri: string;
   /**
    * The tagline of the project.
    */
   projectTagline: string;
-}
+  /**
+   * The URI of the project's cover image/banner. Typically ipfs://
+   */
+  coverImageUri: string;
+  /**
+   * Custom text for a project's pay button.
+   */
+  payButton: string;
+  /**
+   * Custom text for a project to display to users before they pay.
+   */
+  payDisclosure: string;
+  /**
+   * Flag indiciating if a project has been archived.
+   */
+  archived: boolean;
+  /**
+   * List of tags for the project.
+   */
+  tags: ProjectTagName[];
+  telegram: string;
+  twitter: string;
+  discord: string;
+}>;
 
 /**
  * A split of a project's payout funds to a beneficiary, project or allocator.

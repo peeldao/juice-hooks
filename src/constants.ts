@@ -18,12 +18,12 @@ export const MAX_RESERVED_RATE = 10_000n;
 export const ONE_ETHER = parseEther("1");
 
 /**
- * TODO: What is?
+ * The number of decimals that Juicebox-internal/native tokens use in their fixed-point representations.
  */
 export const JB_TOKEN_DECIMALS = 18 as const;
 
 /**
- * TODO: What is?
+ * The ETH token address used in Juicebox contracts
  *
  * contracts/libraries/JBTokens.sol
  */
@@ -44,11 +44,12 @@ export const JB_CURRENCIES = {
 export const PV2 = "2";
 
 /**
- * TODO: What is?
+ * Default value for `memo` arguments in Juicebox transactions.
  */
 export const DEFAULT_MEMO = "";
+
 /**
- * The default metadata for a project.
+ * Default value for `metadata` arguments in Juicebox transactions.
  */
 export const DEFAULT_METADATA = "0x0";
 export const DEFAULT_MIN_RETURNED_TOKENS = 0;
