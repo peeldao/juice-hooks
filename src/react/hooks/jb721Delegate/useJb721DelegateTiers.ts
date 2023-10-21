@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   jbTiered721DelegateStoreABI,
   useJbTiered721DelegateStoreTiersOf,
-} from "src/react/generated/hooks";
+} from "../../generated/hooks";
 import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
 import { Address } from "viem";
 
@@ -34,7 +34,7 @@ type JB721DelegateTierMetadata = {
   backgroundColor: string | undefined; // background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
 };
 
-type JB721DelegateTierTier = {
+type JB721DelegateTier = {
   metadata: JB721DelegateTierMetadata;
 } & ReadContractResult<typeof jbTiered721DelegateStoreABI, "tierOf">;
 
@@ -56,7 +56,7 @@ export function useJb721DelegateTiers(
     ipfsGatewayHostname?: string;
   }
 ) {
-  const [tiers, setTiers] = useState<JB721DelegateTierTier[]>();
+  const [tiers, setTiers] = useState<JB721DelegateTier[]>();
 
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
     args: dataSourceAddress
