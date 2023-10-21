@@ -9,8 +9,18 @@ import { Address } from "viem";
 
 export const MAX_NFT_REWARD_TIERS = 69;
 
+/**
+ * @typedef {Object} OpenSeaAttribute
+ * @property {string} tr
+ */
 type OpenSeaAttribute = {
+  /**
+   * Describes the type of the attribute. Arbitrary.
+   */
   trait_type: string;
+  /**
+   * The value of the attribute.
+   */
   value: number | undefined;
 };
 
@@ -20,18 +30,46 @@ type OpenSeaAttribute = {
  * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
 type JB721DelegateTierMetadata = {
-  attributes: OpenSeaAttribute[];
   name: string;
   symbol: string | undefined;
   description: string | undefined;
-  image: string; // same as imageUrl
-  imageDataUrl: string | undefined; // image_data (Raw SVG image data, if you want to generate images on the fly (not recommended). Only use this if you're not including the image parameter.)
-  artifactUri: string | undefined; // artifactUri (optional, some legacy UX, wallets use this)
-  animationUri: string | undefined; // animation_uri (Animation_url also supports HTML pages, allowing you to build rich experiences and interactive NFTs using JavaScript canvas, WebGL, and more. Scripts and relative paths within the HTML page are now supported. However, access to browser extensions is not supported.)
-  displayUri: string | undefined; // displayUri (optional, some legacy UX, wallets use this)
-  externalLink: string | undefined; // external_uri (optional, This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.)
-  youtubeUri: string | undefined; // youtube_uri (optional, A URL to a YouTube video.)
-  backgroundColor: string | undefined; // background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
+  /**
+   * URL of the image
+   */
+  image: string;
+  /**
+   * image_data (Raw SVG image data, if you want to generate images on the fly (not recommended).
+   * Only use this if you're not including the `image` parameter.)
+   */
+  imageDataUrl: string | undefined;
+  /**
+   * artifactUri (optional, some legacy UX, wallets use this)
+   */
+  artifactUri: string | undefined;
+  /**
+   * animation_uri (Animation_url also supports HTML pages, allowing you to build rich experiences and interactive NFTs using JavaScript canvas, WebGL, and more. Scripts and relative paths within the HTML page are now supported. However, access to browser extensions is not supported.)
+   */
+  animationUri: string | undefined;
+  /**
+   * displayUri (optional, some legacy UX, wallets use this)
+   */
+  displayUri: string | undefined;
+  /**
+   * external_uri (optional, This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.)
+   */
+  externalLink: string | undefined; //
+  /**
+   * youtube_uri (optional, A URL to a YouTube video.)
+   */
+  youtubeUri: string | undefined;
+  /**
+   * // background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
+   */
+  backgroundColor: string | undefined;
+  /**
+   * Arbitrary list of attributes. Optional, sometimes displayed on marketplaces like OpenSea.
+   */
+  attributes: OpenSeaAttribute[];
 };
 
 type JB721DelegateTier = {

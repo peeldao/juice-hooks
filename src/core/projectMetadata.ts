@@ -1,4 +1,5 @@
 import { jbProjectsABI, jbProjectsAddress } from "src/react";
+import { JBProjectMetadata } from "src/types";
 import { ipfsGatewayUrl } from "src/utils/ipfs";
 import { PublicClient, getContract } from "viem";
 
@@ -35,10 +36,12 @@ export const getProjectMetadata = async (
   opts?: {
     ipfsGatewayHostname?: string;
   }
-) => {
+): Promise<JBProjectMetadata | undefined> => {
   const metadataCid = await getMetadataCid(publicClient, args);
   const ipfsUrl = ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname);
-  const res = await fetch(ipfsUrl).then((res) => res.json());
+  const res = (await fetch(ipfsUrl).then((res) => res.json())) as
+    | JBProjectMetadata
+    | undefined;
 
   return res;
 };
