@@ -43,10 +43,7 @@ export type JBProjectMetadata = {
    * The description of the project. May be raw text or HTML.
    */
   description: string;
-  /**
-   * The URI of the project's logo. Typically ipfs://
-   */
-  logoUri: string;
+
   /**
    * The tagline of the project.
    */
@@ -55,6 +52,14 @@ export type JBProjectMetadata = {
    * The URI of the project's cover image/banner. Typically ipfs://
    */
   coverImageUri: string;
+  /**
+   * The URI of the project's logo. Typically ipfs://
+   */
+  logoUri: string;
+  /**
+   * The project's website URL.
+   */
+  infoUri: string;
   /**
    * Custom text for a project's pay button.
    */
