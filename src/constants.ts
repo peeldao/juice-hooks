@@ -33,10 +33,10 @@ export const ETHER_ADDRESS =
 /**
  * Contract representation of currency types in Juicebox.
  */
-export const JB_CURRENCIES: { ETH: 1n; USD: 2n } = {
+export const JB_CURRENCIES = {
   ETH: 1n,
   USD: 2n,
-};
+} as const;
 
 /**
  * Protocol version 2.
