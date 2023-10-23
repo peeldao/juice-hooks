@@ -36,7 +36,7 @@ export const ETHER_ADDRESS =
 export const JB_CURRENCIES = {
   ETH: 1n,
   USD: 2n,
-};
+} as const;
 
 /**
  * Protocol version 2.
