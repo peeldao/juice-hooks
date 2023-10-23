@@ -307,7 +307,6 @@ export type JBFundingCycleData = {
    * How long the funding cycle lasts, in seconds.
    */
   duration: bigint;
-
   /**
    * TODO: What is?
    */

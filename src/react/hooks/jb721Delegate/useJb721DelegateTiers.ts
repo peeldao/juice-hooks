@@ -6,6 +6,7 @@ import {
 } from "../../generated/hooks";
 import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
 import { Address } from "viem";
+import { AsyncData } from "src/react/contexts/types";
 
 export const MAX_NFT_REWARD_TIERS = 69;
 
@@ -27,7 +28,7 @@ type OpenSeaAttribute = {
 /**
  * Data structure for 721 Delegate Tier Metadata, as stored on IPFS.
  * The following are guidelines on NFT keys and tier JSON, derivates from EIP-721:
- * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
+ * @see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
 type JB721DelegateTierMetadata = {
   name: string;
@@ -57,13 +58,13 @@ type JB721DelegateTierMetadata = {
   /**
    * external_uri (optional, This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.)
    */
-  externalLink: string | undefined; //
+  externalLink: string | undefined;
   /**
    * youtube_uri (optional, A URL to a YouTube video.)
    */
   youtubeUri: string | undefined;
   /**
-   * // background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
+   * background_color, (optional, Background color of the item on OpenSea. Must be a six-character hexadecimal without a pre-pended #.)
    */
   backgroundColor: string | undefined;
   /**
@@ -80,9 +81,9 @@ type JB721DelegateTier = {
  * Return the 721 Delegate tiers for a given [datasource].
  * Includes resolved metadata.
  *
- * @note There will be `n_tiers + 1` HTTP requests performed in this hook:
- *       - 1 to fetch the tiers
- *       - n to fetch metadata for each tier
+ * There will be `n_tiers + 1` HTTP requests performed in this hook:
+ *   - 1 to fetch the tiers
+ *   - n to fetch metadata for each tier
  */
 export function useJb721DelegateTiers(
   dataSourceAddress: Address | undefined,
@@ -93,8 +94,9 @@ export function useJb721DelegateTiers(
     categories?: bigint[];
     ipfsGatewayHostname?: string;
   }
-) {
+): AsyncData<JB721DelegateTier[]> {
   const [tiers, setTiers] = useState<JB721DelegateTier[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
     args: dataSourceAddress
@@ -110,6 +112,7 @@ export function useJb721DelegateTiers(
 
   useEffect(() => {
     async function loadTiers() {
+      setIsLoading(true);
       // fetch and inject metadata for each tier
       const tiers = await Promise.all(
         tiersRaw?.map(async (tier) => {
@@ -128,10 +131,11 @@ export function useJb721DelegateTiers(
       );
 
       setTiers(tiers);
+      setIsLoading(false);
     }
 
     loadTiers();
   }, [tiersRaw]);
 
-  return tiers;
+  return { data: tiers, isLoading };
 }

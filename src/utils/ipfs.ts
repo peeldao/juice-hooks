@@ -13,7 +13,6 @@ export function ipfsGatewayUrl(
 
 /**
  * Return a hex-encoded CID to store on-chain.
- *
  * Hex-encoded CIDs are used to store some CIDs on-chain because they are more gas-efficient.
  */
 export function encodeIpfsUri(cid: string) {
@@ -22,7 +21,6 @@ export function encodeIpfsUri(cid: string) {
 
 /**
  * Return the IPFS CID from a given hex-endoded string.
- *
  * Hex-encoded CIDs are used to store some CIDs on-chain because they are more gas-efficient.
  */
 export function decodeEncodedIpfsUri(hex: string) {
