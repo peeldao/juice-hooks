@@ -1,17 +1,9 @@
 import { describe, expect, test } from 'vitest'
 import { getNextCycleWeight, getPrevCycleWeight } from './fundingCycle';  
-import { MAX_DISCOUNT_RATE } from '../constants'; 
-
-import { describe, expect, test } from 'vitest'
-import { getNextCycleWeight, getPrevCycleWeight } from './fundingCycle';  
 
 describe("Cycle Weight utilities", () => {
 
   test.each`
-    weight      | discountRate  | expected
-    ${100n}     | ${20n}        | ${(100n * (MAX_DISCOUNT_RATE - 20n)) / MAX_DISCOUNT_RATE}
-    ${200n}     | ${30n}        | ${(200n * (MAX_DISCOUNT_RATE - 30n)) / MAX_DISCOUNT_RATE}
-    ${300n}     | ${0n}         | ${(300n * (MAX_DISCOUNT_RATE - 0n)) / MAX_DISCOUNT_RATE}
     weight      | discountRate         | expected
     ${100n}     | ${200000000n}        | ${80n}
     ${200n}     | ${300000000n}        | ${140n}
