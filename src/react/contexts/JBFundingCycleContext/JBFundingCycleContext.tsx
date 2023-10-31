@@ -8,7 +8,7 @@ import {
 } from "../../../utils/data";
 import { useJbControllerCurrentFundingCycleOf } from "../../generated/hooks";
 import { useJBContractContext } from "../JBContractContext/JBContractContext";
-import { AsyncData } from "../types";
+import { AsyncData, AsyncDataNone } from "../types";
 
 /**
  * Context for the current funding cycle of a project.
@@ -28,8 +28,8 @@ export type JBFundingCycleContext = {
  * Context for the current funding cycle of a project.
  */
 export const JBFundingCycleContext = createContext<JBFundingCycleContext>({
-  fundingCycleData: undefined,
-  fundingCycleMetadata: undefined,
+  fundingCycleData: AsyncDataNone,
+  fundingCycleMetadata: AsyncDataNone,
 });
 
 export function useJBFundingCycleContext() {

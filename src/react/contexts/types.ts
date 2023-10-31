@@ -1,6 +1,10 @@
-export type AsyncData<T> =
-  | {
-      isLoading: boolean;
-      data?: T;
-    }
-  | undefined;
+interface AsyncData<T> {
+  isLoading: boolean;
+  data?: T;
+}
+
+const AsyncDataNone: AsyncData<any> = {
+  isLoading: false,
+};
+
+export { AsyncData, AsyncDataNone };
