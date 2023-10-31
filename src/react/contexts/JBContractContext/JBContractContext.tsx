@@ -7,7 +7,7 @@ import {
   useJbDirectoryPrimaryTerminalOf,
   useJbethPaymentTerminalStore,
 } from "../../generated/hooks";
-import { AsyncData } from "../types";
+import { AsyncData, EMPTY_ASYNC_DATA } from "../types";
 
 /**
  * Context for project-specific contracts.
@@ -61,25 +61,25 @@ export const JBContractContext = createContext<JBContractContextData>({
      *
      * @default undefined
      */
-    primaryTerminalEth: undefined,
+    primaryTerminalEth: EMPTY_ASYNC_DATA,
     /**
      * The address of the primary payment terminal store for the project.
      *
      * @default undefined
      */
-    primaryTerminalEthStore: undefined,
+    primaryTerminalEthStore: EMPTY_ASYNC_DATA,
     /**
      * The address of the controller for the project.
      *
      * @default undefined
      */
-    controller: undefined,
+    controller: EMPTY_ASYNC_DATA,
     /**
      * The address of the fund access constraints store for the project.
      *
      * @default undefined
      */
-    fundAccessConstraintsStore: undefined,
+    fundAccessConstraintsStore: EMPTY_ASYNC_DATA,
   },
 });
 
