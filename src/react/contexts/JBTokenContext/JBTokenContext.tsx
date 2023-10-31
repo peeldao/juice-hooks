@@ -5,7 +5,7 @@ import {
   useJbTokenStoreTokenOf,
 } from "../../generated/hooks";
 import { useJBContractContext } from "../JBContractContext/JBContractContext";
-import { AsyncData } from "../types";
+import { AsyncData, AsyncDataNone } from "../types";
 import { JBToken } from "../../../utils/data";
 import { FetchTokenResult } from "wagmi/dist/actions";
 
@@ -30,15 +30,15 @@ export const JBTokenContext = createContext<JBTokenContextData>({
   /**
    * The token of the project.
    *
-   * @default undefined
+   * @default none {@link AsyncDataNone}
    */
-  token: undefined,
+  token: AsyncDataNone,
   /**
    * The total outstanding tokens of the project.
    *
-   * @default undefined
+   * @default none {@link AsyncDataNone}
    */
-  totalOutstanding: undefined,
+  totalOutstanding: AsyncDataNone,
 });
 
 export function useJBTokenContext() {
