@@ -27,7 +27,7 @@ export const JB_TOKEN_DECIMALS = 18 as const;
  *
  * contracts/libraries/JBTokens.sol
  */
-export const ETHER_ADDRESS =
+export const JB_ETHER_ADDRESS =
   "0x000000000000000000000000000000000000eeee" as Address;
 
 /**
