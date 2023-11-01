@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, createContext, useContext } from "react";
 import { Address } from "viem";
-import { ETHER_ADDRESS } from "../../../constants";
+import { JB_ETHER_ADDRESS } from "../../../constants";
 import {
   useJbController3_1FundAccessConstraintsStore,
   useJbDirectoryControllerOf,
@@ -119,7 +119,7 @@ export const JBContractProvider = ({
 
   const primaryTerminalEth = useJbDirectoryPrimaryTerminalOf({
     args: enabled([DynamicContract.PrimaryEthPaymentTerminal])
-      ? [projectId, ETHER_ADDRESS]
+      ? [projectId, JB_ETHER_ADDRESS]
       : undefined,
   });
   const primaryTerminalEthStore = useJbethPaymentTerminalStore({
