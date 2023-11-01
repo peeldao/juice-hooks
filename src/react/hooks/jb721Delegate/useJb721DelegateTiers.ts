@@ -114,7 +114,7 @@ export function useJb721DelegateTiers(
     async function loadTiers() {
       setIsLoading(true);
       // fetch and inject metadata for each tier
-      const tiers = await Promise.all(
+      const result = await Promise.allSettled(
         tiersRaw?.map(async (tier) => {
           const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
           const ipfsUrl = ipfsGatewayUrl(
@@ -122,18 +122,36 @@ export function useJb721DelegateTiers(
             args?.ipfsGatewayHostname
           );
 
-          const metadata = (await fetch(ipfsUrl).then((res) =>
-            res.json()
-          )) as JB721DelegateTierMetadata;
+          try {
+            const metadata = (await fetch(ipfsUrl).then((res) =>
+              res.json()
+            )) as JB721DelegateTierMetadata;
 
-          return { ...tier, metadata };
+            return { ...tier, metadata };
+          } catch (e) {
+            console.error(e);
+            throw { error: e, tier };
+          }
         }) ?? []
       );
+      const failed = result.filter(
+        (res) => res.status === "rejected"
+      ) as PromiseRejectedResult[];
+      const success = result.filter(
+        (res) => res.status === "fulfilled"
+      ) as PromiseFulfilledResult<JB721DelegateTier>[];
 
-      setTiers(tiers);
+      if (failed.length > 0) {
+        console.error("Failed to load metadata for some tiers", failed);
+      }
+
+      const loadedTiers = success.map((res) => res.value);
+
+      setTiers(loadedTiers);
       setIsLoading(false);
     }
 
+    if (!tiersRaw) return;
     loadTiers();
   }, [tiersRaw]);
 
