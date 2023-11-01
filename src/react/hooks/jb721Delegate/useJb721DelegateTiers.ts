@@ -123,9 +123,12 @@ export function useJb721DelegateTiers(
           );
 
           try {
-            const metadata = (await fetch(ipfsUrl).then((res) =>
-              res.json()
-            )) as JB721DelegateTierMetadata;
+            const res = await fetch(ipfsUrl);
+            if (!res.ok)
+              throw new Error(
+                `Failed to fetch metadata: ${res.status} ${res.statusText} ${ipfsUrl}`
+              );
+            const metadata = (await res.json()) as JB721DelegateTierMetadata;
 
             return { ...tier, metadata };
           } catch (e) {
