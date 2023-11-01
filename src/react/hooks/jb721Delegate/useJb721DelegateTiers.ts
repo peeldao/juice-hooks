@@ -7,8 +7,11 @@ import {
 import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
 import { Address } from "viem";
 import { AsyncData } from "src/react/contexts/types";
+import { juiceFetch } from "src/utils/juiceFetch";
 
 export const MAX_NFT_REWARD_TIERS = 69;
+
+const REQUEST_TIMEOUT_MS = 1000;
 
 /**
  * @typedef {Object} OpenSeaAttribute
@@ -93,6 +96,11 @@ export function useJb721DelegateTiers(
     startingId?: bigint;
     categories?: bigint[];
     ipfsGatewayHostname?: string;
+    /**
+     * Timeout for each HTTP request, in milliseconds.
+     * Defaults to 1000ms.
+     */
+    requestTimeout?: number;
   }
 ): AsyncData<JB721DelegateTier[]> {
   const [tiers, setTiers] = useState<JB721DelegateTier[]>();
@@ -123,12 +131,10 @@ export function useJb721DelegateTiers(
           );
 
           try {
-            const res = await fetch(ipfsUrl);
-            if (!res.ok)
-              throw new Error(
-                `Failed to fetch metadata: ${res.status} ${res.statusText} ${ipfsUrl}`
-              );
-            const metadata = (await res.json()) as JB721DelegateTierMetadata;
+            const metadata = await juiceFetch<JB721DelegateTierMetadata>({
+              url: ipfsUrl,
+              timeout: args?.requestTimeout ?? REQUEST_TIMEOUT_MS,
+            });
 
             return { ...tier, metadata };
           } catch (e) {
