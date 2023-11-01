@@ -103,7 +103,7 @@ export function usePayEthPaymentTerminal({
     }
 
     return null;
-  }, []);
+  }, [isPrepareError, isContractError, prepareError, contractWriteError]);
 
   return {
     data,
