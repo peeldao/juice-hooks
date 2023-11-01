@@ -2,6 +2,8 @@ import { DEFAULT_MEMO, JB_ETHER_ADDRESS } from "src/constants";
 import { Address } from "viem";
 import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
 import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../generated/hooks";
+import { useMemo } from "react";
+import { JuiceHooksError } from "src/juiceHooksError";
 
 interface PayParams {
   /**
@@ -70,21 +72,38 @@ export function usePayEthPaymentTerminal({
     value: amountWei,
     enabled: Boolean(terminalAddress && amountWei > 0n),
   });
-  if (isPrepareError) {
-    console.error(
-      "usePayEthPaymentTerminal::usePrepareJbethPaymentTerminal3_1_2Pay::error",
-      prepareError
-    );
-  }
 
-  const { data, write, isError, error } = useContractWrite(config);
-  if (isError) {
-    console.error("usePayEthPaymentTerminal::useContractWrite::error", error);
-  }
+  const {
+    data,
+    write,
+    isError: isContractError,
+    error: contractWriteError,
+  } = useContractWrite(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
+
+  const isError = isPrepareError || isContractError;
+
+  const error = useMemo(() => {
+    if (isPrepareError) {
+      return new JuiceHooksError(
+        "Error preparing transaction",
+        prepareError ?? undefined,
+        "usePayEthPaymentTerminal::usePrepareJbethPaymentTerminal3_1_2Pay"
+      );
+    }
+    if (isContractError) {
+      return new JuiceHooksError(
+        "Error writing transaction",
+        contractWriteError ?? undefined,
+        "usePayEthPaymentTerminal::useContractWrite"
+      );
+    }
+
+    return null;
+  }, []);
 
   return {
     data,
