@@ -62,26 +62,19 @@ export function usePayEthPaymentTerminal({
     "0x0", // metadata, eventually used for delegates
   ] as const;
 
-  const {
-    config,
-    isError: isPrepareError,
-    error: prepareError,
-  } = usePrepareJbethPaymentTerminal3_1_2Pay({
+  const prepare = usePrepareJbethPaymentTerminal3_1_2Pay({
     address: terminalAddress,
     args,
     value: amountWei,
     enabled: Boolean(terminalAddress && amountWei > 0n),
   });
 
-  const {
-    data,
-    write,
-    isError: isContractError,
-    error: contractWriteError,
-  } = useContractWrite(config);
+  const transact = useContractWrite({
+    ...prepare.config,
+  });
 
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
+  const transaction = useWaitForTransaction({
+    hash: transact.data?.hash,
   });
 
   const isError = isPrepareError || isContractError;
@@ -108,11 +101,8 @@ export function usePayEthPaymentTerminal({
   }, [isPrepareError, isContractError, prepareError, contractWriteError]);
 
   return {
-    data,
-    write,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
+    prepare,
+    transact,
+    transaction,
   };
 }
