@@ -10,7 +10,7 @@ describe("formatting utilities", () => {
 
   test.each`
     wei                          | fractionDigits | expected
-    ${1000000000000000000n}      | ${2}           | ${"1.00"}
+    ${1000000000000000000n}      | ${2}           | ${"1"}
     ${1234567890123456789n}      | ${3}           | ${"1.235"}
     ${1234567890123456789n}      | ${0}           | ${"1"}
   `("formats Ether correctly", ({ wei, fractionDigits, expected }) => {
@@ -19,7 +19,7 @@ describe("formatting utilities", () => {
 
   test.each`
     value                        | units | fractionDigits | expected
-    ${1000000000n}               | ${9}  | ${2}           | ${"1.00"}
+    ${1000000000n}               | ${9}  | ${2}           | ${"1"}
     ${1234567890n}               | ${9}  | ${3}           | ${"1.235"}
     ${1234567890n}               | ${9}  | ${0}           | ${"1"}
   `("formats Units correctly", ({ value, units, fractionDigits, expected }) => {

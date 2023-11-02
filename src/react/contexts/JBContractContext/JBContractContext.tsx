@@ -1,13 +1,13 @@
 import React, { PropsWithChildren, createContext, useContext } from "react";
 import { Address } from "viem";
-import { ETHER_ADDRESS } from "../../../constants";
+import { JB_ETHER_ADDRESS } from "../../../constants";
 import {
   useJbController3_1FundAccessConstraintsStore,
   useJbDirectoryControllerOf,
   useJbDirectoryPrimaryTerminalOf,
   useJbethPaymentTerminalStore,
 } from "../../generated/hooks";
-import { AsyncData } from "../types";
+import { AsyncData, AsyncDataNone } from "../types";
 
 /**
  * Context for project-specific contracts.
@@ -59,27 +59,27 @@ export const JBContractContext = createContext<JBContractContextData>({
     /**
      * The address of the primary payment terminal for the project.
      *
-     * @default undefined
+     * @default none {@link AsyncDataNone}
      */
-    primaryTerminalEth: undefined,
+    primaryTerminalEth: AsyncDataNone,
     /**
      * The address of the primary payment terminal store for the project.
      *
-     * @default undefined
+     * @default none {@link AsyncDataNone}
      */
-    primaryTerminalEthStore: undefined,
+    primaryTerminalEthStore: AsyncDataNone,
     /**
      * The address of the controller for the project.
      *
-     * @default undefined
+     * @default none {@link AsyncDataNone}
      */
-    controller: undefined,
+    controller: AsyncDataNone,
     /**
      * The address of the fund access constraints store for the project.
      *
-     * @default undefined
+     * @default none {@link AsyncDataNone}
      */
-    fundAccessConstraintsStore: undefined,
+    fundAccessConstraintsStore: AsyncDataNone,
   },
 });
 
@@ -119,7 +119,7 @@ export const JBContractProvider = ({
 
   const primaryTerminalEth = useJbDirectoryPrimaryTerminalOf({
     args: enabled([DynamicContract.PrimaryEthPaymentTerminal])
-      ? [projectId, ETHER_ADDRESS]
+      ? [projectId, JB_ETHER_ADDRESS]
       : undefined,
   });
   const primaryTerminalEthStore = useJbethPaymentTerminalStore({
