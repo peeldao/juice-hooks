@@ -8,6 +8,8 @@
  * this error. This is intended for debugging.
  * @param {string} [origin] - Origin of the error. The name of the function that
  * caused this error.
+ * @param {string} [clientMessage] - Client message. The message to show to the
+ * user. This is intended for the UI.
  *
  * @example
  * ```ts
@@ -17,11 +19,18 @@
 export class JuiceHooksError extends Error {
   public internalError: Error | undefined;
   public _origin: string | undefined;
+  public clientMessage: string | undefined;
 
-  constructor(message: string, error?: Error, origin?: string) {
+  constructor(
+    message: string,
+    error?: Error,
+    origin?: string,
+    clientMessage?: string
+  ) {
     super(message);
     this.name = "JuiceHooksError";
     this.internalError = error;
     this._origin = origin;
+    this.clientMessage = clientMessage ?? message;
   }
 }
