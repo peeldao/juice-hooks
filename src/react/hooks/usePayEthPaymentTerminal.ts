@@ -1,5 +1,5 @@
 import { DEFAULT_MEMO, JB_ETHER_ADDRESS } from "src/constants";
-import { Address } from "viem";
+import { Address, ContractFunctionExecutionError } from "viem";
 import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
 import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../generated/hooks";
 import { useMemo } from "react";
@@ -91,14 +91,16 @@ export function usePayEthPaymentTerminal({
       return new JuiceHooksError(
         "Error preparing transaction",
         prepareError ?? undefined,
-        "usePayEthPaymentTerminal::usePrepareJbethPaymentTerminal3_1_2Pay"
+        "usePayEthPaymentTerminal::usePrepareJbethPaymentTerminal3_1_2Pay",
+        (prepareError as ContractFunctionExecutionError)?.cause?.shortMessage
       );
     }
     if (isContractError) {
       return new JuiceHooksError(
         "Error writing transaction",
         contractWriteError ?? undefined,
-        "usePayEthPaymentTerminal::useContractWrite"
+        "usePayEthPaymentTerminal::useContractWrite",
+        (prepareError as ContractFunctionExecutionError)?.cause?.shortMessage
       );
     }
 
