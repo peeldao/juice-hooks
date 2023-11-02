@@ -17,7 +17,7 @@ const REQUEST_TIMEOUT_MS = 1000;
  * @typedef {Object} OpenSeaAttribute
  * @property {string} tr
  */
-type OpenSeaAttribute = {
+export type OpenSeaAttribute = {
   /**
    * Describes the type of the attribute. Arbitrary.
    */
@@ -33,7 +33,7 @@ type OpenSeaAttribute = {
  * The following are guidelines on NFT keys and tier JSON, derivates from EIP-721:
  * @see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-type JB721DelegateTierMetadata = {
+export type JB721DelegateTierMetadata = {
   name: string;
   symbol: string | undefined;
   description: string | undefined;
@@ -76,7 +76,7 @@ type JB721DelegateTierMetadata = {
   attributes: OpenSeaAttribute[];
 };
 
-type JB721DelegateTier = {
+export type JB721DelegateTier = {
   metadata: JB721DelegateTierMetadata;
 } & ReadContractResult<typeof jbTiered721DelegateStoreABI, "tierOf">;
 
