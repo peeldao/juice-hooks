@@ -40,15 +40,21 @@ interface PayParams {
 /**
  * Initiate a transaction to pay a project's ETH payment terminal.
  */
-export function usePayEthPaymentTerminal({
-  projectId,
-  terminalAddress,
-  amountWei,
-  beneficiaryAddress,
-  minReturnedTokens,
-  preferClaimedTokens,
-  memo,
-}: PayParams) {
+export function usePayEthPaymentTerminal(
+  {
+    projectId,
+    terminalAddress,
+    amountWei,
+    beneficiaryAddress,
+    minReturnedTokens,
+    preferClaimedTokens,
+    memo,
+  }: PayParams,
+  contractWriteCallbacks: {
+    onError?: (error: Error) => void;
+    // TODO more...
+  } = {}
+) {
   const { address: defaultBeneficiaryAddress } = useAccount();
 
   const args = [
@@ -71,6 +77,7 @@ export function usePayEthPaymentTerminal({
 
   const transact = useContractWrite({
     ...prepare.config,
+    ...contractWriteCallbacks,
   });
 
   const transaction = useWaitForTransaction({
