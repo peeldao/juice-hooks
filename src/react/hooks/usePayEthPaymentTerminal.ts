@@ -1,9 +1,7 @@
 import { DEFAULT_MEMO, JB_ETHER_ADDRESS } from "src/constants";
-import { Address, ContractFunctionExecutionError } from "viem";
+import { Address } from "viem";
 import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
 import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../generated/hooks";
-import { useMemo } from "react";
-import { JuiceHooksError } from "src/juiceHooksError";
 
 interface PayParams {
   /**
@@ -62,57 +60,22 @@ export function usePayEthPaymentTerminal({
     "0x0", // metadata, eventually used for delegates
   ] as const;
 
-  const {
-    config,
-    isError: isPrepareError,
-    error: prepareError,
-  } = usePrepareJbethPaymentTerminal3_1_2Pay({
+  const prepare = usePrepareJbethPaymentTerminal3_1_2Pay({
     address: terminalAddress,
     args,
     value: amountWei,
     enabled: Boolean(terminalAddress && amountWei > 0n),
   });
 
-  const {
-    data,
-    write,
-    isError: isContractError,
-    error: contractWriteError,
-  } = useContractWrite(config);
+  const contractWrite = useContractWrite(prepare.config);
 
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
+  const transaction = useWaitForTransaction({
+    hash: contractWrite.data?.hash,
   });
 
-  const isError = isPrepareError || isContractError;
-
-  const error = useMemo(() => {
-    if (isPrepareError) {
-      return new JuiceHooksError(
-        "Error preparing transaction",
-        prepareError ?? undefined,
-        "usePayEthPaymentTerminal::usePrepareJbethPaymentTerminal3_1_2Pay",
-        (prepareError as ContractFunctionExecutionError)?.cause?.shortMessage
-      );
-    }
-    if (isContractError) {
-      return new JuiceHooksError(
-        "Error writing transaction",
-        contractWriteError ?? undefined,
-        "usePayEthPaymentTerminal::useContractWrite",
-        (prepareError as ContractFunctionExecutionError)?.cause?.shortMessage
-      );
-    }
-
-    return null;
-  }, [isPrepareError, isContractError, prepareError, contractWriteError]);
-
   return {
-    data,
-    write,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
+    prepare,
+    contractWrite,
+    transaction,
   };
 }
