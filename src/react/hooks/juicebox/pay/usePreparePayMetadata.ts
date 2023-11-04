@@ -41,7 +41,6 @@ export function usePreparePayMetadata({
   jb721Delegate?: { tierIdsToMint: number[] };
 } = {}): Hash | null {
   const dataSource = useJBDataSourceContext();
-
   if (
     dataSource.data?.name !== JBDataSourceName.JB721Delegate ||
     !jb721Delegate ||

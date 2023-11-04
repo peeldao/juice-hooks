@@ -1,17 +1,16 @@
 import { goerli } from "viem/chains";
-import { Address, useChainId, useQuery } from "wagmi";
+import { Address, useQuery } from "wagmi";
+import { useChain } from "../useNetwork";
 
 export function useJb721DelegateVersion(datasource: Address | undefined) {
+  const chain = useChain();
+
   return useQuery(["jb721DelegateVersion", datasource], async () => {
     if (!datasource) {
-      return;
+      return null;
     }
 
-    const prefix = useChainId() === goerli.id ? "goerli." : "";
-    console.log(
-      "fetching datasource from",
-      `https://${prefix}juicebox.money/api/juicebox/jb-721-delegate/${datasource}`
-    );
+    const prefix = chain.id === goerli.id ? "goerli." : "";
     const response = await fetch(
       `https://${prefix}juicebox.money/api/juicebox/jb-721-delegate/${datasource}`
     );

@@ -41,7 +41,7 @@ describe("token", () => {
           weight,
           reservedRate,
         });
-        console.log(expectedTokenBPrice.toString());
+
         expect(tokenBPrice.val).toBe(expectedTokenBPrice);
       }
     );
