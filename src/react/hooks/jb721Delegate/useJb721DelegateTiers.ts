@@ -1,13 +1,13 @@
 import { ReadContractResult } from "@wagmi/core";
-import { useEffect, useState } from "react";
+import { AsyncData } from "src/react/contexts/types";
+import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
+import { juiceFetch } from "src/utils/juiceFetch";
+import { Address } from "viem";
+import { useQuery } from "wagmi";
 import {
   jbTiered721DelegateStoreABI,
   useJbTiered721DelegateStoreTiersOf,
 } from "../../generated/hooks";
-import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
-import { Address } from "viem";
-import { AsyncData } from "src/react/contexts/types";
-import { juiceFetch } from "src/utils/juiceFetch";
 
 export const MAX_NFT_REWARD_TIERS = 69;
 
@@ -95,6 +95,8 @@ export function useJb721DelegateTiers(
     limit?: number;
     startingId?: bigint;
     categories?: bigint[];
+  },
+  opts?: {
     ipfsGatewayHostname?: string;
     /**
      * Timeout for each HTTP request, in milliseconds.
@@ -103,9 +105,6 @@ export function useJb721DelegateTiers(
     requestTimeout?: number;
   }
 ): AsyncData<JB721DelegateTier[]> {
-  const [tiers, setTiers] = useState<JB721DelegateTier[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
     args: dataSourceAddress
       ? [
@@ -118,51 +117,38 @@ export function useJb721DelegateTiers(
       : undefined,
   });
 
-  useEffect(() => {
-    async function loadTiers() {
-      setIsLoading(true);
-      // fetch and inject metadata for each tier
-      const result = await Promise.allSettled(
-        tiersRaw?.map(async (tier) => {
-          const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
-          const ipfsUrl = ipfsGatewayUrl(
-            metadataCid,
-            args?.ipfsGatewayHostname
-          );
+  return useQuery(["jb721DelegateTiers", dataSourceAddress], async () => {
+    const result = await Promise.allSettled(
+      tiersRaw?.map(async (tier) => {
+        const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
+        const ipfsUrl = ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname);
 
-          try {
-            const metadata = await juiceFetch<JB721DelegateTierMetadata>({
-              url: ipfsUrl,
-              timeout: args?.requestTimeout ?? REQUEST_TIMEOUT_MS,
-            });
+        try {
+          const metadata = await juiceFetch<JB721DelegateTierMetadata>({
+            url: ipfsUrl,
+            timeout: opts?.requestTimeout ?? REQUEST_TIMEOUT_MS,
+          });
 
-            return { ...tier, metadata };
-          } catch (e) {
-            console.error(e);
-            throw { error: e, tier };
-          }
-        }) ?? []
-      );
-      const failed = result.filter(
-        (res) => res.status === "rejected"
-      ) as PromiseRejectedResult[];
-      const success = result.filter(
-        (res) => res.status === "fulfilled"
-      ) as PromiseFulfilledResult<JB721DelegateTier>[];
+          return { ...tier, metadata };
+        } catch (e) {
+          console.error(e);
+          throw { error: e, tier };
+        }
+      }) ?? []
+    );
+    const failed = result.filter(
+      (res) => res.status === "rejected"
+    ) as PromiseRejectedResult[];
+    const success = result.filter(
+      (res) => res.status === "fulfilled"
+    ) as PromiseFulfilledResult<JB721DelegateTier>[];
 
-      if (failed.length > 0) {
-        console.error("Failed to load metadata for some tiers", failed);
-      }
-
-      const loadedTiers = success.map((res) => res.value);
-
-      setTiers(loadedTiers);
-      setIsLoading(false);
+    if (failed.length > 0) {
+      console.error("Failed to load metadata for some tiers", failed);
     }
 
-    if (!tiersRaw) return;
-    loadTiers();
-  }, [tiersRaw]);
+    const loadedTiers = success.map((res) => res.value);
 
-  return { data: tiers, isLoading };
+    return loadedTiers;
+  });
 }
