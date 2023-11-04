@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useContext, useMemo } from "react";
-import { useJb721DelegateVersion } from "src/react/hooks/jb721Delegate/useJb721DelegateVersion";
+import { useJb721DelegateVersion } from "../../hooks/jb721Delegate/useJb721DelegateVersion";
 import { Address } from "wagmi";
 import { AsyncData, AsyncDataLoading, AsyncDataNone } from "../types";
 

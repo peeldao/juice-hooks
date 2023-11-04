@@ -4,9 +4,14 @@ import { Address, useChainId, useQuery } from "wagmi";
 export function useJb721DelegateVersion(datasource: Address | undefined) {
   return useQuery(["jb721DelegateVersion", datasource], async () => {
     if (!datasource) {
-      return undefined;
+      return;
     }
+
     const prefix = useChainId() === goerli.id ? "goerli." : "";
+    console.log(
+      "fetching datasource from",
+      `https://${prefix}juicebox.money/api/juicebox/jb-721-delegate/${datasource}`
+    );
     const response = await fetch(
       `https://${prefix}juicebox.money/api/juicebox/jb-721-delegate/${datasource}`
     );
