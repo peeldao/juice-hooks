@@ -47,6 +47,12 @@ export const JBDataSourceProvider = ({
   const { data: jb721DelegateVersion, isLoading } =
     useJb721DelegateVersion(dataSourceAddress);
 
+  console.log("JBDataSourceProvider", {
+    dataSourceAddress,
+    jb721DelegateVersion,
+    isLoading,
+  });
+
   // TODO in future, support other datasources (e.g. buy-back delegate)
   const data = useMemo(() => {
     if (isLoading) {
