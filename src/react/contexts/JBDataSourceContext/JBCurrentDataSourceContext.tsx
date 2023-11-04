@@ -14,8 +14,6 @@ export function JBCurrentDataSourceProvider({
   const { data } = useJBFundingCycleMetadata();
   const dataSourceAddress = data?.dataSource;
 
-  console.log(data, "FC metadata!");
-
   return (
     <JBDataSourceProvider dataSourceAddress={dataSourceAddress}>
       {children}
