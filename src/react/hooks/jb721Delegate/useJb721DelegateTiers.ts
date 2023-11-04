@@ -95,8 +95,6 @@ export function useJb721DelegateTiers(
     limit?: number;
     startingId?: bigint;
     categories?: bigint[];
-  },
-  opts?: {
     ipfsGatewayHostname?: string;
     /**
      * Timeout for each HTTP request, in milliseconds.
@@ -121,12 +119,12 @@ export function useJb721DelegateTiers(
     const result = await Promise.allSettled(
       tiersRaw?.map(async (tier) => {
         const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
-        const ipfsUrl = ipfsGatewayUrl(metadataCid, opts?.ipfsGatewayHostname);
+        const ipfsUrl = ipfsGatewayUrl(metadataCid, args?.ipfsGatewayHostname);
 
         try {
           const metadata = await juiceFetch<JB721DelegateTierMetadata>({
             url: ipfsUrl,
-            timeout: opts?.requestTimeout ?? REQUEST_TIMEOUT_MS,
+            timeout: args?.requestTimeout ?? REQUEST_TIMEOUT_MS,
           });
 
           return { ...tier, metadata };
