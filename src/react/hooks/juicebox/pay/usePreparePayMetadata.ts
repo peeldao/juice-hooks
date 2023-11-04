@@ -41,8 +41,6 @@ export function usePreparePayMetadata({
   jb721Delegate?: { tierIdsToMint: number[] };
 } = {}): Hash | null {
   const dataSource = useJBDataSourceContext();
-  console.log("jb721DelegateMetadata 2", dataSource, jb721Delegate);
-
   if (
     dataSource.data?.name !== JBDataSourceName.JB721Delegate ||
     !jb721Delegate ||
@@ -55,7 +53,6 @@ export function usePreparePayMetadata({
     tierIdsToMint: jb721Delegate.tierIdsToMint,
     allowOverspending: DEFAULT_ALLOW_OVERSPENDING,
   });
-  console.log("jb721DelegateMetadata 1", jb721DelegateMetadata);
 
   const delegateIds: string[] = [IJBTiered721Delegate_V3_4_PAY_ID];
   const metadatas: string[] = [jb721DelegateMetadata];
