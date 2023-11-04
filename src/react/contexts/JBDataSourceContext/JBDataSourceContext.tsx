@@ -19,6 +19,10 @@ export type JBDataSourceContextData = AsyncData<{
    * The version of the datasource (in whatever verisoning scheme the datasource uses)
    */
   version: string;
+  /**
+   * Address of the datasource.
+   */
+  address: Address;
 }>;
 
 /**
@@ -59,6 +63,7 @@ export const JBDataSourceProvider = ({
         data: {
           name: JBDataSourceName.JB721Delegate,
           version: jb721DelegateVersion,
+          address: dataSourceAddress,
         },
       };
     }

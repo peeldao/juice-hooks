@@ -8,6 +8,11 @@ import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
 import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../../../generated/hooks";
 import { usePreparePayMetadata } from "./usePreparePayMetadata";
 
+export interface DataSourceParams {
+  // TODO eventually buy-back delegate
+  jb721Delegate?: { tierIdsToMint: number[] };
+}
+
 export interface PayParams {
   /**
    * Project id to pay.
@@ -38,29 +43,31 @@ export interface PayParams {
    * Only applicable to projects with an ERC-20 project token.
    */
   preferClaimedTokens?: boolean;
-}
-
-export interface DataSourceParams {
-  jb721Delegate?: { tierIdsToMint: number[] };
+  /**
+   * Arguments to pass to the datasource.
+   * The pay `metadata` will be created from these arguments, iff the given argments are intended for the current datasource.
+   *
+   * @example to mint NFTs: if `jb721Delegate` argument is passed, and the current datasource is a JB721Delegate,
+   * then the pay `metadata` will be created to mint NFTs.
+   */
+  dataSourceArgs?: DataSourceParams;
 }
 
 /**
  * Initiate a transaction to pay a project's ETH payment terminal.
  */
-export function usePayEthPaymentTerminal(
-  {
-    projectId,
-    terminalAddress,
-    amountWei,
-    beneficiaryAddress,
-    minReturnedTokens,
-    preferClaimedTokens,
-    memo,
-  }: PayParams,
-  dataSourceParams?: DataSourceParams
-) {
+export function usePayEthPaymentTerminal({
+  projectId,
+  terminalAddress,
+  amountWei,
+  beneficiaryAddress,
+  minReturnedTokens,
+  preferClaimedTokens,
+  memo,
+  dataSourceArgs,
+}: PayParams) {
   const { address: defaultBeneficiaryAddress } = useAccount();
-  const payMetadata = usePreparePayMetadata(dataSourceParams);
+  const payMetadata = usePreparePayMetadata(dataSourceArgs);
 
   const args = [
     projectId,
