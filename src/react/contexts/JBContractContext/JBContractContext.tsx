@@ -101,7 +101,7 @@ export type JBContractProviderProps = PropsWithChildren<{
 }>;
 
 /**
- * Load project-sepcific contract addresses for a given JB project.
+ * Load project-specific contract addresses for a given JB project.
  *
  * If `include` arg not specified, all contracts are loaded
  */

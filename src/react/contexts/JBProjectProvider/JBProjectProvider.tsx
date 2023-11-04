@@ -1,9 +1,10 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import {
   JBContractContext,
   JBContractProvider,
   JBContractProviderProps,
 } from "../JBContractContext/JBContractContext";
+import { JBCurrentDataSourceProvider } from "../JBDataSourceContext/JBCurrentDataSourceContext";
 import {
   JBFundingCycleContext,
   JBFundingCycleProvider,
@@ -39,7 +40,7 @@ export const JBProjectProvider = ({
     <JBContractProvider projectId={projectId} {...ctxProps?.contract}>
       <JBFundingCycleProvider projectId={projectId}>
         <JBTokenProvider projectId={projectId} {...ctxProps?.token}>
-          {children}
+          <JBCurrentDataSourceProvider>{children}</JBCurrentDataSourceProvider>
         </JBTokenProvider>
       </JBFundingCycleProvider>
     </JBContractProvider>

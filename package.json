@@ -1,6 +1,6 @@
 {
   "name": "juice-hooks",
-  "version": "10.1.0-beta",
+  "version": "10.2.0-beta",
   "description": "Wagmi hooks for Juicebox",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -40,7 +40,8 @@
   ],
   "dependencies": {
     "bs58": "^5.0.0",
-    "fpnum": "^0.0.13"
+    "fpnum": "^0.0.13",
+    "juicebox-metadata-helper": "^0.1.7"
   },
   "exports": {
     ".": {
