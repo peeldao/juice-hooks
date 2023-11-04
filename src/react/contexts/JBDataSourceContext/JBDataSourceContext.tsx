@@ -1,12 +1,11 @@
-import React, {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-} from "react";
+import { PropsWithChildren, createContext, useContext, useMemo } from "react";
 import { useJb721DelegateVersion } from "src/react/hooks/jb721Delegate/useJb721DelegateVersion";
 import { Address } from "wagmi";
 import { AsyncData, AsyncDataLoading, AsyncDataNone } from "../types";
+
+export enum JBDataSourceName {
+  JB721Delegate = "JB721Delegate",
+}
 
 /**
  * Data structure for the context for a given datasource.
@@ -15,7 +14,7 @@ export type JBDataSourceContextData = AsyncData<{
   /**
    * The name of the datasource.
    */
-  name: string;
+  name: JBDataSourceName;
   /**
    * The version of the datasource (in whatever verisoning scheme the datasource uses)
    */
@@ -58,7 +57,7 @@ export const JBDataSourceProvider = ({
       return {
         isLoading: false,
         data: {
-          name: "JB721Delegate",
+          name: JBDataSourceName.JB721Delegate,
           version: jb721DelegateVersion,
         },
       };

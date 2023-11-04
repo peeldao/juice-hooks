@@ -1,9 +1,14 @@
-import { DEFAULT_MEMO, JB_ETHER_ADDRESS } from "src/constants";
+import {
+  DEFAULT_MEMO,
+  DEFAULT_METADATA,
+  JB_ETHER_ADDRESS,
+} from "src/constants";
 import { Address } from "viem";
 import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
 import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../../../generated/hooks";
+import { usePreparePayMetadata } from "./usePreparePayMetadata";
 
-interface PayParams {
+export interface PayParams {
   /**
    * Project id to pay.
    */
@@ -35,19 +40,27 @@ interface PayParams {
   preferClaimedTokens?: boolean;
 }
 
+export interface DataSourceParams {
+  jb721Delegate?: { tierIdsToMint: number[] };
+}
+
 /**
  * Initiate a transaction to pay a project's ETH payment terminal.
  */
-export function usePayEthPaymentTerminal({
-  projectId,
-  terminalAddress,
-  amountWei,
-  beneficiaryAddress,
-  minReturnedTokens,
-  preferClaimedTokens,
-  memo,
-}: PayParams) {
+export function usePayEthPaymentTerminal(
+  {
+    projectId,
+    terminalAddress,
+    amountWei,
+    beneficiaryAddress,
+    minReturnedTokens,
+    preferClaimedTokens,
+    memo,
+  }: PayParams,
+  dataSourceParams: DataSourceParams
+) {
   const { address: defaultBeneficiaryAddress } = useAccount();
+  const payMetadata = usePreparePayMetadata(dataSourceParams);
 
   const args = [
     projectId,
@@ -57,7 +70,7 @@ export function usePayEthPaymentTerminal({
     minReturnedTokens ?? 0n,
     preferClaimedTokens ?? false,
     memo ?? DEFAULT_MEMO,
-    "0x0", // metadata, eventually used for delegates
+    payMetadata ?? DEFAULT_METADATA,
   ] as const;
 
   const prepare = usePrepareJbethPaymentTerminal3_1_2Pay({
