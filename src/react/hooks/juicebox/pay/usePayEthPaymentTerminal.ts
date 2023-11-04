@@ -57,7 +57,7 @@ export function usePayEthPaymentTerminal(
     preferClaimedTokens,
     memo,
   }: PayParams,
-  dataSourceParams: DataSourceParams
+  dataSourceParams?: DataSourceParams
 ) {
   const { address: defaultBeneficiaryAddress } = useAccount();
   const payMetadata = usePreparePayMetadata(dataSourceParams);
