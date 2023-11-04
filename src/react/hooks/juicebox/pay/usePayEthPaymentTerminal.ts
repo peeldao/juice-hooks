@@ -1,7 +1,7 @@
 import { DEFAULT_MEMO, JB_ETHER_ADDRESS } from "src/constants";
 import { Address } from "viem";
 import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
-import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../generated/hooks";
+import { usePrepareJbethPaymentTerminal3_1_2Pay } from "../../../generated/hooks";
 
 interface PayParams {
   /**
