@@ -26,7 +26,7 @@ export function useFormatEthAddress(
     }
 
     return formatEthAddress(address, { truncateTo: opts?.truncateTo });
-  }, [address, opts?.truncateTo]);
+  }, [address, opts, ensName]);
 
   return {
     isLoading,
