@@ -1,5 +1,5 @@
 import { defineConfig } from "@wagmi/cli";
-import { etherscan, react } from "@wagmi/cli/plugins";
+import { actions, etherscan, react } from "@wagmi/cli/plugins";
 import { goerli, mainnet } from "wagmi/chains";
 import addresses from "./addresses.json";
 import dotenv from "dotenv";
@@ -27,5 +27,12 @@ export default defineConfig({
       contracts: [...juiceboxContracts],
     }),
     react(),
+    actions({
+      getContract: true,
+      readContract: true,
+      prepareWriteContract: false,
+      writeContract: false,
+      watchContractEvent: false,
+    }),
   ],
 });
