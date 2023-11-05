@@ -9,7 +9,7 @@ import {
 const IJBTiered721Delegate_V3_4_PAY_ID = "0x37323150"; // "721P", encoded as bytes4
 
 interface Jb721DelegateV3_2PayMetadata {
-  tierIdsToMint: number[];
+  tierIdsToMint: bigint[];
   allowOverspending?: boolean;
 }
 
@@ -18,7 +18,7 @@ function encodeJB721DelegateV3_4PayMetadata(
 ) {
   const args = [
     metadata.allowOverspending ?? DEFAULT_ALLOW_OVERSPENDING,
-    metadata.tierIdsToMint,
+    metadata.tierIdsToMint.map(Number),
   ] as const;
 
   const encoded = encodeAbiParameters(
@@ -38,7 +38,7 @@ function encodeJB721DelegateV3_4PayMetadata(
 export function usePreparePayMetadata({
   jb721Delegate,
 }: {
-  jb721Delegate?: { tierIdsToMint: number[] };
+  jb721Delegate?: { tierIdsToMint: bigint[] };
 } = {}): Hash | null {
   const dataSource = useJBDataSourceContext();
   if (

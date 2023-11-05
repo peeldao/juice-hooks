@@ -10,7 +10,7 @@ import { usePreparePayMetadata } from "./usePreparePayMetadata";
 
 export interface DataSourceParams {
   // TODO eventually buy-back delegate
-  jb721Delegate?: { tierIdsToMint: number[] };
+  jb721Delegate?: { tierIdsToMint: bigint[] };
 }
 
 export interface PayParams {
