@@ -27,12 +27,12 @@ export default defineConfig({
       contracts: [...juiceboxContracts],
     }),
     react(),
-    actions({
-      getContract: true,
-      readContract: true,
-      prepareWriteContract: false,
-      writeContract: false,
-      watchContractEvent: false,
-    }),
+    // actions({
+    //   getContract: true,
+    //   readContract: true,
+    //   prepareWriteContract: false,
+    //   writeContract: false,
+    //   watchContractEvent: false,
+    // }),
   ],
 });
