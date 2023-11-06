@@ -17,6 +17,13 @@ import {
   PrepareWriteContractResult,
 } from 'wagmi/actions'
 
+import {
+  getContract,
+  GetContractArgs,
+  readContract,
+  ReadContractConfig,
+} from 'wagmi/actions'
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBController
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -11539,8 +11546,11 @@ export function useJbControllerRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11568,8 +11578,11 @@ export function useJbControllerCurrentFundingCycleOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11598,8 +11611,11 @@ export function useJbControllerDirectory<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11628,8 +11644,11 @@ export function useJbControllerDistributionLimitOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11658,8 +11677,11 @@ export function useJbControllerFundingCycleStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11688,8 +11710,11 @@ export function useJbControllerGetFundingCycleOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11718,8 +11743,11 @@ export function useJbControllerLatestConfiguredFundingCycleOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11748,8 +11776,11 @@ export function useJbControllerOperatorStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11778,8 +11809,11 @@ export function useJbControllerOverflowAllowanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11808,8 +11842,11 @@ export function useJbControllerProjects<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11838,8 +11875,11 @@ export function useJbControllerQueuedFundingCycleOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11868,8 +11908,11 @@ export function useJbControllerReservedTokenBalanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11898,8 +11941,11 @@ export function useJbControllerSplitsStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11928,8 +11974,11 @@ export function useJbControllerSupportsInterface<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11958,8 +12007,11 @@ export function useJbControllerTokenStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -11988,8 +12040,11 @@ export function useJbControllerTotalOutstandingTokensOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbControllerABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12407,8 +12462,11 @@ export function useJbControllerReconfigureFundingCyclesOf<
 export function usePrepareJbControllerWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12429,8 +12487,11 @@ export function usePrepareJbControllerWrite<TFunctionName extends string>(
 export function usePrepareJbControllerBurnTokensOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, 'burnTokensOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12455,8 +12516,11 @@ export function usePrepareJbControllerDistributeReservedTokensOf(
       typeof jbControllerABI,
       'distributeReservedTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12484,8 +12548,11 @@ export function usePrepareJbControllerLaunchFundingCyclesFor(
       typeof jbControllerABI,
       'launchFundingCyclesFor'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12510,8 +12577,11 @@ export function usePrepareJbControllerLaunchFundingCyclesFor(
 export function usePrepareJbControllerLaunchProjectFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, 'launchProjectFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12536,8 +12606,11 @@ export function usePrepareJbControllerLaunchProjectFor(
 export function usePrepareJbControllerMigrate(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, 'migrate'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12559,8 +12632,11 @@ export function usePrepareJbControllerMigrate(
 export function usePrepareJbControllerMintTokensOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, 'mintTokensOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12582,8 +12658,11 @@ export function usePrepareJbControllerMintTokensOf(
 export function usePrepareJbControllerPrepForMigrationOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbControllerABI, 'prepForMigrationOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12611,8 +12690,11 @@ export function usePrepareJbControllerReconfigureFundingCyclesOf(
       typeof jbControllerABI,
       'reconfigureFundingCyclesOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12637,8 +12719,11 @@ export function usePrepareJbControllerReconfigureFundingCyclesOf(
 export function useJbControllerEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12659,8 +12744,11 @@ export function useJbControllerEvent<TEventName extends string>(
 export function useJbControllerBurnTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'BurnTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12682,8 +12770,11 @@ export function useJbControllerBurnTokensEvent(
 export function useJbControllerDistributeReservedTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'DistributeReservedTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12711,8 +12802,11 @@ export function useJbControllerDistributeToReservedTokenSplitEvent(
       typeof jbControllerABI,
       'DistributeToReservedTokenSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12737,8 +12831,11 @@ export function useJbControllerDistributeToReservedTokenSplitEvent(
 export function useJbControllerLaunchFundingCyclesEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'LaunchFundingCycles'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12760,8 +12857,11 @@ export function useJbControllerLaunchFundingCyclesEvent(
 export function useJbControllerLaunchProjectEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'LaunchProject'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12783,8 +12883,11 @@ export function useJbControllerLaunchProjectEvent(
 export function useJbControllerMigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12806,8 +12909,11 @@ export function useJbControllerMigrateEvent(
 export function useJbControllerMintTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'MintTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12829,8 +12935,11 @@ export function useJbControllerMintTokensEvent(
 export function useJbControllerPrepMigrationEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'PrepMigration'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12852,8 +12961,11 @@ export function useJbControllerPrepMigrationEvent(
 export function useJbControllerReconfigureFundingCyclesEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'ReconfigureFundingCycles'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12878,8 +12990,11 @@ export function useJbControllerReconfigureFundingCyclesEvent(
 export function useJbControllerSetFundAccessConstraintsEvent(
   config: Omit<
     UseContractEventConfig<typeof jbControllerABI, 'SetFundAccessConstraints'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbControllerAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12911,8 +13026,11 @@ export function useJbController3_1Read<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12945,8 +13063,11 @@ export function useJbController3_1CurrentFundingCycleOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -12980,8 +13101,11 @@ export function useJbController3_1Directory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13015,8 +13139,11 @@ export function useJbController3_1FundAccessConstraintsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13050,8 +13177,11 @@ export function useJbController3_1FundingCycleStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13085,8 +13215,11 @@ export function useJbController3_1GetFundingCycleOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13120,8 +13253,11 @@ export function useJbController3_1LatestConfiguredFundingCycleOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13155,8 +13291,11 @@ export function useJbController3_1OperatorStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13190,8 +13329,11 @@ export function useJbController3_1Projects<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13225,8 +13367,11 @@ export function useJbController3_1QueuedFundingCycleOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13260,8 +13405,11 @@ export function useJbController3_1ReservedTokenBalanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13295,8 +13443,11 @@ export function useJbController3_1SplitsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13330,8 +13481,11 @@ export function useJbController3_1SupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13365,8 +13519,11 @@ export function useJbController3_1TokenStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13400,8 +13557,11 @@ export function useJbController3_1TotalOutstandingTokensOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13847,8 +14007,11 @@ export function useJbController3_1ReconfigureFundingCyclesOf<
 export function usePrepareJbController3_1Write<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbController3_1ABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13870,8 +14033,11 @@ export function usePrepareJbController3_1Write<TFunctionName extends string>(
 export function usePrepareJbController3_1BurnTokensOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbController3_1ABI, 'burnTokensOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13897,8 +14063,11 @@ export function usePrepareJbController3_1DistributeReservedTokensOf(
       typeof jbController3_1ABI,
       'distributeReservedTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13927,8 +14096,11 @@ export function usePrepareJbController3_1LaunchFundingCyclesFor(
       typeof jbController3_1ABI,
       'launchFundingCyclesFor'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13957,8 +14129,11 @@ export function usePrepareJbController3_1LaunchProjectFor(
       typeof jbController3_1ABI,
       'launchProjectFor'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -13984,8 +14159,11 @@ export function usePrepareJbController3_1LaunchProjectFor(
 export function usePrepareJbController3_1Migrate(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbController3_1ABI, 'migrate'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14008,8 +14186,11 @@ export function usePrepareJbController3_1Migrate(
 export function usePrepareJbController3_1MintTokensOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbController3_1ABI, 'mintTokensOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14035,8 +14216,11 @@ export function usePrepareJbController3_1PrepForMigrationOf(
       typeof jbController3_1ABI,
       'prepForMigrationOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14065,8 +14249,11 @@ export function usePrepareJbController3_1ReconfigureFundingCyclesOf(
       typeof jbController3_1ABI,
       'reconfigureFundingCyclesOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14092,8 +14279,11 @@ export function usePrepareJbController3_1ReconfigureFundingCyclesOf(
 export function useJbController3_1Event<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14115,8 +14305,11 @@ export function useJbController3_1Event<TEventName extends string>(
 export function useJbController3_1BurnTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'BurnTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14142,8 +14335,11 @@ export function useJbController3_1DistributeReservedTokensEvent(
       typeof jbController3_1ABI,
       'DistributeReservedTokens'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14172,8 +14368,11 @@ export function useJbController3_1DistributeToReservedTokenSplitEvent(
       typeof jbController3_1ABI,
       'DistributeToReservedTokenSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14199,8 +14398,11 @@ export function useJbController3_1DistributeToReservedTokenSplitEvent(
 export function useJbController3_1LaunchFundingCyclesEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'LaunchFundingCycles'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14223,8 +14425,11 @@ export function useJbController3_1LaunchFundingCyclesEvent(
 export function useJbController3_1LaunchProjectEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'LaunchProject'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14247,8 +14452,11 @@ export function useJbController3_1LaunchProjectEvent(
 export function useJbController3_1MigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14271,8 +14479,11 @@ export function useJbController3_1MigrateEvent(
 export function useJbController3_1MintTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'MintTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14295,8 +14506,11 @@ export function useJbController3_1MintTokensEvent(
 export function useJbController3_1PrepMigrationEvent(
   config: Omit<
     UseContractEventConfig<typeof jbController3_1ABI, 'PrepMigration'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14322,8 +14536,11 @@ export function useJbController3_1ReconfigureFundingCyclesEvent(
       typeof jbController3_1ABI,
       'ReconfigureFundingCycles'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbController3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14352,8 +14569,11 @@ export function useJbDirectoryRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14377,8 +14597,11 @@ export function useJbDirectoryControllerOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14403,8 +14626,11 @@ export function useJbDirectoryFundingCycleStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14429,8 +14655,11 @@ export function useJbDirectoryIsAllowedToSetFirstController<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14455,8 +14684,11 @@ export function useJbDirectoryIsTerminalOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14481,8 +14713,11 @@ export function useJbDirectoryOperatorStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14507,8 +14742,11 @@ export function useJbDirectoryOwner<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14533,8 +14771,11 @@ export function useJbDirectoryPrimaryTerminalOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14559,8 +14800,11 @@ export function useJbDirectoryProjects<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14585,8 +14829,11 @@ export function useJbDirectoryTerminalsOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbDirectoryABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14916,8 +15163,11 @@ export function useJbDirectoryTransferOwnership<
 export function usePrepareJbDirectoryWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbDirectoryABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14938,8 +15188,11 @@ export function usePrepareJbDirectoryWrite<TFunctionName extends string>(
 export function usePrepareJbDirectoryRenounceOwnership(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbDirectoryABI, 'renounceOwnership'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14964,8 +15217,11 @@ export function usePrepareJbDirectoryRenounceOwnership(
 export function usePrepareJbDirectorySetControllerOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbDirectoryABI, 'setControllerOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -14990,8 +15246,11 @@ export function usePrepareJbDirectorySetIsAllowedToSetFirstController(
       typeof jbDirectoryABI,
       'setIsAllowedToSetFirstController'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15019,8 +15278,11 @@ export function usePrepareJbDirectorySetPrimaryTerminalOf(
       typeof jbDirectoryABI,
       'setPrimaryTerminalOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15045,8 +15307,11 @@ export function usePrepareJbDirectorySetPrimaryTerminalOf(
 export function usePrepareJbDirectorySetTerminalsOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbDirectoryABI, 'setTerminalsOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15068,8 +15333,11 @@ export function usePrepareJbDirectorySetTerminalsOf(
 export function usePrepareJbDirectoryTransferOwnership(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbDirectoryABI, 'transferOwnership'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15094,8 +15362,11 @@ export function usePrepareJbDirectoryTransferOwnership(
 export function useJbDirectoryEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15116,8 +15387,11 @@ export function useJbDirectoryEvent<TEventName extends string>(
 export function useJbDirectoryAddTerminalEvent(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, 'AddTerminal'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15139,8 +15413,11 @@ export function useJbDirectoryAddTerminalEvent(
 export function useJbDirectoryOwnershipTransferredEvent(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, 'OwnershipTransferred'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15162,8 +15439,11 @@ export function useJbDirectoryOwnershipTransferredEvent(
 export function useJbDirectorySetControllerEvent(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, 'SetController'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15188,8 +15468,11 @@ export function useJbDirectorySetIsAllowedToSetFirstControllerEvent(
       typeof jbDirectoryABI,
       'SetIsAllowedToSetFirstController'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15214,8 +15497,11 @@ export function useJbDirectorySetIsAllowedToSetFirstControllerEvent(
 export function useJbDirectorySetPrimaryTerminalEvent(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, 'SetPrimaryTerminal'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15237,8 +15523,11 @@ export function useJbDirectorySetPrimaryTerminalEvent(
 export function useJbDirectorySetTerminalsEvent(
   config: Omit<
     UseContractEventConfig<typeof jbDirectoryABI, 'SetTerminals'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbDirectoryAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15364,9 +15653,10 @@ export function usePrepareJbetherc20ProjectPayerDeployerWrite<
       typeof jbetherc20ProjectPayerDeployerABI,
       TFunctionName
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15397,9 +15687,10 @@ export function usePrepareJbetherc20ProjectPayerDeployerDeployProjectPayer(
       typeof jbetherc20ProjectPayerDeployerABI,
       'deployProjectPayer'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15433,9 +15724,10 @@ export function useJbetherc20ProjectPayerDeployerEvent<
       typeof jbetherc20ProjectPayerDeployerABI,
       TEventName
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15466,9 +15758,10 @@ export function useJbetherc20ProjectPayerDeployerDeployProjectPayerEvent(
       typeof jbetherc20ProjectPayerDeployerABI,
       'DeployProjectPayer'
     >,
-    'abi' | 'eventName'
+    'abi' | 'address' | 'eventName'
   > & {
     chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15653,9 +15946,10 @@ export function usePrepareJbetherc20SplitsPayerDeployerWrite<
       typeof jbetherc20SplitsPayerDeployerABI,
       TFunctionName
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15686,9 +15980,10 @@ export function usePrepareJbetherc20SplitsPayerDeployerDeploySplitsPayer(
       typeof jbetherc20SplitsPayerDeployerABI,
       'deploySplitsPayer'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15720,9 +16015,10 @@ export function usePrepareJbetherc20SplitsPayerDeployerDeploySplitsPayerWithSpli
       typeof jbetherc20SplitsPayerDeployerABI,
       'deploySplitsPayerWithSplits'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15753,9 +16049,10 @@ export function useJbetherc20SplitsPayerDeployerEvent<
 >(
   config: Omit<
     UseContractEventConfig<typeof jbetherc20SplitsPayerDeployerABI, TEventName>,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15786,9 +16083,10 @@ export function useJbetherc20SplitsPayerDeployerDeploySplitsPayerEvent(
       typeof jbetherc20SplitsPayerDeployerABI,
       'DeploySplitsPayer'
     >,
-    'abi' | 'eventName'
+    'abi' | 'address' | 'eventName'
   > & {
     chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -15827,8 +16125,11 @@ export function useJbethPaymentTerminalRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15866,8 +16167,11 @@ export function useJbethPaymentTerminalAcceptsToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15906,8 +16210,11 @@ export function useJbethPaymentTerminalBaseWeightCurrency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15946,8 +16253,11 @@ export function useJbethPaymentTerminalCurrency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -15986,8 +16296,11 @@ export function useJbethPaymentTerminalCurrencyForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16026,8 +16339,11 @@ export function useJbethPaymentTerminalCurrentEthOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16066,8 +16382,11 @@ export function useJbethPaymentTerminalDecimals<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16106,8 +16425,11 @@ export function useJbethPaymentTerminalDecimalsForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16146,8 +16468,11 @@ export function useJbethPaymentTerminalDirectory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16186,8 +16511,11 @@ export function useJbethPaymentTerminalFee<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16226,8 +16554,11 @@ export function useJbethPaymentTerminalFeeGauge<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16266,8 +16597,11 @@ export function useJbethPaymentTerminalHeldFeesOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16306,8 +16640,11 @@ export function useJbethPaymentTerminalIsFeelessAddress<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16346,8 +16683,11 @@ export function useJbethPaymentTerminalOperatorStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16386,8 +16726,11 @@ export function useJbethPaymentTerminalOwner<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16426,8 +16769,11 @@ export function useJbethPaymentTerminalPayoutSplitsGroup<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16466,8 +16812,11 @@ export function useJbethPaymentTerminalPrices<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16506,8 +16855,11 @@ export function useJbethPaymentTerminalProjects<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16546,8 +16898,11 @@ export function useJbethPaymentTerminalSplitsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16586,8 +16941,11 @@ export function useJbethPaymentTerminalStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16626,8 +16984,11 @@ export function useJbethPaymentTerminalSupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -16666,8 +17027,11 @@ export function useJbethPaymentTerminalToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17338,8 +17702,11 @@ export function usePrepareJbethPaymentTerminalWrite<
       typeof jbethPaymentTerminalABI,
       TFunctionName
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17369,8 +17736,11 @@ export function usePrepareJbethPaymentTerminalAddToBalanceOf(
       typeof jbethPaymentTerminalABI,
       'addToBalanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17401,8 +17771,11 @@ export function usePrepareJbethPaymentTerminalDistributePayoutsOf(
       typeof jbethPaymentTerminalABI,
       'distributePayoutsOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17430,8 +17803,11 @@ export function usePrepareJbethPaymentTerminalDistributePayoutsOf(
 export function usePrepareJbethPaymentTerminalMigrate(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminalABI, 'migrate'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17456,8 +17832,11 @@ export function usePrepareJbethPaymentTerminalMigrate(
 export function usePrepareJbethPaymentTerminalPay(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminalABI, 'pay'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17485,8 +17864,11 @@ export function usePrepareJbethPaymentTerminalProcessFees(
       typeof jbethPaymentTerminalABI,
       'processFees'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17517,8 +17899,11 @@ export function usePrepareJbethPaymentTerminalRedeemTokensOf(
       typeof jbethPaymentTerminalABI,
       'redeemTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17549,8 +17934,11 @@ export function usePrepareJbethPaymentTerminalRenounceOwnership(
       typeof jbethPaymentTerminalABI,
       'renounceOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17578,8 +17966,11 @@ export function usePrepareJbethPaymentTerminalRenounceOwnership(
 export function usePrepareJbethPaymentTerminalSetFee(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminalABI, 'setFee'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17607,8 +17998,11 @@ export function usePrepareJbethPaymentTerminalSetFeeGauge(
       typeof jbethPaymentTerminalABI,
       'setFeeGauge'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17639,8 +18033,11 @@ export function usePrepareJbethPaymentTerminalSetFeelessAddress(
       typeof jbethPaymentTerminalABI,
       'setFeelessAddress'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17671,8 +18068,11 @@ export function usePrepareJbethPaymentTerminalTransferOwnership(
       typeof jbethPaymentTerminalABI,
       'transferOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17703,8 +18103,11 @@ export function usePrepareJbethPaymentTerminalUseAllowanceOf(
       typeof jbethPaymentTerminalABI,
       'useAllowanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17732,8 +18135,11 @@ export function usePrepareJbethPaymentTerminalUseAllowanceOf(
 export function useJbethPaymentTerminalEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17757,8 +18163,11 @@ export function useJbethPaymentTerminalEvent<TEventName extends string>(
 export function useJbethPaymentTerminalAddToBalanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'AddToBalance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17783,8 +18192,11 @@ export function useJbethPaymentTerminalAddToBalanceEvent(
 export function useJbethPaymentTerminalDelegateDidPayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'DelegateDidPay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17809,8 +18221,11 @@ export function useJbethPaymentTerminalDelegateDidPayEvent(
 export function useJbethPaymentTerminalDelegateDidRedeemEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'DelegateDidRedeem'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17838,8 +18253,11 @@ export function useJbethPaymentTerminalDelegateDidRedeemEvent(
 export function useJbethPaymentTerminalDistributePayoutsEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'DistributePayouts'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17870,8 +18288,11 @@ export function useJbethPaymentTerminalDistributeToPayoutSplitEvent(
       typeof jbethPaymentTerminalABI,
       'DistributeToPayoutSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17899,8 +18320,11 @@ export function useJbethPaymentTerminalDistributeToPayoutSplitEvent(
 export function useJbethPaymentTerminalHoldFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'HoldFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17925,8 +18349,11 @@ export function useJbethPaymentTerminalHoldFeeEvent(
 export function useJbethPaymentTerminalMigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17954,8 +18381,11 @@ export function useJbethPaymentTerminalOwnershipTransferredEvent(
       typeof jbethPaymentTerminalABI,
       'OwnershipTransferred'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -17983,8 +18413,11 @@ export function useJbethPaymentTerminalOwnershipTransferredEvent(
 export function useJbethPaymentTerminalPayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'Pay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18009,8 +18442,11 @@ export function useJbethPaymentTerminalPayEvent(
 export function useJbethPaymentTerminalProcessFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'ProcessFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18035,8 +18471,11 @@ export function useJbethPaymentTerminalProcessFeeEvent(
 export function useJbethPaymentTerminalRedeemTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'RedeemTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18061,8 +18500,11 @@ export function useJbethPaymentTerminalRedeemTokensEvent(
 export function useJbethPaymentTerminalRefundHeldFeesEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'RefundHeldFees'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18087,8 +18529,11 @@ export function useJbethPaymentTerminalRefundHeldFeesEvent(
 export function useJbethPaymentTerminalSetFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'SetFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18113,8 +18558,11 @@ export function useJbethPaymentTerminalSetFeeEvent(
 export function useJbethPaymentTerminalSetFeeGaugeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'SetFeeGauge'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18139,8 +18587,11 @@ export function useJbethPaymentTerminalSetFeeGaugeEvent(
 export function useJbethPaymentTerminalSetFeelessAddressEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'SetFeelessAddress'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18168,8 +18619,11 @@ export function useJbethPaymentTerminalSetFeelessAddressEvent(
 export function useJbethPaymentTerminalUseAllowanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminalABI, 'UseAllowance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminalAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18204,8 +18658,11 @@ export function useJbethPaymentTerminal3_1Read<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18243,8 +18700,11 @@ export function useJbethPaymentTerminal3_1AcceptsToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18283,8 +18743,11 @@ export function useJbethPaymentTerminal3_1BaseWeightCurrency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18323,8 +18786,11 @@ export function useJbethPaymentTerminal3_1Currency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18363,8 +18829,11 @@ export function useJbethPaymentTerminal3_1CurrencyForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18403,8 +18872,11 @@ export function useJbethPaymentTerminal3_1CurrentEthOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18443,8 +18915,11 @@ export function useJbethPaymentTerminal3_1Decimals<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18483,8 +18958,11 @@ export function useJbethPaymentTerminal3_1DecimalsForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18523,8 +19001,11 @@ export function useJbethPaymentTerminal3_1Directory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18563,8 +19044,11 @@ export function useJbethPaymentTerminal3_1Fee<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18603,8 +19087,11 @@ export function useJbethPaymentTerminal3_1FeeGauge<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18643,8 +19130,11 @@ export function useJbethPaymentTerminal3_1HeldFeesOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18683,8 +19173,11 @@ export function useJbethPaymentTerminal3_1IsFeelessAddress<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18723,8 +19216,11 @@ export function useJbethPaymentTerminal3_1OperatorStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18763,8 +19259,11 @@ export function useJbethPaymentTerminal3_1Owner<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18803,8 +19302,11 @@ export function useJbethPaymentTerminal3_1PayoutSplitsGroup<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18843,8 +19345,11 @@ export function useJbethPaymentTerminal3_1Prices<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18883,8 +19388,11 @@ export function useJbethPaymentTerminal3_1Projects<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18923,8 +19431,11 @@ export function useJbethPaymentTerminal3_1SplitsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -18963,8 +19474,11 @@ export function useJbethPaymentTerminal3_1Store<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19003,8 +19517,11 @@ export function useJbethPaymentTerminal3_1SupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19043,8 +19560,11 @@ export function useJbethPaymentTerminal3_1Token<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19725,8 +20245,11 @@ export function usePrepareJbethPaymentTerminal3_1Write<
       typeof jbethPaymentTerminal3_1ABI,
       TFunctionName
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19756,8 +20279,11 @@ export function usePrepareJbethPaymentTerminal3_1AddToBalanceOf(
       typeof jbethPaymentTerminal3_1ABI,
       'addToBalanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19788,8 +20314,11 @@ export function usePrepareJbethPaymentTerminal3_1DistributePayoutsOf(
       typeof jbethPaymentTerminal3_1ABI,
       'distributePayoutsOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19817,8 +20346,11 @@ export function usePrepareJbethPaymentTerminal3_1DistributePayoutsOf(
 export function usePrepareJbethPaymentTerminal3_1Migrate(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminal3_1ABI, 'migrate'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19846,8 +20378,11 @@ export function usePrepareJbethPaymentTerminal3_1Migrate(
 export function usePrepareJbethPaymentTerminal3_1Pay(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminal3_1ABI, 'pay'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19875,8 +20410,11 @@ export function usePrepareJbethPaymentTerminal3_1ProcessFees(
       typeof jbethPaymentTerminal3_1ABI,
       'processFees'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19907,8 +20445,11 @@ export function usePrepareJbethPaymentTerminal3_1RedeemTokensOf(
       typeof jbethPaymentTerminal3_1ABI,
       'redeemTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19939,8 +20480,11 @@ export function usePrepareJbethPaymentTerminal3_1RenounceOwnership(
       typeof jbethPaymentTerminal3_1ABI,
       'renounceOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -19968,8 +20512,11 @@ export function usePrepareJbethPaymentTerminal3_1RenounceOwnership(
 export function usePrepareJbethPaymentTerminal3_1SetFee(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminal3_1ABI, 'setFee'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20000,8 +20547,11 @@ export function usePrepareJbethPaymentTerminal3_1SetFeeGauge(
       typeof jbethPaymentTerminal3_1ABI,
       'setFeeGauge'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20032,8 +20582,11 @@ export function usePrepareJbethPaymentTerminal3_1SetFeelessAddress(
       typeof jbethPaymentTerminal3_1ABI,
       'setFeelessAddress'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20064,8 +20617,11 @@ export function usePrepareJbethPaymentTerminal3_1TransferOwnership(
       typeof jbethPaymentTerminal3_1ABI,
       'transferOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20096,8 +20652,11 @@ export function usePrepareJbethPaymentTerminal3_1UseAllowanceOf(
       typeof jbethPaymentTerminal3_1ABI,
       'useAllowanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20125,8 +20684,11 @@ export function usePrepareJbethPaymentTerminal3_1UseAllowanceOf(
 export function useJbethPaymentTerminal3_1Event<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20150,8 +20712,11 @@ export function useJbethPaymentTerminal3_1Event<TEventName extends string>(
 export function useJbethPaymentTerminal3_1AddToBalanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'AddToBalance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20179,8 +20744,11 @@ export function useJbethPaymentTerminal3_1AddToBalanceEvent(
 export function useJbethPaymentTerminal3_1DelegateDidPayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'DelegateDidPay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20211,8 +20779,11 @@ export function useJbethPaymentTerminal3_1DelegateDidRedeemEvent(
       typeof jbethPaymentTerminal3_1ABI,
       'DelegateDidRedeem'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20243,8 +20814,11 @@ export function useJbethPaymentTerminal3_1DistributePayoutsEvent(
       typeof jbethPaymentTerminal3_1ABI,
       'DistributePayouts'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20275,8 +20849,11 @@ export function useJbethPaymentTerminal3_1DistributeToPayoutSplitEvent(
       typeof jbethPaymentTerminal3_1ABI,
       'DistributeToPayoutSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20304,8 +20881,11 @@ export function useJbethPaymentTerminal3_1DistributeToPayoutSplitEvent(
 export function useJbethPaymentTerminal3_1FeeRevertedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'FeeReverted'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20330,8 +20910,11 @@ export function useJbethPaymentTerminal3_1FeeRevertedEvent(
 export function useJbethPaymentTerminal3_1HoldFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'HoldFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20356,8 +20939,11 @@ export function useJbethPaymentTerminal3_1HoldFeeEvent(
 export function useJbethPaymentTerminal3_1MigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20385,8 +20971,11 @@ export function useJbethPaymentTerminal3_1OwnershipTransferredEvent(
       typeof jbethPaymentTerminal3_1ABI,
       'OwnershipTransferred'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20414,8 +21003,11 @@ export function useJbethPaymentTerminal3_1OwnershipTransferredEvent(
 export function useJbethPaymentTerminal3_1PayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'Pay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20440,8 +21032,11 @@ export function useJbethPaymentTerminal3_1PayEvent(
 export function useJbethPaymentTerminal3_1PayoutRevertedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'PayoutReverted'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20469,8 +21064,11 @@ export function useJbethPaymentTerminal3_1PayoutRevertedEvent(
 export function useJbethPaymentTerminal3_1ProcessFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'ProcessFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20495,8 +21093,11 @@ export function useJbethPaymentTerminal3_1ProcessFeeEvent(
 export function useJbethPaymentTerminal3_1RedeemTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'RedeemTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20524,8 +21125,11 @@ export function useJbethPaymentTerminal3_1RedeemTokensEvent(
 export function useJbethPaymentTerminal3_1RefundHeldFeesEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'RefundHeldFees'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20553,8 +21157,11 @@ export function useJbethPaymentTerminal3_1RefundHeldFeesEvent(
 export function useJbethPaymentTerminal3_1SetFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'SetFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20579,8 +21186,11 @@ export function useJbethPaymentTerminal3_1SetFeeEvent(
 export function useJbethPaymentTerminal3_1SetFeeGaugeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'SetFeeGauge'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20608,8 +21218,11 @@ export function useJbethPaymentTerminal3_1SetFeelessAddressEvent(
       typeof jbethPaymentTerminal3_1ABI,
       'SetFeelessAddress'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20637,8 +21250,11 @@ export function useJbethPaymentTerminal3_1SetFeelessAddressEvent(
 export function useJbethPaymentTerminal3_1UseAllowanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1ABI, 'UseAllowance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20676,8 +21292,11 @@ export function useJbethPaymentTerminal3_1_1Read<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20715,8 +21334,11 @@ export function useJbethPaymentTerminal3_1_1AcceptsToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20755,8 +21377,11 @@ export function useJbethPaymentTerminal3_1_1BaseWeightCurrency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20795,8 +21420,11 @@ export function useJbethPaymentTerminal3_1_1Currency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20835,8 +21463,11 @@ export function useJbethPaymentTerminal3_1_1CurrencyForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20875,8 +21506,11 @@ export function useJbethPaymentTerminal3_1_1CurrentEthOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20915,8 +21549,11 @@ export function useJbethPaymentTerminal3_1_1Decimals<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20955,8 +21592,11 @@ export function useJbethPaymentTerminal3_1_1DecimalsForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -20995,8 +21635,11 @@ export function useJbethPaymentTerminal3_1_1Directory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21035,8 +21678,11 @@ export function useJbethPaymentTerminal3_1_1Fee<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21075,8 +21721,11 @@ export function useJbethPaymentTerminal3_1_1FeeGauge<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21115,8 +21764,11 @@ export function useJbethPaymentTerminal3_1_1HeldFeesOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21155,8 +21807,11 @@ export function useJbethPaymentTerminal3_1_1IsFeelessAddress<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21195,8 +21850,11 @@ export function useJbethPaymentTerminal3_1_1OperatorStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21235,8 +21893,11 @@ export function useJbethPaymentTerminal3_1_1Owner<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21275,8 +21936,11 @@ export function useJbethPaymentTerminal3_1_1PayoutSplitsGroup<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21315,8 +21979,11 @@ export function useJbethPaymentTerminal3_1_1Prices<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21355,8 +22022,11 @@ export function useJbethPaymentTerminal3_1_1Projects<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21395,8 +22065,11 @@ export function useJbethPaymentTerminal3_1_1SplitsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21435,8 +22108,11 @@ export function useJbethPaymentTerminal3_1_1Store<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21475,8 +22151,11 @@ export function useJbethPaymentTerminal3_1_1SupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -21515,8 +22194,11 @@ export function useJbethPaymentTerminal3_1_1Token<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22203,8 +22885,11 @@ export function usePrepareJbethPaymentTerminal3_1_1Write<
       typeof jbethPaymentTerminal3_1_1ABI,
       TFunctionName
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22234,8 +22919,11 @@ export function usePrepareJbethPaymentTerminal3_1_1AddToBalanceOf(
       typeof jbethPaymentTerminal3_1_1ABI,
       'addToBalanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22266,8 +22954,11 @@ export function usePrepareJbethPaymentTerminal3_1_1DistributePayoutsOf(
       typeof jbethPaymentTerminal3_1_1ABI,
       'distributePayoutsOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22298,8 +22989,11 @@ export function usePrepareJbethPaymentTerminal3_1_1Migrate(
       typeof jbethPaymentTerminal3_1_1ABI,
       'migrate'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22327,8 +23021,11 @@ export function usePrepareJbethPaymentTerminal3_1_1Migrate(
 export function usePrepareJbethPaymentTerminal3_1_1Pay(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminal3_1_1ABI, 'pay'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22359,8 +23056,11 @@ export function usePrepareJbethPaymentTerminal3_1_1ProcessFees(
       typeof jbethPaymentTerminal3_1_1ABI,
       'processFees'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22391,8 +23091,11 @@ export function usePrepareJbethPaymentTerminal3_1_1RedeemTokensOf(
       typeof jbethPaymentTerminal3_1_1ABI,
       'redeemTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22423,8 +23126,11 @@ export function usePrepareJbethPaymentTerminal3_1_1RenounceOwnership(
       typeof jbethPaymentTerminal3_1_1ABI,
       'renounceOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22455,8 +23161,11 @@ export function usePrepareJbethPaymentTerminal3_1_1SetFee(
       typeof jbethPaymentTerminal3_1_1ABI,
       'setFee'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22487,8 +23196,11 @@ export function usePrepareJbethPaymentTerminal3_1_1SetFeeGauge(
       typeof jbethPaymentTerminal3_1_1ABI,
       'setFeeGauge'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22519,8 +23231,11 @@ export function usePrepareJbethPaymentTerminal3_1_1SetFeelessAddress(
       typeof jbethPaymentTerminal3_1_1ABI,
       'setFeelessAddress'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22551,8 +23266,11 @@ export function usePrepareJbethPaymentTerminal3_1_1TransferOwnership(
       typeof jbethPaymentTerminal3_1_1ABI,
       'transferOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22583,8 +23301,11 @@ export function usePrepareJbethPaymentTerminal3_1_1UseAllowanceOf(
       typeof jbethPaymentTerminal3_1_1ABI,
       'useAllowanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22612,8 +23333,11 @@ export function usePrepareJbethPaymentTerminal3_1_1UseAllowanceOf(
 export function useJbethPaymentTerminal3_1_1Event<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22637,8 +23361,11 @@ export function useJbethPaymentTerminal3_1_1Event<TEventName extends string>(
 export function useJbethPaymentTerminal3_1_1AddToBalanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'AddToBalance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22669,8 +23396,11 @@ export function useJbethPaymentTerminal3_1_1DelegateDidPayEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'DelegateDidPay'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22701,8 +23431,11 @@ export function useJbethPaymentTerminal3_1_1DelegateDidRedeemEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'DelegateDidRedeem'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22733,8 +23466,11 @@ export function useJbethPaymentTerminal3_1_1DistributePayoutsEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'DistributePayouts'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22765,8 +23501,11 @@ export function useJbethPaymentTerminal3_1_1DistributeToPayoutSplitEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'DistributeToPayoutSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22794,8 +23533,11 @@ export function useJbethPaymentTerminal3_1_1DistributeToPayoutSplitEvent(
 export function useJbethPaymentTerminal3_1_1FeeRevertedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'FeeReverted'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22823,8 +23565,11 @@ export function useJbethPaymentTerminal3_1_1FeeRevertedEvent(
 export function useJbethPaymentTerminal3_1_1HoldFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'HoldFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22849,8 +23594,11 @@ export function useJbethPaymentTerminal3_1_1HoldFeeEvent(
 export function useJbethPaymentTerminal3_1_1MigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22878,8 +23626,11 @@ export function useJbethPaymentTerminal3_1_1OwnershipTransferredEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'OwnershipTransferred'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22907,8 +23658,11 @@ export function useJbethPaymentTerminal3_1_1OwnershipTransferredEvent(
 export function useJbethPaymentTerminal3_1_1PayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'Pay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22936,8 +23690,11 @@ export function useJbethPaymentTerminal3_1_1PayoutRevertedEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'PayoutReverted'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22965,8 +23722,11 @@ export function useJbethPaymentTerminal3_1_1PayoutRevertedEvent(
 export function useJbethPaymentTerminal3_1_1ProcessFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'ProcessFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -22994,8 +23754,11 @@ export function useJbethPaymentTerminal3_1_1ProcessFeeEvent(
 export function useJbethPaymentTerminal3_1_1RedeemTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'RedeemTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23026,8 +23789,11 @@ export function useJbethPaymentTerminal3_1_1RefundHeldFeesEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'RefundHeldFees'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23055,8 +23821,11 @@ export function useJbethPaymentTerminal3_1_1RefundHeldFeesEvent(
 export function useJbethPaymentTerminal3_1_1SetFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'SetFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23081,8 +23850,11 @@ export function useJbethPaymentTerminal3_1_1SetFeeEvent(
 export function useJbethPaymentTerminal3_1_1SetFeeGaugeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'SetFeeGauge'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23113,8 +23885,11 @@ export function useJbethPaymentTerminal3_1_1SetFeelessAddressEvent(
       typeof jbethPaymentTerminal3_1_1ABI,
       'SetFeelessAddress'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23142,8 +23917,11 @@ export function useJbethPaymentTerminal3_1_1SetFeelessAddressEvent(
 export function useJbethPaymentTerminal3_1_1UseAllowanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_1ABI, 'UseAllowance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_1Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23181,8 +23959,11 @@ export function useJbethPaymentTerminal3_1_2Read<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23220,8 +24001,11 @@ export function useJbethPaymentTerminal3_1_2AcceptsToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23260,8 +24044,11 @@ export function useJbethPaymentTerminal3_1_2BaseWeightCurrency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23300,8 +24087,11 @@ export function useJbethPaymentTerminal3_1_2Currency<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23340,8 +24130,11 @@ export function useJbethPaymentTerminal3_1_2CurrencyForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23380,8 +24173,11 @@ export function useJbethPaymentTerminal3_1_2CurrentEthOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23420,8 +24216,11 @@ export function useJbethPaymentTerminal3_1_2Decimals<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23460,8 +24259,11 @@ export function useJbethPaymentTerminal3_1_2DecimalsForToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23500,8 +24302,11 @@ export function useJbethPaymentTerminal3_1_2Directory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23540,8 +24345,11 @@ export function useJbethPaymentTerminal3_1_2Fee<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23580,8 +24388,11 @@ export function useJbethPaymentTerminal3_1_2FeeGauge<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23620,8 +24431,11 @@ export function useJbethPaymentTerminal3_1_2HeldFeesOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23660,8 +24474,11 @@ export function useJbethPaymentTerminal3_1_2IsFeelessAddress<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23700,8 +24517,11 @@ export function useJbethPaymentTerminal3_1_2OperatorStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23740,8 +24560,11 @@ export function useJbethPaymentTerminal3_1_2Owner<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23780,8 +24603,11 @@ export function useJbethPaymentTerminal3_1_2PayoutSplitsGroup<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23820,8 +24646,11 @@ export function useJbethPaymentTerminal3_1_2Prices<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23860,8 +24689,11 @@ export function useJbethPaymentTerminal3_1_2Projects<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23900,8 +24732,11 @@ export function useJbethPaymentTerminal3_1_2SplitsStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23940,8 +24775,11 @@ export function useJbethPaymentTerminal3_1_2Store<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -23980,8 +24818,11 @@ export function useJbethPaymentTerminal3_1_2SupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24020,8 +24861,11 @@ export function useJbethPaymentTerminal3_1_2Token<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24708,8 +25552,11 @@ export function usePrepareJbethPaymentTerminal3_1_2Write<
       typeof jbethPaymentTerminal3_1_2ABI,
       TFunctionName
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24739,8 +25586,11 @@ export function usePrepareJbethPaymentTerminal3_1_2AddToBalanceOf(
       typeof jbethPaymentTerminal3_1_2ABI,
       'addToBalanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24771,8 +25621,11 @@ export function usePrepareJbethPaymentTerminal3_1_2DistributePayoutsOf(
       typeof jbethPaymentTerminal3_1_2ABI,
       'distributePayoutsOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24803,8 +25656,11 @@ export function usePrepareJbethPaymentTerminal3_1_2Migrate(
       typeof jbethPaymentTerminal3_1_2ABI,
       'migrate'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24832,8 +25688,11 @@ export function usePrepareJbethPaymentTerminal3_1_2Migrate(
 export function usePrepareJbethPaymentTerminal3_1_2Pay(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbethPaymentTerminal3_1_2ABI, 'pay'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24864,8 +25723,11 @@ export function usePrepareJbethPaymentTerminal3_1_2ProcessFees(
       typeof jbethPaymentTerminal3_1_2ABI,
       'processFees'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24896,8 +25758,11 @@ export function usePrepareJbethPaymentTerminal3_1_2RedeemTokensOf(
       typeof jbethPaymentTerminal3_1_2ABI,
       'redeemTokensOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24928,8 +25793,11 @@ export function usePrepareJbethPaymentTerminal3_1_2RenounceOwnership(
       typeof jbethPaymentTerminal3_1_2ABI,
       'renounceOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24960,8 +25828,11 @@ export function usePrepareJbethPaymentTerminal3_1_2SetFee(
       typeof jbethPaymentTerminal3_1_2ABI,
       'setFee'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -24992,8 +25863,11 @@ export function usePrepareJbethPaymentTerminal3_1_2SetFeeGauge(
       typeof jbethPaymentTerminal3_1_2ABI,
       'setFeeGauge'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25024,8 +25898,11 @@ export function usePrepareJbethPaymentTerminal3_1_2SetFeelessAddress(
       typeof jbethPaymentTerminal3_1_2ABI,
       'setFeelessAddress'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25056,8 +25933,11 @@ export function usePrepareJbethPaymentTerminal3_1_2TransferOwnership(
       typeof jbethPaymentTerminal3_1_2ABI,
       'transferOwnership'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25088,8 +25968,11 @@ export function usePrepareJbethPaymentTerminal3_1_2UseAllowanceOf(
       typeof jbethPaymentTerminal3_1_2ABI,
       'useAllowanceOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25117,8 +26000,11 @@ export function usePrepareJbethPaymentTerminal3_1_2UseAllowanceOf(
 export function useJbethPaymentTerminal3_1_2Event<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25142,8 +26028,11 @@ export function useJbethPaymentTerminal3_1_2Event<TEventName extends string>(
 export function useJbethPaymentTerminal3_1_2AddToBalanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'AddToBalance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25174,8 +26063,11 @@ export function useJbethPaymentTerminal3_1_2DelegateDidPayEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'DelegateDidPay'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25206,8 +26098,11 @@ export function useJbethPaymentTerminal3_1_2DelegateDidRedeemEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'DelegateDidRedeem'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25238,8 +26133,11 @@ export function useJbethPaymentTerminal3_1_2DistributePayoutsEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'DistributePayouts'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25270,8 +26168,11 @@ export function useJbethPaymentTerminal3_1_2DistributeToPayoutSplitEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'DistributeToPayoutSplit'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25299,8 +26200,11 @@ export function useJbethPaymentTerminal3_1_2DistributeToPayoutSplitEvent(
 export function useJbethPaymentTerminal3_1_2FeeRevertedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'FeeReverted'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25328,8 +26232,11 @@ export function useJbethPaymentTerminal3_1_2FeeRevertedEvent(
 export function useJbethPaymentTerminal3_1_2HoldFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'HoldFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25354,8 +26261,11 @@ export function useJbethPaymentTerminal3_1_2HoldFeeEvent(
 export function useJbethPaymentTerminal3_1_2MigrateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'Migrate'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25383,8 +26293,11 @@ export function useJbethPaymentTerminal3_1_2OwnershipTransferredEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'OwnershipTransferred'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25412,8 +26325,11 @@ export function useJbethPaymentTerminal3_1_2OwnershipTransferredEvent(
 export function useJbethPaymentTerminal3_1_2PayEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'Pay'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25441,8 +26357,11 @@ export function useJbethPaymentTerminal3_1_2PayoutRevertedEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'PayoutReverted'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25470,8 +26389,11 @@ export function useJbethPaymentTerminal3_1_2PayoutRevertedEvent(
 export function useJbethPaymentTerminal3_1_2ProcessFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'ProcessFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25499,8 +26421,11 @@ export function useJbethPaymentTerminal3_1_2ProcessFeeEvent(
 export function useJbethPaymentTerminal3_1_2RedeemTokensEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'RedeemTokens'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25531,8 +26456,11 @@ export function useJbethPaymentTerminal3_1_2RefundHeldFeesEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'RefundHeldFees'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25560,8 +26488,11 @@ export function useJbethPaymentTerminal3_1_2RefundHeldFeesEvent(
 export function useJbethPaymentTerminal3_1_2SetFeeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'SetFee'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25586,8 +26517,11 @@ export function useJbethPaymentTerminal3_1_2SetFeeEvent(
 export function useJbethPaymentTerminal3_1_2SetFeeGaugeEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'SetFeeGauge'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25618,8 +26552,11 @@ export function useJbethPaymentTerminal3_1_2SetFeelessAddressEvent(
       typeof jbethPaymentTerminal3_1_2ABI,
       'SetFeelessAddress'
     >,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25647,8 +26584,11 @@ export function useJbethPaymentTerminal3_1_2SetFeelessAddressEvent(
 export function useJbethPaymentTerminal3_1_2UseAllowanceEvent(
   config: Omit<
     UseContractEventConfig<typeof jbethPaymentTerminal3_1_2ABI, 'UseAllowance'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbethPaymentTerminal3_1_2Address } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -25686,9 +26626,10 @@ export function useJbFundAccessConstraintsStoreRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -25727,9 +26668,10 @@ export function useJbFundAccessConstraintsStoreDirectory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -25769,9 +26711,10 @@ export function useJbFundAccessConstraintsStoreDistributionLimitOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -25811,9 +26754,10 @@ export function useJbFundAccessConstraintsStoreOverflowAllowanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -25853,9 +26797,10 @@ export function useJbFundAccessConstraintsStoreSupportsInterface<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -25985,9 +26930,10 @@ export function usePrepareJbFundAccessConstraintsStoreWrite<
       typeof jbFundAccessConstraintsStoreABI,
       TFunctionName
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -26018,9 +26964,10 @@ export function usePrepareJbFundAccessConstraintsStoreSetFor(
       typeof jbFundAccessConstraintsStoreABI,
       'setFor'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -26049,9 +26996,10 @@ export function usePrepareJbFundAccessConstraintsStoreSetFor(
 export function useJbFundAccessConstraintsStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbFundAccessConstraintsStoreABI, TEventName>,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -26082,9 +27030,10 @@ export function useJbFundAccessConstraintsStoreSetFundAccessConstraintsEvent(
       typeof jbFundAccessConstraintsStoreABI,
       'SetFundAccessConstraints'
     >,
-    'abi' | 'eventName'
+    'abi' | 'address' | 'eventName'
   > & {
     chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -26123,8 +27072,11 @@ export function useJbFundingCycleStoreRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26162,8 +27114,11 @@ export function useJbFundingCycleStoreCurrentBallotStateOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26202,8 +27157,11 @@ export function useJbFundingCycleStoreCurrentOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26242,8 +27200,11 @@ export function useJbFundingCycleStoreDirectory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26282,8 +27243,11 @@ export function useJbFundingCycleStoreGet<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26322,8 +27286,11 @@ export function useJbFundingCycleStoreLatestConfigurationOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26362,8 +27329,11 @@ export function useJbFundingCycleStoreLatestConfiguredOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26402,8 +27372,11 @@ export function useJbFundingCycleStoreQueuedOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26527,8 +27500,11 @@ export function usePrepareJbFundingCycleStoreWrite<
 >(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbFundingCycleStoreABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26558,8 +27534,11 @@ export function usePrepareJbFundingCycleStoreConfigureFor(
       typeof jbFundingCycleStoreABI,
       'configureFor'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26587,8 +27566,11 @@ export function usePrepareJbFundingCycleStoreConfigureFor(
 export function useJbFundingCycleStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbFundingCycleStoreABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26612,8 +27594,11 @@ export function useJbFundingCycleStoreEvent<TEventName extends string>(
 export function useJbFundingCycleStoreConfigureEvent(
   config: Omit<
     UseContractEventConfig<typeof jbFundingCycleStoreABI, 'Configure'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26638,8 +27623,11 @@ export function useJbFundingCycleStoreConfigureEvent(
 export function useJbFundingCycleStoreInitEvent(
   config: Omit<
     UseContractEventConfig<typeof jbFundingCycleStoreABI, 'Init'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbFundingCycleStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26671,8 +27659,11 @@ export function useJbOperatorStoreRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26705,8 +27696,11 @@ export function useJbOperatorStoreHasPermission<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26740,8 +27734,11 @@ export function useJbOperatorStoreHasPermissions<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26775,8 +27772,11 @@ export function useJbOperatorStorePermissionsOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26936,8 +27936,11 @@ export function useJbOperatorStoreSetOperators<
 export function usePrepareJbOperatorStoreWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbOperatorStoreABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26959,8 +27962,11 @@ export function usePrepareJbOperatorStoreWrite<TFunctionName extends string>(
 export function usePrepareJbOperatorStoreSetOperator(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbOperatorStoreABI, 'setOperator'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -26983,8 +27989,11 @@ export function usePrepareJbOperatorStoreSetOperator(
 export function usePrepareJbOperatorStoreSetOperators(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbOperatorStoreABI, 'setOperators'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27007,8 +28016,11 @@ export function usePrepareJbOperatorStoreSetOperators(
 export function useJbOperatorStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbOperatorStoreABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27030,8 +28042,11 @@ export function useJbOperatorStoreEvent<TEventName extends string>(
 export function useJbOperatorStoreSetOperatorEvent(
   config: Omit<
     UseContractEventConfig<typeof jbOperatorStoreABI, 'SetOperator'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbOperatorStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27057,8 +28072,11 @@ export function useJbProjectsRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27082,8 +28100,11 @@ export function useJbProjectsDomainSeparator<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27108,8 +28129,11 @@ export function useJbProjectsBalanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27134,8 +28158,11 @@ export function useJbProjectsCount<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27160,8 +28187,11 @@ export function useJbProjectsDelegates<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27186,8 +28216,11 @@ export function useJbProjectsGetApproved<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27212,8 +28245,11 @@ export function useJbProjectsGetPastTotalSupply<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27238,8 +28274,11 @@ export function useJbProjectsGetPastVotes<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27264,8 +28303,11 @@ export function useJbProjectsGetVotes<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27290,8 +28332,11 @@ export function useJbProjectsIsApprovedForAll<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27316,8 +28361,11 @@ export function useJbProjectsMetadataContentOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27342,8 +28390,11 @@ export function useJbProjectsName<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27368,8 +28419,11 @@ export function useJbProjectsNonces<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27394,8 +28448,11 @@ export function useJbProjectsOperatorStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27420,8 +28477,11 @@ export function useJbProjectsOwner<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27446,8 +28506,11 @@ export function useJbProjectsOwnerOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27472,8 +28535,11 @@ export function useJbProjectsSupportsInterface<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27498,8 +28564,11 @@ export function useJbProjectsSymbol<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27524,8 +28593,11 @@ export function useJbProjectsTokenUri<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -27550,8 +28622,11 @@ export function useJbProjectsTokenUriResolver<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbProjectsABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28068,8 +29143,11 @@ export function useJbProjectsTransferOwnership<
 export function usePrepareJbProjectsWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28090,8 +29168,11 @@ export function usePrepareJbProjectsWrite<TFunctionName extends string>(
 export function usePrepareJbProjectsApprove(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'approve'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28113,8 +29194,11 @@ export function usePrepareJbProjectsApprove(
 export function usePrepareJbProjectsCreateFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'createFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28136,8 +29220,11 @@ export function usePrepareJbProjectsCreateFor(
 export function usePrepareJbProjectsDelegate(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'delegate'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28159,8 +29246,11 @@ export function usePrepareJbProjectsDelegate(
 export function usePrepareJbProjectsDelegateBySig(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'delegateBySig'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28182,8 +29272,11 @@ export function usePrepareJbProjectsDelegateBySig(
 export function usePrepareJbProjectsRenounceOwnership(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'renounceOwnership'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28205,8 +29298,11 @@ export function usePrepareJbProjectsRenounceOwnership(
 export function usePrepareJbProjectsSafeTransferFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'safeTransferFrom'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28228,8 +29324,11 @@ export function usePrepareJbProjectsSafeTransferFrom(
 export function usePrepareJbProjectsSetApprovalForAll(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'setApprovalForAll'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28251,8 +29350,11 @@ export function usePrepareJbProjectsSetApprovalForAll(
 export function usePrepareJbProjectsSetMetadataOf(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'setMetadataOf'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28274,8 +29376,11 @@ export function usePrepareJbProjectsSetMetadataOf(
 export function usePrepareJbProjectsSetTokenUriResolver(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'setTokenUriResolver'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28300,8 +29405,11 @@ export function usePrepareJbProjectsSetTokenUriResolver(
 export function usePrepareJbProjectsTransferFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'transferFrom'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28323,8 +29431,11 @@ export function usePrepareJbProjectsTransferFrom(
 export function usePrepareJbProjectsTransferOwnership(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbProjectsABI, 'transferOwnership'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28346,8 +29457,11 @@ export function usePrepareJbProjectsTransferOwnership(
 export function useJbProjectsEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28368,8 +29482,11 @@ export function useJbProjectsEvent<TEventName extends string>(
 export function useJbProjectsApprovalEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'Approval'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28391,8 +29508,11 @@ export function useJbProjectsApprovalEvent(
 export function useJbProjectsApprovalForAllEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'ApprovalForAll'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28414,8 +29534,11 @@ export function useJbProjectsApprovalForAllEvent(
 export function useJbProjectsCreateEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'Create'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28437,8 +29560,11 @@ export function useJbProjectsCreateEvent(
 export function useJbProjectsDelegateChangedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'DelegateChanged'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28460,8 +29586,11 @@ export function useJbProjectsDelegateChangedEvent(
 export function useJbProjectsDelegateVotesChangedEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'DelegateVotesChanged'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28483,8 +29612,11 @@ export function useJbProjectsDelegateVotesChangedEvent(
 export function useJbProjectsOwnershipTransferredEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'OwnershipTransferred'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28506,8 +29638,11 @@ export function useJbProjectsOwnershipTransferredEvent(
 export function useJbProjectsSetMetadataEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'SetMetadata'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28529,8 +29664,11 @@ export function useJbProjectsSetMetadataEvent(
 export function useJbProjectsSetTokenUriResolverEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'SetTokenUriResolver'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28552,8 +29690,11 @@ export function useJbProjectsSetTokenUriResolverEvent(
 export function useJbProjectsTransferEvent(
   config: Omit<
     UseContractEventConfig<typeof jbProjectsABI, 'Transfer'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbProjectsAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -28585,9 +29726,10 @@ export function useJbSingleTokenPaymentTerminalStoreRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28626,9 +29768,10 @@ export function useJbSingleTokenPaymentTerminalStoreBalanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28668,9 +29811,10 @@ export function useJbSingleTokenPaymentTerminalStoreCurrentOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28710,9 +29854,10 @@ export function useJbSingleTokenPaymentTerminalStoreCurrentReclaimableOverflowOf
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28752,9 +29897,10 @@ export function useJbSingleTokenPaymentTerminalStoreCurrentTotalOverflowOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28794,9 +29940,10 @@ export function useJbSingleTokenPaymentTerminalStoreDirectory<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28836,9 +29983,10 @@ export function useJbSingleTokenPaymentTerminalStoreFundingCycleStore<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28878,9 +30026,10 @@ export function useJbSingleTokenPaymentTerminalStorePrices<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28920,9 +30069,10 @@ export function useJbSingleTokenPaymentTerminalStoreUsedDistributionLimitOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -28962,9 +30112,10 @@ export function useJbSingleTokenPaymentTerminalStoreUsedOverflowAllowanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29358,9 +30509,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreWrite<
       typeof jbSingleTokenPaymentTerminalStoreABI,
       TFunctionName
     >,
-    'abi'
+    'abi' | 'address'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29391,9 +30543,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordAddedBalanceFor
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordAddedBalanceFor'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29425,9 +30578,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordDistributionFor
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordDistributionFor'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29459,9 +30613,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordMigration(
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordMigration'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29493,9 +30648,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordPaymentFrom(
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordPaymentFrom'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29527,9 +30683,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordRedemptionFor(
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordRedemptionFor'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29561,9 +30718,10 @@ export function usePrepareJbSingleTokenPaymentTerminalStoreRecordUsedAllowanceOf
       typeof jbSingleTokenPaymentTerminalStoreABI,
       'recordUsedAllowanceOf'
     >,
-    'abi' | 'functionName'
+    'abi' | 'address' | 'functionName'
   > & {
     chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
   } = {} as any,
 ) {
   const { chain } = useNetwork()
@@ -29595,8 +30753,11 @@ export function useJbSplitsStoreRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbSplitsStoreABI, TFunctionName, TSelectData>,
-    'abi'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29624,8 +30785,11 @@ export function useJbSplitsStoreDirectory<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbSplitsStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29654,8 +30818,11 @@ export function useJbSplitsStoreOperatorStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbSplitsStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29684,8 +30851,11 @@ export function useJbSplitsStoreProjects<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbSplitsStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29714,8 +30884,11 @@ export function useJbSplitsStoreSplitsOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbSplitsStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29814,8 +30987,11 @@ export function useJbSplitsStoreSet<
 export function usePrepareJbSplitsStoreWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbSplitsStoreABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29836,8 +31012,11 @@ export function usePrepareJbSplitsStoreWrite<TFunctionName extends string>(
 export function usePrepareJbSplitsStoreSet(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbSplitsStoreABI, 'set'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29859,8 +31038,11 @@ export function usePrepareJbSplitsStoreSet(
 export function useJbSplitsStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbSplitsStoreABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29881,8 +31063,11 @@ export function useJbSplitsStoreEvent<TEventName extends string>(
 export function useJbSplitsStoreSetSplitEvent(
   config: Omit<
     UseContractEventConfig<typeof jbSplitsStoreABI, 'SetSplit'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbSplitsStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29914,8 +31099,11 @@ export function useJbTiered721DelegateStoreRead<
       TFunctionName,
       TSelectData
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29953,8 +31141,11 @@ export function useJbTiered721DelegateStoreBalanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -29993,8 +31184,11 @@ export function useJbTiered721DelegateStoreDefaultReservedTokenBeneficiaryOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30033,8 +31227,11 @@ export function useJbTiered721DelegateStoreEncodedIpfsUriOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30073,8 +31270,11 @@ export function useJbTiered721DelegateStoreEncodedTierIpfsUriOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30113,8 +31313,11 @@ export function useJbTiered721DelegateStoreFlagsOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30153,8 +31356,11 @@ export function useJbTiered721DelegateStoreIsTierRemoved<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30193,8 +31399,11 @@ export function useJbTiered721DelegateStoreMaxTierIdOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30233,8 +31442,11 @@ export function useJbTiered721DelegateStoreNumberOfBurnedFor<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30273,8 +31485,11 @@ export function useJbTiered721DelegateStoreNumberOfReservedTokensOutstandingFor<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30313,8 +31528,11 @@ export function useJbTiered721DelegateStoreNumberOfReservesMintedFor<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30353,8 +31571,11 @@ export function useJbTiered721DelegateStoreRedemptionWeightOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30393,8 +31614,11 @@ export function useJbTiered721DelegateStoreReservedTokenBeneficiaryOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30433,8 +31657,11 @@ export function useJbTiered721DelegateStoreTierBalanceOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30473,8 +31700,11 @@ export function useJbTiered721DelegateStoreTierIdOfToken<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30513,8 +31743,11 @@ export function useJbTiered721DelegateStoreTierOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30553,8 +31786,11 @@ export function useJbTiered721DelegateStoreTierOfTokenId<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30593,8 +31829,11 @@ export function useJbTiered721DelegateStoreTierVotingUnitsOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30633,8 +31872,11 @@ export function useJbTiered721DelegateStoreTiersOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30673,8 +31915,11 @@ export function useJbTiered721DelegateStoreTokenUriResolverOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30713,8 +31958,11 @@ export function useJbTiered721DelegateStoreTotalRedemptionWeight<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30753,8 +32001,11 @@ export function useJbTiered721DelegateStoreTotalSupplyOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -30793,8 +32044,11 @@ export function useJbTiered721DelegateStoreVotingUnitsOf<
       TFunctionName,
       TSelectData
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31383,8 +32637,11 @@ export function usePrepareJbTiered721DelegateStoreWrite<
       typeof jbTiered721DelegateStoreABI,
       TFunctionName
     >,
-    'abi'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31414,8 +32671,11 @@ export function usePrepareJbTiered721DelegateStoreCleanTiers(
       typeof jbTiered721DelegateStoreABI,
       'cleanTiers'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31446,8 +32706,11 @@ export function usePrepareJbTiered721DelegateStoreRecordAddTiers(
       typeof jbTiered721DelegateStoreABI,
       'recordAddTiers'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31478,8 +32741,11 @@ export function usePrepareJbTiered721DelegateStoreRecordBurn(
       typeof jbTiered721DelegateStoreABI,
       'recordBurn'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31510,8 +32776,11 @@ export function usePrepareJbTiered721DelegateStoreRecordFlags(
       typeof jbTiered721DelegateStoreABI,
       'recordFlags'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31542,8 +32811,11 @@ export function usePrepareJbTiered721DelegateStoreRecordMint(
       typeof jbTiered721DelegateStoreABI,
       'recordMint'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31574,8 +32846,11 @@ export function usePrepareJbTiered721DelegateStoreRecordMintReservesFor(
       typeof jbTiered721DelegateStoreABI,
       'recordMintReservesFor'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31606,8 +32881,11 @@ export function usePrepareJbTiered721DelegateStoreRecordRemoveTierIds(
       typeof jbTiered721DelegateStoreABI,
       'recordRemoveTierIds'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31638,8 +32916,11 @@ export function usePrepareJbTiered721DelegateStoreRecordSetEncodedIpfsUriOf(
       typeof jbTiered721DelegateStoreABI,
       'recordSetEncodedIPFSUriOf'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31670,8 +32951,11 @@ export function usePrepareJbTiered721DelegateStoreRecordSetTokenUriResolver(
       typeof jbTiered721DelegateStoreABI,
       'recordSetTokenUriResolver'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31702,8 +32986,11 @@ export function usePrepareJbTiered721DelegateStoreRecordTransferForTier(
       typeof jbTiered721DelegateStoreABI,
       'recordTransferForTier'
     >,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31731,8 +33018,11 @@ export function usePrepareJbTiered721DelegateStoreRecordTransferForTier(
 export function useJbTiered721DelegateStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbTiered721DelegateStoreABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31756,8 +33046,11 @@ export function useJbTiered721DelegateStoreEvent<TEventName extends string>(
 export function useJbTiered721DelegateStoreCleanTiersEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTiered721DelegateStoreABI, 'CleanTiers'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTiered721DelegateStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31785,8 +33078,11 @@ export function useJbTokenStoreRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31814,8 +33110,11 @@ export function useJbTokenStoreBalanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31844,8 +33143,11 @@ export function useJbTokenStoreDirectory<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31874,8 +33176,11 @@ export function useJbTokenStoreFundingCycleStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31904,8 +33209,11 @@ export function useJbTokenStoreOperatorStore<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31934,8 +33242,11 @@ export function useJbTokenStoreProjects<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31964,8 +33275,11 @@ export function useJbTokenStoreTokenOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -31994,8 +33308,11 @@ export function useJbTokenStoreTotalSupplyOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32024,8 +33341,11 @@ export function useJbTokenStoreUnclaimedBalanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32054,8 +33374,11 @@ export function useJbTokenStoreUnclaimedTotalSupplyOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof jbTokenStoreABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32343,8 +33666,11 @@ export function useJbTokenStoreTransferFrom<
 export function usePrepareJbTokenStoreWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, TFunctionName>,
-    'abi'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32365,8 +33691,11 @@ export function usePrepareJbTokenStoreWrite<TFunctionName extends string>(
 export function usePrepareJbTokenStoreBurnFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'burnFrom'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32388,8 +33717,11 @@ export function usePrepareJbTokenStoreBurnFrom(
 export function usePrepareJbTokenStoreClaimFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'claimFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32411,8 +33743,11 @@ export function usePrepareJbTokenStoreClaimFor(
 export function usePrepareJbTokenStoreIssueFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'issueFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32434,8 +33769,11 @@ export function usePrepareJbTokenStoreIssueFor(
 export function usePrepareJbTokenStoreMintFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'mintFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32457,8 +33795,11 @@ export function usePrepareJbTokenStoreMintFor(
 export function usePrepareJbTokenStoreSetFor(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'setFor'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32480,8 +33821,11 @@ export function usePrepareJbTokenStoreSetFor(
 export function usePrepareJbTokenStoreTransferFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof jbTokenStoreABI, 'transferFrom'>,
-    'abi' | 'functionName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32503,8 +33847,11 @@ export function usePrepareJbTokenStoreTransferFrom(
 export function useJbTokenStoreEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, TEventName>,
-    'abi'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32525,8 +33872,11 @@ export function useJbTokenStoreEvent<TEventName extends string>(
 export function useJbTokenStoreBurnEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Burn'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32548,8 +33898,11 @@ export function useJbTokenStoreBurnEvent(
 export function useJbTokenStoreClaimEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Claim'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32571,8 +33924,11 @@ export function useJbTokenStoreClaimEvent(
 export function useJbTokenStoreIssueEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Issue'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32594,8 +33950,11 @@ export function useJbTokenStoreIssueEvent(
 export function useJbTokenStoreMintEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Mint'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32617,8 +33976,11 @@ export function useJbTokenStoreMintEvent(
 export function useJbTokenStoreSetEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Set'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32640,8 +34002,11 @@ export function useJbTokenStoreSetEvent(
 export function useJbTokenStoreTransferEvent(
   config: Omit<
     UseContractEventConfig<typeof jbTokenStoreABI, 'Transfer'>,
-    'abi' | 'eventName'
-  > & { chainId?: keyof typeof jbTokenStoreAddress } = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  } = {} as any,
 ) {
   const { chain } = useNetwork()
   const defaultChainId = useChainId()
@@ -32652,4 +34017,737 @@ export function useJbTokenStoreTransferEvent(
     eventName: 'Transfer',
     ...config,
   } as UseContractEventConfig<typeof jbTokenStoreABI, 'Transfer'>)
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Core
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbControllerABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Cb86D43B665196BC719b6974D320bf674AFb395)
+ */
+export function getJbController(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbControllerABI,
+    address:
+      jbControllerAddress[config.chainId as keyof typeof jbControllerAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbControllerABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Cb86D43B665196BC719b6974D320bf674AFb395)
+ */
+export function readJbController<
+  TAbi extends readonly unknown[] = typeof jbControllerABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbControllerAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbControllerABI,
+    address:
+      jbControllerAddress[config.chainId as keyof typeof jbControllerAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbController3_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1d260DE91233e650F136Bf35f8A4ea1F2b68aDB6)
+ */
+export function getJbController3_1(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbController3_1ABI,
+    address:
+      jbController3_1Address[
+        config.chainId as keyof typeof jbController3_1Address
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbController3_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1d260DE91233e650F136Bf35f8A4ea1F2b68aDB6)
+ */
+export function readJbController3_1<
+  TAbi extends readonly unknown[] = typeof jbController3_1ABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbController3_1Address
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbController3_1ABI,
+    address:
+      jbController3_1Address[
+        config.chainId as keyof typeof jbController3_1Address
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbDirectoryABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
+ */
+export function getJbDirectory(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbDirectoryABI,
+    address:
+      jbDirectoryAddress[config.chainId as keyof typeof jbDirectoryAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbDirectoryABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
+ */
+export function readJbDirectory<
+  TAbi extends readonly unknown[] = typeof jbDirectoryABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbDirectoryAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbDirectoryABI,
+    address:
+      jbDirectoryAddress[config.chainId as keyof typeof jbDirectoryAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbetherc20ProjectPayerDeployerABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xa5ca9CEa71Df4b680484e5Ff753a1b1185ba5b43)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x483bFC77f28DB242d40aa456D801354fEEBb502E)
+ */
+export function getJbetherc20ProjectPayerDeployer(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbetherc20ProjectPayerDeployerABI,
+    address:
+      jbetherc20ProjectPayerDeployerAddress[
+        config.chainId as keyof typeof jbetherc20ProjectPayerDeployerAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbetherc20SplitsPayerDeployerABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x3ff1f0583a41CE8B9463F74a1227C75FC13f7C27)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4C466008867c471316Be2606E5D76D1940fC4765)
+ */
+export function getJbetherc20SplitsPayerDeployer(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbetherc20SplitsPayerDeployerABI,
+    address:
+      jbetherc20SplitsPayerDeployerAddress[
+        config.chainId as keyof typeof jbetherc20SplitsPayerDeployerAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminalABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x55d4dfb578daA4d60380995ffF7a706471d7c719)
+ */
+export function getJbethPaymentTerminal(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbethPaymentTerminalABI,
+    address:
+      jbethPaymentTerminalAddress[
+        config.chainId as keyof typeof jbethPaymentTerminalAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminalABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x55d4dfb578daA4d60380995ffF7a706471d7c719)
+ */
+export function readJbethPaymentTerminal<
+  TAbi extends readonly unknown[] = typeof jbethPaymentTerminalABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminalAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbethPaymentTerminalABI,
+    address:
+      jbethPaymentTerminalAddress[
+        config.chainId as keyof typeof jbethPaymentTerminalAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0baCb87Cf7DbDdde2299D92673A938E067a9eb29)
+ */
+export function getJbethPaymentTerminal3_1(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbethPaymentTerminal3_1ABI,
+    address:
+      jbethPaymentTerminal3_1Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1Address
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0baCb87Cf7DbDdde2299D92673A938E067a9eb29)
+ */
+export function readJbethPaymentTerminal3_1<
+  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1ABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1Address
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbethPaymentTerminal3_1ABI,
+    address:
+      jbethPaymentTerminal3_1Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1Address
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x82129d4109625F94582bDdF6101a8Cd1a27919f5)
+ */
+export function getJbethPaymentTerminal3_1_1(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbethPaymentTerminal3_1_1ABI,
+    address:
+      jbethPaymentTerminal3_1_1Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1_1Address
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_1ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x82129d4109625F94582bDdF6101a8Cd1a27919f5)
+ */
+export function readJbethPaymentTerminal3_1_1<
+  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1_1ABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbethPaymentTerminal3_1_1ABI,
+    address:
+      jbethPaymentTerminal3_1_1Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1_1Address
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_2ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xd89Ed8008961F68Aab849f49e122f9a1266240Db)
+ */
+export function getJbethPaymentTerminal3_1_2(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbethPaymentTerminal3_1_2ABI,
+    address:
+      jbethPaymentTerminal3_1_2Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1_2Address
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_2ABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xd89Ed8008961F68Aab849f49e122f9a1266240Db)
+ */
+export function readJbethPaymentTerminal3_1_2<
+  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1_2ABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbethPaymentTerminal3_1_2ABI,
+    address:
+      jbethPaymentTerminal3_1_2Address[
+        config.chainId as keyof typeof jbethPaymentTerminal3_1_2Address
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbFundAccessConstraintsStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbF8b5ea02e50073348767fd9418beDEd30C835D4)
+ */
+export function getJbFundAccessConstraintsStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbFundAccessConstraintsStoreABI,
+    address:
+      jbFundAccessConstraintsStoreAddress[
+        config.chainId as keyof typeof jbFundAccessConstraintsStoreAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbFundAccessConstraintsStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbF8b5ea02e50073348767fd9418beDEd30C835D4)
+ */
+export function readJbFundAccessConstraintsStore<
+  TAbi extends readonly unknown[] = typeof jbFundAccessConstraintsStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbFundAccessConstraintsStoreABI,
+    address:
+      jbFundAccessConstraintsStoreAddress[
+        config.chainId as keyof typeof jbFundAccessConstraintsStoreAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbFundingCycleStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+ */
+export function getJbFundingCycleStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbFundingCycleStoreABI,
+    address:
+      jbFundingCycleStoreAddress[
+        config.chainId as keyof typeof jbFundingCycleStoreAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbFundingCycleStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+ */
+export function readJbFundingCycleStore<
+  TAbi extends readonly unknown[] = typeof jbFundingCycleStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbFundingCycleStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbFundingCycleStoreABI,
+    address:
+      jbFundingCycleStoreAddress[
+        config.chainId as keyof typeof jbFundingCycleStoreAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbOperatorStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x99dB6b517683237dE9C494bbd17861f3608F3585)
+ */
+export function getJbOperatorStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbOperatorStoreABI,
+    address:
+      jbOperatorStoreAddress[
+        config.chainId as keyof typeof jbOperatorStoreAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbOperatorStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x99dB6b517683237dE9C494bbd17861f3608F3585)
+ */
+export function readJbOperatorStore<
+  TAbi extends readonly unknown[] = typeof jbOperatorStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbOperatorStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbOperatorStoreABI,
+    address:
+      jbOperatorStoreAddress[
+        config.chainId as keyof typeof jbOperatorStoreAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbProjectsABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x21263a042aFE4bAE34F08Bb318056C181bD96D3b)
+ */
+export function getJbProjects(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbProjectsABI,
+    address:
+      jbProjectsAddress[config.chainId as keyof typeof jbProjectsAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbProjectsABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x21263a042aFE4bAE34F08Bb318056C181bD96D3b)
+ */
+export function readJbProjects<
+  TAbi extends readonly unknown[] = typeof jbProjectsABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbProjectsAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbProjectsABI,
+    address:
+      jbProjectsAddress[config.chainId as keyof typeof jbProjectsAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbSingleTokenPaymentTerminalStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b62ccB7fdA139185374c8f36FAa388c20E1387F)
+ */
+export function getJbSingleTokenPaymentTerminalStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbSingleTokenPaymentTerminalStoreABI,
+    address:
+      jbSingleTokenPaymentTerminalStoreAddress[
+        config.chainId as keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbSingleTokenPaymentTerminalStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b62ccB7fdA139185374c8f36FAa388c20E1387F)
+ */
+export function readJbSingleTokenPaymentTerminalStore<
+  TAbi extends readonly unknown[] = typeof jbSingleTokenPaymentTerminalStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbSingleTokenPaymentTerminalStoreABI,
+    address:
+      jbSingleTokenPaymentTerminalStoreAddress[
+        config.chainId as keyof typeof jbSingleTokenPaymentTerminalStoreAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbSplitsStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xce2Ce2F37fE5B2C2Dd047908B2F61c9c3f707272)
+ */
+export function getJbSplitsStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbSplitsStoreABI,
+    address:
+      jbSplitsStoreAddress[config.chainId as keyof typeof jbSplitsStoreAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbSplitsStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xce2Ce2F37fE5B2C2Dd047908B2F61c9c3f707272)
+ */
+export function readJbSplitsStore<
+  TAbi extends readonly unknown[] = typeof jbSplitsStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbSplitsStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbSplitsStoreABI,
+    address:
+      jbSplitsStoreAddress[config.chainId as keyof typeof jbSplitsStoreAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function getJbTiered721DelegateStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        config.chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
+ */
+export function readJbTiered721DelegateStore<
+  TAbi extends readonly unknown[] = typeof jbTiered721DelegateStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbTiered721DelegateStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbTiered721DelegateStoreABI,
+    address:
+      jbTiered721DelegateStoreAddress[
+        config.chainId as keyof typeof jbTiered721DelegateStoreAddress
+      ],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link jbTokenStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1246a50e3aDaF684Ac566f0c40816fF738F309B3)
+ */
+export function getJbTokenStore(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  },
+) {
+  return getContract({
+    abi: jbTokenStoreABI,
+    address:
+      jbTokenStoreAddress[config.chainId as keyof typeof jbTokenStoreAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link jbTokenStoreABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1246a50e3aDaF684Ac566f0c40816fF738F309B3)
+ */
+export function readJbTokenStore<
+  TAbi extends readonly unknown[] = typeof jbTokenStoreABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof jbTokenStoreAddress
+    address?: Address
+  },
+) {
+  return readContract({
+    abi: jbTokenStoreABI,
+    address:
+      jbTokenStoreAddress[config.chainId as keyof typeof jbTokenStoreAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
 }

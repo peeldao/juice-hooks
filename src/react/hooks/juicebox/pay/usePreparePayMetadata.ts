@@ -19,7 +19,7 @@ function encodeJB721DelegateV3_4PayMetadata(
   const args = [
     metadata.allowOverspending ?? DEFAULT_ALLOW_OVERSPENDING,
     metadata.tierIdsToMint.map(Number),
-  ] as const;
+  ] as [boolean, readonly number[]];
 
   const encoded = encodeAbiParameters(
     [{ type: "bool" }, { type: "uint16[]" }],
