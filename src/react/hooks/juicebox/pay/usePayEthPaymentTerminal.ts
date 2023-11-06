@@ -45,12 +45,12 @@ export interface PayParams {
   preferClaimedTokens?: boolean;
   /**
    * Arguments to pass to the datasource.
-   * The pay `metadata` will be created from these arguments, iff the given argments are intended for the current datasource.
+   * The pay `metadata` will be created from these arguments, if the given argments are intended for the current datasource.
    *
-   * @example to mint NFTs: if `jb721Delegate` argument is passed, and the current datasource is a JB721Delegate,
+   * To mint NFTs: if `jb721Delegate` argument is passed, and the current datasource is a JB721Delegate,
    * then the pay `metadata` will be created to mint NFTs.
    */
-  dataSourceArgs?: DataSourceParams;
+  jb721Delegate?: DataSourceParams["jb721Delegate"];
 }
 
 /**
@@ -64,10 +64,10 @@ export function usePayEthPaymentTerminal({
   minReturnedTokens,
   preferClaimedTokens,
   memo,
-  dataSourceArgs,
+  jb721Delegate,
 }: PayParams) {
   const { address: defaultBeneficiaryAddress } = useAccount();
-  const payMetadata = usePreparePayMetadata(dataSourceArgs);
+  const payMetadata = usePreparePayMetadata({ jb721Delegate });
 
   const args = [
     projectId,
