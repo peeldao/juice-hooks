@@ -1,4 +1,4 @@
- import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { getNextCycleWeight, getPrevCycleWeight } from './fundingCycle';  
 
 describe("Cycle Weight utilities", () => {
