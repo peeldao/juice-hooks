@@ -3,6 +3,8 @@ import {
   formatUnits as formatUnitsViem,
 } from "viem";
 
+const DEFAULT_TRUNCATE_TO = 4;
+
 /**
  * Format a given Ethereum address to a human-readable representation.
  * @param address The address to format.
@@ -11,19 +13,19 @@ import {
  */
 export function formatEthAddress(
   address: string,
-  opts: {
+  {
+    truncateTo = DEFAULT_TRUNCATE_TO,
+  }: {
     truncateTo?: number;
   } = {
-    truncateTo: 4,
+    truncateTo: DEFAULT_TRUNCATE_TO,
   }
 ) {
-  if (!opts.truncateTo) return address;
-
-  const frontTruncate = opts.truncateTo + 2; // account for 0x
+  const frontTruncate = truncateTo + 2; // account for 0x
   return (
     address.substring(0, frontTruncate) +
     "..." +
-    address.substring(address.length - opts.truncateTo, address.length)
+    address.substring(address.length - truncateTo, address.length)
   );
 }
 
