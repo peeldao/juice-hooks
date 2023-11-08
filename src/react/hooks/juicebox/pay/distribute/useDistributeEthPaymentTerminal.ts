@@ -22,15 +22,15 @@ interface DistributePayoutsTxParams {
   /**
    * Currency of amount to distribute (0 for ETH, or 1 for USD)
    */
-  currency?: bigint;
+  currency: bigint;
   /**
    * Minimum number of tokens to return to the beneficiaryAddress. Defaults to 0.
    */
   minReturnedTokens?: bigint;
   /**
-   * Encoded metadata
+   * Encoded metadata (e.g. 0x00..)
    */
-  metadata?: bigint;
+  metadata?: Address;
 }
 
 /**
