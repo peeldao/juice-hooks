@@ -68,8 +68,9 @@ export const JBTokenProvider = ({
   const { data: tokenAddress } = useJbTokenStoreTokenOf({
     args: [projectId],
   });
-  const fetchTokenEnabled =
-    tokenAddress && !isAddressEqual(tokenAddress, zeroAddress);
+  const fetchTokenEnabled = Boolean(
+    tokenAddress && !isAddressEqual(tokenAddress, zeroAddress)
+  );
   const token = useToken({
     address: fetchTokenEnabled ? tokenAddress : undefined,
     enabled: fetchTokenEnabled,
