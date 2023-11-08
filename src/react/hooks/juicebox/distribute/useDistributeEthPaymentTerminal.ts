@@ -1,6 +1,7 @@
 import {
   DEFAULT_METADATA,
   DEFAULT_MIN_RETURNED_TOKENS,
+  JBCurrency,
   JB_ETHER_ADDRESS,
 } from "src/constants";
 import { Address } from "viem";
@@ -23,7 +24,7 @@ interface DistributePayoutsTxParams {
   /**
    * Currency of the project's current funding cycle's distribution limit (1 for ETH, or 2 for USD).
    */
-  currency: 1n | 2n;
+  currency: JBCurrency;
   /**
    * Minimum number of tokens to return to the beneficiaryAddress. Defaults to 0.
    */
@@ -37,7 +38,7 @@ interface DistributePayoutsTxParams {
 /**
  * Initiate a transaction to distribute from a project's ETH payment terminal.
  */
-export function useDistributeEthPaymentTerminal({
+export function useEthPaymentTerminalDistributePayouts({
   projectId,
   terminalAddress,
   amountWei,
@@ -60,10 +61,7 @@ export function useDistributeEthPaymentTerminal({
     enabled: Boolean(terminalAddress && amountWei > 0n),
   });
 
-  console.log("hooks::prepare", prepare);
-
   const contractWrite = useContractWrite(prepare.config);
-  console.log("hooks::contractWrite", contractWrite);
 
   const transaction = useWaitForTransaction({
     hash: contractWrite.data?.hash,

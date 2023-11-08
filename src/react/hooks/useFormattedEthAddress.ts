@@ -22,16 +22,12 @@ export function useFormattedEthAddress(
     enabled: enableEns,
   });
 
-  console.log("ens", ensName);
-
   const formattedAddress = useMemo(() => {
     if (!address) return null;
 
     if (enableEns && ensName) {
       return ensName;
     }
-
-    console.log("ens2", enableEns, ensName);
 
     return formatEthAddress(address, { truncateTo });
   }, [address, enableEns, truncateTo, ensName]);
