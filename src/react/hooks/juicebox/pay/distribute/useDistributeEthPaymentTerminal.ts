@@ -18,7 +18,7 @@ interface DistributePayoutsTxParams {
   /**
    * Address of the project's terminal
    */
-  terminalAddress: Address | undefined;
+  terminalAddress: Address;
   /**
    * Currency of amount to distribute (0 for ETH, or 1 for USD)
    */
