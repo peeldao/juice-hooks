@@ -107,7 +107,7 @@ export function useJb721DelegateTiers(
     dataSourceAddress && !isAddressEqual(dataSourceAddress, zeroAddress);
 
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
-    args: dataSourceAddress
+    args: enabled
       ? [
           dataSourceAddress,
           args?.categories ?? [], // _categories
@@ -119,40 +119,47 @@ export function useJb721DelegateTiers(
     enabled,
   });
 
-  return useQuery(["jb721DelegateTiers", dataSourceAddress], async () => {
-    if (!enabled) return null;
+  return useQuery(
+    ["jb721DelegateTiers", dataSourceAddress],
+    async () => {
+      if (!enabled) return null;
 
-    const result = await Promise.allSettled(
-      tiersRaw?.map(async (tier) => {
-        const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
-        const ipfsUrl = ipfsGatewayUrl(metadataCid, args?.ipfsGatewayHostname);
+      const result = await Promise.allSettled(
+        tiersRaw?.map(async (tier) => {
+          const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
+          const ipfsUrl = ipfsGatewayUrl(
+            metadataCid,
+            args?.ipfsGatewayHostname
+          );
 
-        try {
-          const metadata = await juiceFetch<JB721DelegateTierMetadata>({
-            url: ipfsUrl,
-            timeout: args?.requestTimeout ?? REQUEST_TIMEOUT_MS,
-          });
+          try {
+            const metadata = await juiceFetch<JB721DelegateTierMetadata>({
+              url: ipfsUrl,
+              timeout: args?.requestTimeout ?? REQUEST_TIMEOUT_MS,
+            });
 
-          return { ...tier, metadata };
-        } catch (e) {
-          console.error(e);
-          throw { error: e, tier };
-        }
-      }) ?? []
-    );
-    const failed = result.filter(
-      (res) => res.status === "rejected"
-    ) as PromiseRejectedResult[];
-    const success = result.filter(
-      (res) => res.status === "fulfilled"
-    ) as PromiseFulfilledResult<JB721DelegateTier>[];
+            return { ...tier, metadata };
+          } catch (e) {
+            console.error(e);
+            throw { error: e, tier };
+          }
+        }) ?? []
+      );
+      const failed = result.filter(
+        (res) => res.status === "rejected"
+      ) as PromiseRejectedResult[];
+      const success = result.filter(
+        (res) => res.status === "fulfilled"
+      ) as PromiseFulfilledResult<JB721DelegateTier>[];
 
-    if (failed.length > 0) {
-      console.error("Failed to load metadata for some tiers", failed);
-    }
+      if (failed.length > 0) {
+        console.error("Failed to load metadata for some tiers", failed);
+      }
 
-    const loadedTiers = success.map((res) => res.value);
+      const loadedTiers = success.map((res) => res.value);
 
-    return loadedTiers;
-  });
+      return loadedTiers;
+    },
+    { enabled }
+  );
 }

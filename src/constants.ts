@@ -37,6 +37,7 @@ export const JB_CURRENCIES = {
   ETH: 1n,
   USD: 2n,
 } as const;
+export type JBCurrency = (typeof JB_CURRENCIES)[keyof typeof JB_CURRENCIES];
 
 /**
  * Protocol version 2.
@@ -52,6 +53,6 @@ export const DEFAULT_MEMO = "";
  * Default value for `metadata` arguments in Juicebox transactions.
  */
 export const DEFAULT_METADATA = "0x0";
-export const DEFAULT_MIN_RETURNED_TOKENS = 0n
+export const DEFAULT_MIN_RETURNED_TOKENS = 0n;
 export const DEFAULT_ALLOW_OVERSPENDING = true;
 export const DEFAULT_JB_721_TIER_CATEGORY = 1;
