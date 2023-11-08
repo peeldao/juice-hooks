@@ -1,6 +1,7 @@
 import {
   DEFAULT_METADATA,
   DEFAULT_MIN_RETURNED_TOKENS,
+  JB_ETHER_ADDRESS,
 } from "src/constants";
 import { Address } from "viem";
 import { useContractWrite, useWaitForTransaction } from "wagmi";
@@ -14,15 +15,15 @@ interface DistributePayoutsTxParams {
   /**
    * Amount to distribute in wei (18 decimals)
    */
-  amountWei: bigint
+  amountWei: bigint;
   /**
    * Address of the project's terminal
    */
   terminalAddress: Address;
   /**
-   * Currency of amount to distribute (0 for ETH, or 1 for USD)
+   * Currency of the project's current funding cycle's distribution limit (1 for ETH, or 2 for USD).
    */
-  currency: bigint;
+  currency: 1n | 2n;
   /**
    * Minimum number of tokens to return to the beneficiaryAddress. Defaults to 0.
    */
@@ -42,15 +43,14 @@ export function useDistributeEthPaymentTerminal({
   amountWei,
   currency,
   minReturnedTokens,
-  metadata
+  metadata,
 }: DistributePayoutsTxParams) {
-
   const args = [
     projectId,
     amountWei,
     currency,
-    terminalAddress,
-    minReturnedTokens ?? BigInt(DEFAULT_MIN_RETURNED_TOKENS),
+    JB_ETHER_ADDRESS,
+    minReturnedTokens ?? DEFAULT_MIN_RETURNED_TOKENS,
     metadata ?? DEFAULT_METADATA,
   ] as const;
 
