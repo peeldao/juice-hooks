@@ -50,7 +50,7 @@ export function useDistributeEthPaymentTerminal({
     amountWei,
     currency,
     terminalAddress,
-    minReturnedTokens ?? DEFAULT_MIN_RETURNED_TOKENS,
+    minReturnedTokens ?? BigInt(DEFAULT_MIN_RETURNED_TOKENS),
     metadata ?? DEFAULT_METADATA,
   ]
 
