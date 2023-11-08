@@ -2,7 +2,7 @@ import { ReadContractResult } from "@wagmi/core";
 import { AsyncData } from "src/react/contexts/types";
 import { decodeEncodedIpfsUri, ipfsGatewayUrl } from "src/utils/ipfs";
 import { juiceFetch } from "src/utils/juiceFetch";
-import { Address } from "viem";
+import { Address, isAddressEqual, zeroAddress } from "viem";
 import { useQuery } from "wagmi";
 import {
   jbTiered721DelegateStoreABI,
@@ -102,7 +102,10 @@ export function useJb721DelegateTiers(
      */
     requestTimeout?: number;
   }
-): AsyncData<JB721DelegateTier[]> {
+): AsyncData<JB721DelegateTier[] | null> {
+  const enabled =
+    dataSourceAddress && !isAddressEqual(dataSourceAddress, zeroAddress);
+
   const { data: tiersRaw } = useJbTiered721DelegateStoreTiersOf({
     args: dataSourceAddress
       ? [
@@ -113,9 +116,12 @@ export function useJb721DelegateTiers(
           BigInt(args?.limit ?? MAX_NFT_REWARD_TIERS),
         ]
       : undefined,
+    enabled,
   });
 
   return useQuery(["jb721DelegateTiers", dataSourceAddress], async () => {
+    if (!enabled) return null;
+
     const result = await Promise.allSettled(
       tiersRaw?.map(async (tier) => {
         const metadataCid = decodeEncodedIpfsUri(tier.encodedIPFSUri);
