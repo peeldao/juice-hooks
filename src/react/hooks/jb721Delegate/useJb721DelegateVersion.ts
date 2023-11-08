@@ -7,6 +7,11 @@ export function useJb721DelegateVersion(datasource: Address | undefined) {
   const chain = useChain();
 
   return useQuery(["jb721DelegateVersion", datasource], async () => {
+    console.log(
+      "datasource check",
+      datasource,
+      datasource ? isAddressEqual(datasource, zeroAddress) : "bail"
+    );
     if (!datasource || isAddressEqual(datasource, zeroAddress)) {
       return null;
     }

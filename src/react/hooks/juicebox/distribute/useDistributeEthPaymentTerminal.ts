@@ -60,7 +60,10 @@ export function useDistributeEthPaymentTerminal({
     enabled: Boolean(terminalAddress && amountWei > 0n),
   });
 
+  console.log("hooks::prepare", prepare);
+
   const contractWrite = useContractWrite(prepare.config);
+  console.log("hooks::contractWrite", contractWrite);
 
   const transaction = useWaitForTransaction({
     hash: contractWrite.data?.hash,
