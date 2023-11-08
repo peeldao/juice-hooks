@@ -8,6 +8,7 @@ import { useJBContractContext } from "../JBContractContext/JBContractContext";
 import { AsyncData, AsyncDataNone } from "../types";
 import { JBToken } from "../../../utils/data";
 import { FetchTokenResult } from "wagmi/dist/actions";
+import { isAddressEqual, zeroAddress } from "viem";
 
 /**
  * Context for the token of a project.
@@ -67,7 +68,12 @@ export const JBTokenProvider = ({
   const { data: tokenAddress } = useJbTokenStoreTokenOf({
     args: [projectId],
   });
-  const token = useToken({ address: tokenAddress });
+  const fetchTokenEnabled =
+    tokenAddress && !isAddressEqual(tokenAddress, zeroAddress);
+  const token = useToken({
+    address: fetchTokenEnabled ? tokenAddress : undefined,
+    enabled: fetchTokenEnabled,
+  });
 
   const totalOutstandingRes = useJbController3_1TotalOutstandingTokensOf({
     address: controller?.data,
