@@ -52,7 +52,7 @@ export function useDistributeEthPaymentTerminal({
     terminalAddress,
     minReturnedTokens ?? BigInt(DEFAULT_MIN_RETURNED_TOKENS),
     metadata ?? DEFAULT_METADATA,
-  ]
+  ] as const;
 
   const prepare = usePrepareJbethPaymentTerminal3_1_2DistributePayoutsOf({
     address: terminalAddress,
