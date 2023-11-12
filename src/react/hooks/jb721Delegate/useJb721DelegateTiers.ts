@@ -120,7 +120,7 @@ export function useJb721DelegateTiers(
   });
 
   return useQuery(
-    ["jb721DelegateTiers", dataSourceAddress],
+    ["jb721DelegateTiers", dataSourceAddress, tiersRaw?.length ?? 0],
     async () => {
       if (!enabled) return null;
 
