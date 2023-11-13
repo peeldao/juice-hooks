@@ -5,24 +5,24 @@ import { useJBContractContext } from "src/react/contexts";
 import { Ether } from "src/utils";
 
 /**
- * Hook to retrieve the distribution limit for the current project.
+ * Hook to retrieve the distribution limit for the given project.
  *
- * @returns The distribution limit (and distribution limit currency) for the current project.
+ * @returns The distribution limit and its currency for the given project.
  */
 export function useProjectDistributionLimit() {
-  const { contracts: { fundAccessConstraintsStore } } = useJBContractContext();
+  const {
+    contracts: { fundAccessConstraintsStore },
+  } = useJBContractContext();
+
   const distributionLimit = useJbFundAccessConstraintsStoreDistributionLimitOf({
     address: fundAccessConstraintsStore.data,
+    select: ([distributionLimit, currency]) => {
+      return {
+        distributionLimit: new Ether(distributionLimit),
+        currency: currency as JBCurrency,
+      };
+    },
   });
 
-  const currency = distributionLimit?.data?.[1]
-  const distributionLimitAmount = distributionLimit?.data?.[0]
-
-  return {
-    ...distributionLimit,
-    data: {
-      distributionLimit: distributionLimitAmount ? new Ether(distributionLimitAmount) : undefined,
-      distributionLimitCurrency: currency as JBCurrency | undefined,
-    },
-  };
+  return distributionLimit;
 }
