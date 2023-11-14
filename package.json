@@ -1,6 +1,6 @@
 {
   "name": "juice-hooks",
-  "version": "11.2.1-beta",
+  "version": "11.2.2-beta",
   "description": "Wagmi hooks for Juicebox",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,10 +8,9 @@
   "scripts": {
     "test": "vitest",
     "generate-addresses": "ts-node --esm ./scripts/generateAddresses.ts",
-    "pregenerate": "npm run generate-addresses",
+    "pregenerate": "npm run generate-addresses && patch-package",
     "generate": "wagmi generate",
-    "build": "tsup && tsc --emitDeclarationOnly",
-    "postinstall": "patch-package"
+    "build": "tsup && tsc --emitDeclarationOnly"
   },
   "author": "tomquirk",
   "license": "ISC",
