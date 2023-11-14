@@ -35,7 +35,7 @@ export function useEthDistributionLimit({
     configuration,
     terminal,
     JB_ETHER_ADDRESS, // _token
-  ]
+  ] as const
   const distributionLimit = useJbFundAccessConstraintsStoreDistributionLimitOf({
     address: fundAccessConstraintsStore.data,
     args
