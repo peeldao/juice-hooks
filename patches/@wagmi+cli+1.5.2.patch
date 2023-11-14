@@ -1,0 +1,22 @@
+diff --git a/node_modules/@wagmi/cli/dist/plugins/index.js b/node_modules/@wagmi/cli/dist/plugins/index.js
+index 8e23da2..f8c055e 100644
+--- a/node_modules/@wagmi/cli/dist/plugins/index.js
++++ b/node_modules/@wagmi/cli/dist/plugins/index.js
+@@ -46,7 +46,7 @@ function actions(config = {}) {
+         if (contract.meta.addressName) {
+           omitted = `| 'address'`;
+           if (typeof contract.address === "object") {
+-            typeParams = `& { chainId?: keyof typeof ${contract.meta.addressName} }`;
++            typeParams = `& { chainId?: keyof typeof ${contract.meta.addressName}, address?: Address  }`;
+             if (Object.keys(contract.address).length > 1) {
+               innerActionParams.address = `${contract.meta.addressName}[config.chainId as keyof typeof ${contract.meta.addressName}]`;
+             } else
+@@ -1764,7 +1764,7 @@ function react(config = {}) {
+         if (contract.meta.addressName) {
+           omitted = `| 'address'`;
+           if (typeof contract.address === "object") {
+-            typeParams = `& { chainId?: keyof typeof ${contract.meta.addressName}  }`;
++            typeParams = `& { chainId?: keyof typeof ${contract.meta.addressName}, address?: Address  }`;
+             if (Object.keys(contract.address).length > 1) {
+               innerHookParams.address = `${contract.meta.addressName}[chainId as keyof typeof ${contract.meta.addressName}]`;
+               imports.add("useNetwork");
