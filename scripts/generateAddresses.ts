@@ -24,6 +24,7 @@ enum JBContracts {
 
 enum JB721DelegateContracts {
   JBTiered721DelegateStore = "JBTiered721DelegateStore",
+  JBTiered721Delegate = "JBTiered721Delegate",
 }
 
 async function getJuiceboxContractAddresses() {
@@ -71,6 +72,10 @@ async function getJb721DelegateAddresses() {
     [JB721DelegateContracts.JBTiered721DelegateStore]: {
       goerli: "0x155B49f303443a3334bB2EF42E10C628438a0656",
       mainnet: "0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd",
+    },
+    [JB721DelegateContracts.JBTiered721Delegate]: {
+      goerli: "0x6b8f79060844fa5e4C7390F342BC7E2Ea623A99e",
+      mainnet: "0x2B9f2f30F722dD4917bd877D976adc4966A99333",
     },
   };
 
