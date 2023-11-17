@@ -79,6 +79,14 @@ export type JBProjectMetadata = {
   telegram: string;
   twitter: string;
   discord: string;
+
+  /**
+   * Juicecrowd data
+   */
+  introVideoUrl: string;
+  introImageUri: string;
+  softTargetAmount: string;
+  softTargetCurrency: string;
 }>;
 
 /**

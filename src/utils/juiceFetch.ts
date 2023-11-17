@@ -3,6 +3,7 @@ export type JuiceFetchProps = {
   method?: "GET" | "POST";
   headers?: Record<string, string>;
   timeout?: number;
+  body?: string;
 };
 
 /**
@@ -25,7 +26,7 @@ export type JuiceFetchProps = {
 export const juiceFetch = async <T>(
   props: JuiceFetchProps
 ): Promise<T | undefined> => {
-  const { url, method = "GET", headers, timeout } = props;
+  const { url, method = "GET", headers, timeout, body } = props;
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout ?? 30000);
@@ -35,6 +36,7 @@ export const juiceFetch = async <T>(
       method,
       headers,
       signal: controller.signal,
+      body,
     });
 
     if (!res.ok) {
