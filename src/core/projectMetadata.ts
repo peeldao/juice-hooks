@@ -1,4 +1,4 @@
-import { jbProjectsABI, jbProjectsAddress } from "src/react/generated/hooks";
+import { jbProjectsABI, jbProjectsAddress } from "./generated/core";
 import { JBProjectMetadata } from "src/types";
 import { ipfsGatewayUrl } from "src/utils/ipfs";
 import { PublicClient, getContract } from "viem";

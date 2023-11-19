@@ -18,21 +18,33 @@ const juiceboxContracts = Object.keys(addresses).map((name) => {
 
 console.log(juiceboxContracts);
 
-export default defineConfig({
-  out: "src/react/generated/hooks.ts",
-  plugins: [
-    etherscan({
-      apiKey: process.env.ETHERSCAN_API_KEY!,
-      chainId: mainnet.id,
-      contracts: [...juiceboxContracts],
-    }),
-    react(),
-    actions({
-      getContract: true,
-      readContract: true,
-      prepareWriteContract: false,
-      writeContract: false,
-      watchContractEvent: false,
-    }),
-  ],
-});
+export default defineConfig([
+  {
+    out: "src/core/generated/core.ts",
+    plugins: [
+      etherscan({
+        apiKey: process.env.ETHERSCAN_API_KEY!,
+        chainId: mainnet.id,
+        contracts: [...juiceboxContracts],
+      }),
+      actions({
+        getContract: true,
+        readContract: true,
+        prepareWriteContract: false,
+        writeContract: false,
+        watchContractEvent: false,
+      }),
+    ],
+  },
+  {
+    out: "src/react/generated/hooks.ts",
+    plugins: [
+      etherscan({
+        apiKey: process.env.ETHERSCAN_API_KEY!,
+        chainId: mainnet.id,
+        contracts: [...juiceboxContracts],
+      }),
+      react(),
+    ],
+  },
+]);
