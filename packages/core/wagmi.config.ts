@@ -27,13 +27,13 @@ export default defineConfig([
         chainId: mainnet.id,
         contracts: [...juiceboxContracts],
       }),
-      actions({
-        getContract: true,
-        readContract: true,
-        prepareWriteContract: false,
-        writeContract: false,
-        watchContractEvent: false,
-      }),
+      // actions({
+      //   getContract: true,
+      //   readContract: true,
+      //   prepareWriteContract: false,
+      //   writeContract: false,
+      //   watchContractEvent: false,
+      // }),
     ],
   },
 ]);

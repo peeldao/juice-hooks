@@ -9,16 +9,24 @@
     "dist/**/*"
   ],
   "scripts": {
+    "generate-addresses": "ts-node --esm ../../scripts/generateAddresses.ts",
+    "pregenerateTODO": "npm run generate-addresses && patch-package",
+    "generate": "wagmi generate",
     "prebuild": "rm -Rf dist/",
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc --project ./tsconfig.esm.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json"
   },
   "dependencies": {
+    "abitype": "0.8.7",
     "bs58": "^5.0.0",
-    "viem": "^1.18.2"
+    "fpnum": "^0.0.13",
+    "viem": "1.0.0",
+    "wagmi": "^1.4.11"
   },
   "devDependencies": {
-    "@types/bs58": "^4.0.4"
+    "@types/bs58": "^4.0.4",
+    "@wagmi/cli": "^1.5.2",
+    "patch-package": "^8.0.0"
   }
 }

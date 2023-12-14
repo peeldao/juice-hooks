@@ -12,5 +12,11 @@
     "build:core": "yarn --cwd packages/core build",
     "build:react": "yarn --cwd packages/react build",
     "build": "yarn build:core && yarn build:react"
+  },
+  "devDependencies": {
+    "@jbx-protocol/juice-721-delegate": "^8.0.0",
+    "@jbx-protocol/juice-contracts-v3": "^5.0.0",
+    "patch-package": "^8.0.0",
+    "wagmi": "^1.4.11"
   }
 }
