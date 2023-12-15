@@ -1,8 +1,8 @@
 import { defineConfig } from "@wagmi/cli";
-import { actions, etherscan, react } from "@wagmi/cli/plugins";
+import { etherscan } from "@wagmi/cli/plugins";
+import dotenv from "dotenv";
 import { goerli, mainnet } from "wagmi/chains";
 import addresses from "../../addresses.json";
-import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ console.log(juiceboxContracts);
 
 export default defineConfig([
   {
-    out: "./generated/core.ts",
+    out: "./src/generated/core.ts",
     plugins: [
       etherscan({
         apiKey: process.env.ETHERSCAN_API_KEY!,

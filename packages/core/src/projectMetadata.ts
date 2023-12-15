@@ -1,7 +1,7 @@
 import { jbProjectsABI, jbProjectsAddress } from "./generated/core";
 import { JBProjectMetadata } from "./types";
 import { ipfsGatewayUrl } from "./utils/ipfs";
-import { PublicClient, getContract } from "viem";
+import { Address, PublicClient, getContract } from "viem";
 
 type JBChainId = 1 | 5;
 
@@ -14,7 +14,7 @@ const getMetadataCid = async (
 ) => {
   const chainId = (await publicClient.getChainId()) as JBChainId;
   const JBProjects = await getContract({
-    address: jbProjectsAddress[chainId],
+    address: jbProjectsAddress[chainId] as Address,
     abi: jbProjectsABI,
     publicClient,
   });

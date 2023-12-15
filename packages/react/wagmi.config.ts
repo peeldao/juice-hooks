@@ -1,8 +1,8 @@
 import { defineConfig } from "@wagmi/cli";
-import { actions, etherscan, react } from "@wagmi/cli/plugins";
+import { etherscan, react } from "@wagmi/cli/plugins";
+import dotenv from "dotenv";
 import { goerli, mainnet } from "wagmi/chains";
 import addresses from "../../addresses.json";
-import dotenv from "dotenv";
 
 dotenv.config();
 

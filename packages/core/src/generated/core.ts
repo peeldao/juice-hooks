@@ -1,11 +1,3 @@
-import {
-  getContract,
-  GetContractArgs,
-  readContract,
-  ReadContractConfig,
-} from 'wagmi/actions'
-import { Address } from 'wagmi'
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBController
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1505,7 +1497,7 @@ export const jbControllerABI = [
     name: 'totalOutstandingTokensOf',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
@@ -1514,7 +1506,7 @@ export const jbControllerABI = [
 export const jbControllerAddress = {
   1: '0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98',
   5: '0x7Cb86D43B665196BC719b6974D320bf674AFb395',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
@@ -1523,7 +1515,7 @@ export const jbControllerAddress = {
 export const jbControllerConfig = {
   address: jbControllerAddress,
   abi: jbControllerABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBController3_1
@@ -2929,7 +2921,7 @@ export const jbController3_1ABI = [
     name: 'totalOutstandingTokensOf',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
@@ -2938,7 +2930,7 @@ export const jbController3_1ABI = [
 export const jbController3_1Address = {
   1: '0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b',
   5: '0x1d260DE91233e650F136Bf35f8A4ea1F2b68aDB6',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
@@ -2947,7 +2939,7 @@ export const jbController3_1Address = {
 export const jbController3_1Config = {
   address: jbController3_1Address,
   abi: jbController3_1ABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBDirectory
@@ -3284,7 +3276,7 @@ export const jbDirectoryABI = [
     name: 'transferOwnership',
     outputs: [],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
@@ -3293,7 +3285,7 @@ export const jbDirectoryABI = [
 export const jbDirectoryAddress = {
   1: '0x65572FB928b46f9aDB7cfe5A4c41226F636161ea',
   5: '0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
@@ -3302,7 +3294,7 @@ export const jbDirectoryAddress = {
 export const jbDirectoryConfig = {
   address: jbDirectoryAddress,
   abi: jbDirectoryABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHERC20ProjectPayerDeployer
@@ -3424,7 +3416,7 @@ export const jbetherc20ProjectPayerDeployerABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xa5ca9CEa71Df4b680484e5Ff753a1b1185ba5b43)
@@ -3433,7 +3425,7 @@ export const jbetherc20ProjectPayerDeployerABI = [
 export const jbetherc20ProjectPayerDeployerAddress = {
   1: '0xa5ca9CEa71Df4b680484e5Ff753a1b1185ba5b43',
   5: '0x483bFC77f28DB242d40aa456D801354fEEBb502E',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xa5ca9CEa71Df4b680484e5Ff753a1b1185ba5b43)
@@ -3442,7 +3434,7 @@ export const jbetherc20ProjectPayerDeployerAddress = {
 export const jbetherc20ProjectPayerDeployerConfig = {
   address: jbetherc20ProjectPayerDeployerAddress,
   abi: jbetherc20ProjectPayerDeployerABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHERC20SplitsPayerDeployer
@@ -3658,7 +3650,7 @@ export const jbetherc20SplitsPayerDeployerABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x3ff1f0583a41CE8B9463F74a1227C75FC13f7C27)
@@ -3667,7 +3659,7 @@ export const jbetherc20SplitsPayerDeployerABI = [
 export const jbetherc20SplitsPayerDeployerAddress = {
   1: '0x3ff1f0583a41CE8B9463F74a1227C75FC13f7C27',
   5: '0x4C466008867c471316Be2606E5D76D1940fC4765',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x3ff1f0583a41CE8B9463F74a1227C75FC13f7C27)
@@ -3676,7 +3668,7 @@ export const jbetherc20SplitsPayerDeployerAddress = {
 export const jbetherc20SplitsPayerDeployerConfig = {
   address: jbetherc20SplitsPayerDeployerAddress,
   abi: jbetherc20SplitsPayerDeployerABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHPaymentTerminal
@@ -4771,7 +4763,7 @@ export const jbethPaymentTerminalABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
@@ -4780,7 +4772,7 @@ export const jbethPaymentTerminalABI = [
 export const jbethPaymentTerminalAddress = {
   1: '0x594Cb208b5BB48db1bcbC9354d1694998864ec63',
   5: '0x55d4dfb578daA4d60380995ffF7a706471d7c719',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
@@ -4789,7 +4781,7 @@ export const jbethPaymentTerminalAddress = {
 export const jbethPaymentTerminalConfig = {
   address: jbethPaymentTerminalAddress,
   abi: jbethPaymentTerminalABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHPaymentTerminal3_1
@@ -5997,7 +5989,7 @@ export const jbethPaymentTerminal3_1ABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
@@ -6006,7 +5998,7 @@ export const jbethPaymentTerminal3_1ABI = [
 export const jbethPaymentTerminal3_1Address = {
   1: '0xFA391De95Fcbcd3157268B91d8c7af083E607A5C',
   5: '0x0baCb87Cf7DbDdde2299D92673A938E067a9eb29',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
@@ -6015,7 +6007,7 @@ export const jbethPaymentTerminal3_1Address = {
 export const jbethPaymentTerminal3_1Config = {
   address: jbethPaymentTerminal3_1Address,
   abi: jbethPaymentTerminal3_1ABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHPaymentTerminal3_1_1
@@ -7352,7 +7344,7 @@ export const jbethPaymentTerminal3_1_1ABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
@@ -7361,7 +7353,7 @@ export const jbethPaymentTerminal3_1_1ABI = [
 export const jbethPaymentTerminal3_1_1Address = {
   1: '0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573',
   5: '0x82129d4109625F94582bDdF6101a8Cd1a27919f5',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
@@ -7370,7 +7362,7 @@ export const jbethPaymentTerminal3_1_1Address = {
 export const jbethPaymentTerminal3_1_1Config = {
   address: jbethPaymentTerminal3_1_1Address,
   abi: jbethPaymentTerminal3_1_1ABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBETHPaymentTerminal3_1_2
@@ -8707,7 +8699,7 @@ export const jbethPaymentTerminal3_1_2ABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
@@ -8716,7 +8708,7 @@ export const jbethPaymentTerminal3_1_2ABI = [
 export const jbethPaymentTerminal3_1_2Address = {
   1: '0x1d9619E10086FdC1065B114298384aAe3F680CC0',
   5: '0xd89Ed8008961F68Aab849f49e122f9a1266240Db',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
@@ -8725,7 +8717,7 @@ export const jbethPaymentTerminal3_1_2Address = {
 export const jbethPaymentTerminal3_1_2Config = {
   address: jbethPaymentTerminal3_1_2Address,
   abi: jbethPaymentTerminal3_1_2ABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBFundAccessConstraintsStore
@@ -8908,7 +8900,7 @@ export const jbFundAccessConstraintsStoreABI = [
     name: 'supportsInterface',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
@@ -8917,7 +8909,7 @@ export const jbFundAccessConstraintsStoreABI = [
 export const jbFundAccessConstraintsStoreAddress = {
   1: '0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30',
   5: '0xbF8b5ea02e50073348767fd9418beDEd30C835D4',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
@@ -8926,7 +8918,7 @@ export const jbFundAccessConstraintsStoreAddress = {
 export const jbFundAccessConstraintsStoreConfig = {
   address: jbFundAccessConstraintsStoreAddress,
   abi: jbFundAccessConstraintsStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBFundingCycleStore
@@ -9231,7 +9223,7 @@ export const jbFundingCycleStoreABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
@@ -9240,7 +9232,7 @@ export const jbFundingCycleStoreABI = [
 export const jbFundingCycleStoreAddress = {
   1: '0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6',
   5: '0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
@@ -9249,7 +9241,7 @@ export const jbFundingCycleStoreAddress = {
 export const jbFundingCycleStoreConfig = {
   address: jbFundingCycleStoreAddress,
   abi: jbFundingCycleStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBOperatorStore
@@ -9381,7 +9373,7 @@ export const jbOperatorStoreABI = [
     name: 'setOperators',
     outputs: [],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
@@ -9390,7 +9382,7 @@ export const jbOperatorStoreABI = [
 export const jbOperatorStoreAddress = {
   1: '0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb',
   5: '0x99dB6b517683237dE9C494bbd17861f3608F3585',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
@@ -9399,7 +9391,7 @@ export const jbOperatorStoreAddress = {
 export const jbOperatorStoreConfig = {
   address: jbOperatorStoreAddress,
   abi: jbOperatorStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBPrices
@@ -9519,7 +9511,7 @@ export const jbPricesABI = [
     name: 'transferOwnership',
     outputs: [],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x63CF55ab55ABcaD4E84335B80bbE3D2DefA09410)
@@ -9528,16 +9520,13 @@ export const jbPricesABI = [
 export const jbPricesAddress = {
   1: '0x63CF55ab55ABcaD4E84335B80bbE3D2DefA09410',
   5: '0x9f0eC91d28fFc54874e9fF11A316Ba2537aCD72C',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x63CF55ab55ABcaD4E84335B80bbE3D2DefA09410)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x9f0eC91d28fFc54874e9fF11A316Ba2537aCD72C)
  */
-export const jbPricesConfig = {
-  address: jbPricesAddress,
-  abi: jbPricesABI,
-} as const
+export const jbPricesConfig = { address: jbPricesAddress, abi: jbPricesABI }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBProjects
@@ -10060,7 +10049,7 @@ export const jbProjectsABI = [
     name: 'transferOwnership',
     outputs: [],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
@@ -10069,7 +10058,7 @@ export const jbProjectsABI = [
 export const jbProjectsAddress = {
   1: '0xD8B4359143eda5B2d763E127Ed27c77addBc47d3',
   5: '0x21263a042aFE4bAE34F08Bb318056C181bD96D3b',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
@@ -10078,7 +10067,7 @@ export const jbProjectsAddress = {
 export const jbProjectsConfig = {
   address: jbProjectsAddress,
   abi: jbProjectsABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBSingleTokenPaymentTerminalStore
@@ -10450,7 +10439,7 @@ export const jbSingleTokenPaymentTerminalStoreABI = [
     name: 'usedOverflowAllowanceOf',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
@@ -10459,7 +10448,7 @@ export const jbSingleTokenPaymentTerminalStoreABI = [
 export const jbSingleTokenPaymentTerminalStoreAddress = {
   1: '0xdF7Ca703225c5da79A86E08E03A206c267B7470C',
   5: '0x5b62ccB7fdA139185374c8f36FAa388c20E1387F',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
@@ -10468,7 +10457,7 @@ export const jbSingleTokenPaymentTerminalStoreAddress = {
 export const jbSingleTokenPaymentTerminalStoreConfig = {
   address: jbSingleTokenPaymentTerminalStoreAddress,
   abi: jbSingleTokenPaymentTerminalStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBSplitsStore
@@ -10665,7 +10654,7 @@ export const jbSplitsStoreABI = [
       },
     ],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
@@ -10674,7 +10663,7 @@ export const jbSplitsStoreABI = [
 export const jbSplitsStoreAddress = {
   1: '0x0D25194ABE95185Db8e4B0294F5669E21C534785',
   5: '0xce2Ce2F37fE5B2C2Dd047908B2F61c9c3f707272',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
@@ -10683,7 +10672,7 @@ export const jbSplitsStoreAddress = {
 export const jbSplitsStoreConfig = {
   address: jbSplitsStoreAddress,
   abi: jbSplitsStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBTiered721Delegate
@@ -11927,7 +11916,7 @@ export const jbTiered721DelegateABI = [
     name: 'transferOwnershipToProject',
     outputs: [],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x2B9f2f30F722dD4917bd877D976adc4966A99333)
@@ -11936,7 +11925,7 @@ export const jbTiered721DelegateABI = [
 export const jbTiered721DelegateAddress = {
   1: '0x2B9f2f30F722dD4917bd877D976adc4966A99333',
   5: '0x6b8f79060844fa5e4C7390F342BC7E2Ea623A99e',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x2B9f2f30F722dD4917bd877D976adc4966A99333)
@@ -11945,7 +11934,7 @@ export const jbTiered721DelegateAddress = {
 export const jbTiered721DelegateConfig = {
   address: jbTiered721DelegateAddress,
   abi: jbTiered721DelegateABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBTiered721DelegateStore
@@ -12447,7 +12436,7 @@ export const jbTiered721DelegateStoreABI = [
     name: 'votingUnitsOf',
     outputs: [{ name: 'units', internalType: 'uint256', type: 'uint256' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
@@ -12456,7 +12445,7 @@ export const jbTiered721DelegateStoreABI = [
 export const jbTiered721DelegateStoreAddress = {
   1: '0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd',
   5: '0x155B49f303443a3334bB2EF42E10C628438a0656',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
@@ -12465,7 +12454,7 @@ export const jbTiered721DelegateStoreAddress = {
 export const jbTiered721DelegateStoreConfig = {
   address: jbTiered721DelegateStoreAddress,
   abi: jbTiered721DelegateStoreABI,
-} as const
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JBTokenStore
@@ -12892,7 +12881,7 @@ export const jbTokenStoreABI = [
     name: 'unclaimedTotalSupplyOf',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
-] as const
+]
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
@@ -12901,7 +12890,7 @@ export const jbTokenStoreABI = [
 export const jbTokenStoreAddress = {
   1: '0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7',
   5: '0x1246a50e3aDaF684Ac566f0c40816fF738F309B3',
-} as const
+}
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
@@ -12910,825 +12899,4 @@ export const jbTokenStoreAddress = {
 export const jbTokenStoreConfig = {
   address: jbTokenStoreAddress,
   abi: jbTokenStoreABI,
-} as const
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Core
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbControllerABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Cb86D43B665196BC719b6974D320bf674AFb395)
- */
-export function getJbController(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbControllerAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbControllerABI,
-    address:
-      jbControllerAddress[config.chainId as keyof typeof jbControllerAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbControllerABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFFdD70C318915879d5192e8a0dcbFcB0285b3C98)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Cb86D43B665196BC719b6974D320bf674AFb395)
- */
-export function readJbController<
-  TAbi extends readonly unknown[] = typeof jbControllerABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbControllerAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbControllerABI,
-    address:
-      jbControllerAddress[config.chainId as keyof typeof jbControllerAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbController3_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1d260DE91233e650F136Bf35f8A4ea1F2b68aDB6)
- */
-export function getJbController3_1(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbController3_1Address
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbController3_1ABI,
-    address:
-      jbController3_1Address[
-        config.chainId as keyof typeof jbController3_1Address
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbController3_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x97a5b9D9F0F7cD676B69f584F29048D0Ef4BB59b)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1d260DE91233e650F136Bf35f8A4ea1F2b68aDB6)
- */
-export function readJbController3_1<
-  TAbi extends readonly unknown[] = typeof jbController3_1ABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbController3_1Address
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbController3_1ABI,
-    address:
-      jbController3_1Address[
-        config.chainId as keyof typeof jbController3_1Address
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbDirectoryABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
- */
-export function getJbDirectory(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbDirectoryAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbDirectoryABI,
-    address:
-      jbDirectoryAddress[config.chainId as keyof typeof jbDirectoryAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbDirectoryABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x65572FB928b46f9aDB7cfe5A4c41226F636161ea)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
- */
-export function readJbDirectory<
-  TAbi extends readonly unknown[] = typeof jbDirectoryABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbDirectoryAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbDirectoryABI,
-    address:
-      jbDirectoryAddress[config.chainId as keyof typeof jbDirectoryAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbetherc20ProjectPayerDeployerABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xa5ca9CEa71Df4b680484e5Ff753a1b1185ba5b43)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x483bFC77f28DB242d40aa456D801354fEEBb502E)
- */
-export function getJbetherc20ProjectPayerDeployer(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbetherc20ProjectPayerDeployerAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbetherc20ProjectPayerDeployerABI,
-    address:
-      jbetherc20ProjectPayerDeployerAddress[
-        config.chainId as keyof typeof jbetherc20ProjectPayerDeployerAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbetherc20SplitsPayerDeployerABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x3ff1f0583a41CE8B9463F74a1227C75FC13f7C27)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4C466008867c471316Be2606E5D76D1940fC4765)
- */
-export function getJbetherc20SplitsPayerDeployer(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbetherc20SplitsPayerDeployerAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbetherc20SplitsPayerDeployerABI,
-    address:
-      jbetherc20SplitsPayerDeployerAddress[
-        config.chainId as keyof typeof jbetherc20SplitsPayerDeployerAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminalABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x55d4dfb578daA4d60380995ffF7a706471d7c719)
- */
-export function getJbethPaymentTerminal(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminalAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbethPaymentTerminalABI,
-    address:
-      jbethPaymentTerminalAddress[
-        config.chainId as keyof typeof jbethPaymentTerminalAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminalABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x594Cb208b5BB48db1bcbC9354d1694998864ec63)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x55d4dfb578daA4d60380995ffF7a706471d7c719)
- */
-export function readJbethPaymentTerminal<
-  TAbi extends readonly unknown[] = typeof jbethPaymentTerminalABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminalAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbethPaymentTerminalABI,
-    address:
-      jbethPaymentTerminalAddress[
-        config.chainId as keyof typeof jbethPaymentTerminalAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0baCb87Cf7DbDdde2299D92673A938E067a9eb29)
- */
-export function getJbethPaymentTerminal3_1(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1Address
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbethPaymentTerminal3_1ABI,
-    address:
-      jbethPaymentTerminal3_1Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1Address
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xFA391De95Fcbcd3157268B91d8c7af083E607A5C)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0baCb87Cf7DbDdde2299D92673A938E067a9eb29)
- */
-export function readJbethPaymentTerminal3_1<
-  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1ABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1Address
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbethPaymentTerminal3_1ABI,
-    address:
-      jbethPaymentTerminal3_1Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1Address
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x82129d4109625F94582bDdF6101a8Cd1a27919f5)
- */
-export function getJbethPaymentTerminal3_1_1(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbethPaymentTerminal3_1_1ABI,
-    address:
-      jbethPaymentTerminal3_1_1Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1_1Address
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_1ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x457cD63bee88ac01f3cD4a67D5DCc921D8C0D573)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x82129d4109625F94582bDdF6101a8Cd1a27919f5)
- */
-export function readJbethPaymentTerminal3_1_1<
-  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1_1ABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1_1Address
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbethPaymentTerminal3_1_1ABI,
-    address:
-      jbethPaymentTerminal3_1_1Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1_1Address
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_2ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xd89Ed8008961F68Aab849f49e122f9a1266240Db)
- */
-export function getJbethPaymentTerminal3_1_2(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbethPaymentTerminal3_1_2ABI,
-    address:
-      jbethPaymentTerminal3_1_2Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1_2Address
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbethPaymentTerminal3_1_2ABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x1d9619E10086FdC1065B114298384aAe3F680CC0)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xd89Ed8008961F68Aab849f49e122f9a1266240Db)
- */
-export function readJbethPaymentTerminal3_1_2<
-  TAbi extends readonly unknown[] = typeof jbethPaymentTerminal3_1_2ABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbethPaymentTerminal3_1_2Address
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbethPaymentTerminal3_1_2ABI,
-    address:
-      jbethPaymentTerminal3_1_2Address[
-        config.chainId as keyof typeof jbethPaymentTerminal3_1_2Address
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbFundAccessConstraintsStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbF8b5ea02e50073348767fd9418beDEd30C835D4)
- */
-export function getJbFundAccessConstraintsStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbFundAccessConstraintsStoreABI,
-    address:
-      jbFundAccessConstraintsStoreAddress[
-        config.chainId as keyof typeof jbFundAccessConstraintsStoreAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbFundAccessConstraintsStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xA4425A1E5b7B28Cb689719B1428e3088C1F89E30)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbF8b5ea02e50073348767fd9418beDEd30C835D4)
- */
-export function readJbFundAccessConstraintsStore<
-  TAbi extends readonly unknown[] = typeof jbFundAccessConstraintsStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbFundAccessConstraintsStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbFundAccessConstraintsStoreABI,
-    address:
-      jbFundAccessConstraintsStoreAddress[
-        config.chainId as keyof typeof jbFundAccessConstraintsStoreAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbFundingCycleStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
- */
-export function getJbFundingCycleStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbFundingCycleStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbFundingCycleStoreABI,
-    address:
-      jbFundingCycleStoreAddress[
-        config.chainId as keyof typeof jbFundingCycleStoreAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbFundingCycleStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6f18cF9173136c0B5A6eBF45f19D58d3ff2E17e6)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
- */
-export function readJbFundingCycleStore<
-  TAbi extends readonly unknown[] = typeof jbFundingCycleStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbFundingCycleStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbFundingCycleStoreABI,
-    address:
-      jbFundingCycleStoreAddress[
-        config.chainId as keyof typeof jbFundingCycleStoreAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbOperatorStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x99dB6b517683237dE9C494bbd17861f3608F3585)
- */
-export function getJbOperatorStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbOperatorStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbOperatorStoreABI,
-    address:
-      jbOperatorStoreAddress[
-        config.chainId as keyof typeof jbOperatorStoreAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbOperatorStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6F3C5afCa0c9eDf3926eF2dDF17c8ae6391afEfb)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x99dB6b517683237dE9C494bbd17861f3608F3585)
- */
-export function readJbOperatorStore<
-  TAbi extends readonly unknown[] = typeof jbOperatorStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbOperatorStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbOperatorStoreABI,
-    address:
-      jbOperatorStoreAddress[
-        config.chainId as keyof typeof jbOperatorStoreAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbPricesABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x63CF55ab55ABcaD4E84335B80bbE3D2DefA09410)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x9f0eC91d28fFc54874e9fF11A316Ba2537aCD72C)
- */
-export function getJbPrices(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbPricesAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbPricesABI,
-    address: jbPricesAddress[config.chainId as keyof typeof jbPricesAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbPricesABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x63CF55ab55ABcaD4E84335B80bbE3D2DefA09410)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x9f0eC91d28fFc54874e9fF11A316Ba2537aCD72C)
- */
-export function readJbPrices<
-  TAbi extends readonly unknown[] = typeof jbPricesABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbPricesAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbPricesABI,
-    address: jbPricesAddress[config.chainId as keyof typeof jbPricesAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbProjectsABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x21263a042aFE4bAE34F08Bb318056C181bD96D3b)
- */
-export function getJbProjects(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbProjectsAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbProjectsABI,
-    address:
-      jbProjectsAddress[config.chainId as keyof typeof jbProjectsAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbProjectsABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xD8B4359143eda5B2d763E127Ed27c77addBc47d3)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x21263a042aFE4bAE34F08Bb318056C181bD96D3b)
- */
-export function readJbProjects<
-  TAbi extends readonly unknown[] = typeof jbProjectsABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbProjectsAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbProjectsABI,
-    address:
-      jbProjectsAddress[config.chainId as keyof typeof jbProjectsAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbSingleTokenPaymentTerminalStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b62ccB7fdA139185374c8f36FAa388c20E1387F)
- */
-export function getJbSingleTokenPaymentTerminalStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbSingleTokenPaymentTerminalStoreABI,
-    address:
-      jbSingleTokenPaymentTerminalStoreAddress[
-        config.chainId as keyof typeof jbSingleTokenPaymentTerminalStoreAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbSingleTokenPaymentTerminalStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xdF7Ca703225c5da79A86E08E03A206c267B7470C)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b62ccB7fdA139185374c8f36FAa388c20E1387F)
- */
-export function readJbSingleTokenPaymentTerminalStore<
-  TAbi extends readonly unknown[] = typeof jbSingleTokenPaymentTerminalStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbSingleTokenPaymentTerminalStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbSingleTokenPaymentTerminalStoreABI,
-    address:
-      jbSingleTokenPaymentTerminalStoreAddress[
-        config.chainId as keyof typeof jbSingleTokenPaymentTerminalStoreAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbSplitsStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xce2Ce2F37fE5B2C2Dd047908B2F61c9c3f707272)
- */
-export function getJbSplitsStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbSplitsStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbSplitsStoreABI,
-    address:
-      jbSplitsStoreAddress[config.chainId as keyof typeof jbSplitsStoreAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbSplitsStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D25194ABE95185Db8e4B0294F5669E21C534785)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xce2Ce2F37fE5B2C2Dd047908B2F61c9c3f707272)
- */
-export function readJbSplitsStore<
-  TAbi extends readonly unknown[] = typeof jbSplitsStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbSplitsStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbSplitsStoreABI,
-    address:
-      jbSplitsStoreAddress[config.chainId as keyof typeof jbSplitsStoreAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbTiered721DelegateABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x2B9f2f30F722dD4917bd877D976adc4966A99333)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x6b8f79060844fa5e4C7390F342BC7E2Ea623A99e)
- */
-export function getJbTiered721Delegate(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTiered721DelegateAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbTiered721DelegateABI,
-    address:
-      jbTiered721DelegateAddress[
-        config.chainId as keyof typeof jbTiered721DelegateAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbTiered721DelegateABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x2B9f2f30F722dD4917bd877D976adc4966A99333)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x6b8f79060844fa5e4C7390F342BC7E2Ea623A99e)
- */
-export function readJbTiered721Delegate<
-  TAbi extends readonly unknown[] = typeof jbTiered721DelegateABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTiered721DelegateAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbTiered721DelegateABI,
-    address:
-      jbTiered721DelegateAddress[
-        config.chainId as keyof typeof jbTiered721DelegateAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
- */
-export function getJbTiered721DelegateStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTiered721DelegateStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbTiered721DelegateStoreABI,
-    address:
-      jbTiered721DelegateStoreAddress[
-        config.chainId as keyof typeof jbTiered721DelegateStoreAddress
-      ],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbTiered721DelegateStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x615B5b50F1Fc591AAAb54e633417640d6F2773Fd)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x155B49f303443a3334bB2EF42E10C628438a0656)
- */
-export function readJbTiered721DelegateStore<
-  TAbi extends readonly unknown[] = typeof jbTiered721DelegateStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTiered721DelegateStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbTiered721DelegateStoreABI,
-    address:
-      jbTiered721DelegateStoreAddress[
-        config.chainId as keyof typeof jbTiered721DelegateStoreAddress
-      ],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
-}
-
-/**
- * Wraps __{@link getContract}__ with `abi` set to __{@link jbTokenStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1246a50e3aDaF684Ac566f0c40816fF738F309B3)
- */
-export function getJbTokenStore(
-  config: Omit<GetContractArgs, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTokenStoreAddress
-    address?: Address
-  },
-) {
-  return getContract({
-    abi: jbTokenStoreABI,
-    address:
-      jbTokenStoreAddress[config.chainId as keyof typeof jbTokenStoreAddress],
-    ...config,
-  })
-}
-
-/**
- * Wraps __{@link readContract}__ with `abi` set to __{@link jbTokenStoreABI}__.
- *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x6FA996581D7edaABE62C15eaE19fEeD4F1DdDfE7)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x1246a50e3aDaF684Ac566f0c40816fF738F309B3)
- */
-export function readJbTokenStore<
-  TAbi extends readonly unknown[] = typeof jbTokenStoreABI,
-  TFunctionName extends string = string,
->(
-  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
-    chainId?: keyof typeof jbTokenStoreAddress
-    address?: Address
-  },
-) {
-  return readContract({
-    abi: jbTokenStoreABI,
-    address:
-      jbTokenStoreAddress[config.chainId as keyof typeof jbTokenStoreAddress],
-    ...config,
-  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
 }
