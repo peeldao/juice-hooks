@@ -19,5 +19,5 @@
     "patch-package": "^8.0.0",
     "wagmi": "^1.4.11"
   },
-  "version": "1.0.6-alpha"
+  "version": "1.0.7-alpha"
 }
