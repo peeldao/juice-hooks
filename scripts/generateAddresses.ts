@@ -20,6 +20,7 @@ enum JBContracts {
   JBSingleTokenPaymentTerminalStore = "JBSingleTokenPaymentTerminalStore",
   JBETHERC20ProjectPayerDeployer = "JBETHERC20ProjectPayerDeployer",
   JBETHERC20SplitsPayerDeployer = "JBETHERC20SplitsPayerDeployer",
+  JBPrices = "JBPrices",
 }
 
 enum JB721DelegateContracts {

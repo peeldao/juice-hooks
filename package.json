@@ -1,65 +1,23 @@
 {
-  "name": "juice-hooks",
-  "version": "12.2.2-beta",
-  "description": "Wagmi hooks for Juicebox",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "type": "module",
+  "name": "juice-sdk",
+  "description": "Juicebox SDK monorepo",
+  "main": "index.js",
+  "repository": "https://github.com/jbx-protocol/juice-sdk",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "./packages/*"
+  ],
   "scripts": {
-    "test": "vitest",
-    "generate-addresses": "ts-node --esm ./scripts/generateAddresses.ts",
-    "pregenerate": "npm run generate-addresses && patch-package",
-    "generate": "wagmi generate",
-    "build": "tsup && tsc --emitDeclarationOnly"
+    "build:core": "yarn --cwd packages/core build",
+    "build:react": "yarn --cwd packages/react build",
+    "build": "yarn build:core && yarn build:react"
   },
-  "author": "tomquirk",
-  "license": "ISC",
   "devDependencies": {
     "@jbx-protocol/juice-721-delegate": "^8.0.0",
     "@jbx-protocol/juice-contracts-v3": "^5.0.0",
-    "@types/node": "^20.8.10",
-    "@types/react": "^18.2.21",
-    "@wagmi/cli": "^1.5.2",
-    "dotenv": "^16.3.1",
-    "forge-run-parser": "^1.0.3",
     "patch-package": "^8.0.0",
-    "react": "^18.2.0",
-    "ts-node": "^10.9.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "viem": "1.0.0",
-    "vitest": "^0.34.5",
-    "wagmi": "^1.4.5"
+    "wagmi": "^1.4.11"
   },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "viem": "^1.18.2",
-    "wagmi": "^1.4.5"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "bs58": "^5.0.0",
-    "fpnum": "^0.0.13",
-    "juicebox-metadata-helper": "^0.1.7"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./react": {
-      "types": "./dist/react/index.d.ts",
-      "default": "./dist/react/index.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./dist/utils/index.js"
-    },
-    "./core": {
-      "types": "./dist/core/index.d.ts",
-      "default": "./dist/core/index.js"
-    }
-  }
+  "version": "1.0.7-alpha"
 }
